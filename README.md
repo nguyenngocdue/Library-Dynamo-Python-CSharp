@@ -11,3 +11,21 @@ BIM3DM là một team chia sẻ kiến thức về Lập Trình [Coding] dành c
 
 **Table of Content**
 ---
+*L1* - Các Kiểu Dữ Liệu Cơ Bản CẦN BIẾT trong Python (YT#4)
+
+**Basic Data Types**
+---
+**String and String Methods**
+---
+**List and List Comprehension**
+---
+**Dictionary**
+---
+**For While**
+---
+**Lambda Function**
+--
+
+
+
+
