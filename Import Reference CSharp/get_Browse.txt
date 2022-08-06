@@ -1,0 +1,9 @@
+C:\Program Files\Autodesk\Revit 2020
+C:\Program Files\Autodesk\Revit 2020\AddIns\DynamoForRevit
+C:\Program Files\Autodesk\Revit 2020\AddIns\DynamoForRevit\Revit
+
+C:\ProgramData\Dynamo\Dynamo Core
+C:\ProgramData\Dynamo\Dynamo Core\DynamoSandbox.exe
+
+Install-Package DynamoVisualPrograming.ZeroTouchLibrary
+Install-Package DynamoVisualPrograming.DynamoService
