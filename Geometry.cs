@@ -14,24 +14,24 @@ namespace BIM3DM
 {
     public class Geometry     
     {
-        [IsVisibleInDynamoLibrary(true)]
-        public static BoundingBoxXYZ Crop_box(BoundingBoxXYZ bbox, int offset)
-        {
-            var minx = bbox.Min.X - offset;
-            var miny = bbox.Min.Y - offset;
-            var minz = bbox.Min.Z - offset;
-            var maxx = bbox.Max.X + offset;
-            var maxy = bbox.Max.Y + offset;
-            var maxz = bbox.Max.Z + offset;
+        //[IsVisibleInDynamoLibrary(true)]
+        //public static BoundingBoxXYZ Crop_box(BoundingBoxXYZ bbox, int offset)
+        //{
+        //    var minx = bbox.Min.X - offset;
+        //    var miny = bbox.Min.Y - offset;
+        //    var minz = bbox.Min.Z - offset;
+        //    var maxx = bbox.Max.X + offset;
+        //    var maxy = bbox.Max.Y + offset;
+        //    var maxz = bbox.Max.Z + offset;
 
-            var newbox = new BoundingBoxXYZ
-            {
-                Min = new XYZ(minx, miny, minz),
-                Max = new XYZ(maxx, maxy, maxz)
-            };
+        //    var newbox = new BoundingBoxXYZ
+        //    {
+        //        Min = new XYZ(minx, miny, minz),
+        //        Max = new XYZ(maxx, maxy, maxz)
+        //    };
 
-            return newbox;
-        }
+        //    return newbox;
+        //}
     }
 
     public static class ElementGraphics

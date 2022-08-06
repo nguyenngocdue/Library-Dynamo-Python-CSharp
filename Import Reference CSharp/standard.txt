@@ -7,3 +7,5 @@ C:\ProgramData\Dynamo\Dynamo Core\DynamoSandbox.exe
 
 Install-Package DynamoVisualPrograming.ZeroTouchLibrary
 Install-Package DynamoVisualPrograming.DynamoService
+
+copy "$(ProjectDir)bin\debug\*.dll" "C:\Users\NGUYEN NGOC DUE\Desktop\rebar1\
