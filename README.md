@@ -1,4 +1,4 @@
-**_Python Basics Tutorial_**
+**_Dynamo Tutorial_**
 
 ---
 
