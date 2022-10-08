@@ -1,0 +1,791 @@
+{
+  "Uuid": "689fb701-6906-4a05-b3b3-83fc60385b29",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Intersection MEP",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "1af2bf2f-e95b-485d-ade5-a3747cd912d1-038b989e",
+        "1af2bf2f-e95b-485d-ade5-a3747cd912d1-038b98ea"
+      ],
+      "Id": "b4e9295a4236417aaf0723eeaea5538f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3d579b17221441388dc4ea82f70ed591",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\n\r\ndef generateList(item):\r\n    if isinstance(item, list):\r\n        return item\r\n    else:\r\n        return [item]\r\n        \r\n        \r\n\r\n\r\n\r\nOUT = generateList(IN[1])",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "14c237b2e79c4e6bbf35562ec9e6453d",
+      "Inputs": [
+        {
+          "Id": "6c25a8d07349497fb8581e037e57f52b",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50307256a2ba4f818e17e0b22280d03a",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "35d37173ba104a389b3d35b414918365",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\ndef GetGeoElement(element): # Get geometry of element.\r\n    geo = []\r\n    opt = Options()\r\n    opt.ComputeReferences = True\r\n    opt.IncludeNonVisibleObjects = True\r\n    opt.DetailLevel = ViewDetailLevel.Fine\r\n    geoByElement = element.get_Geometry(opt)\r\n    geo = [i for i in geoByElement]\r\n    return geo\r\nele = UnwrapElement(IN[1])\r\ngetGeoFraming = [GetGeoElement(i) for i in ele]\r\nOUT = getGeoFraming\r\n\r\n\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "1785e8cec7214b6183e8b286861acafd",
+      "Inputs": [
+        {
+          "Id": "091d3abfd0264e31a6a66b935847f886",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "565839c21f0c47e08b6bb60dca1ed4b7",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bf9c1ecc210344cea8590e4cf5f890cc",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\ndef GetSolidFromGeo(lstGeo): # Get Solid from Geo\r\n    sol = []\r\n    for i in lstGeo:\r\n        if i.GetType()== Solid and i.Volume > 0:\r\n            sol.append(i)\r\n        elif i.GetType() == GeometryInstance:\r\n            var = i.SymbolGeometry\r\n            for j in var:\r\n                if j.Volume > 0:\r\n                    sol.append(j)\r\n    return sol\r\n    \r\nele = IN[1]\r\ngetSolidFraming = [GetSolidFromGeo(i) for i in ele]\r\nOUT = getSolidFraming\r\n\r\n\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "6743a4fb539b41379bc4d5f11cad45e5",
+      "Inputs": [
+        {
+          "Id": "d7e37e91cb634f2687b223ef32747df9",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "39788918487e445e8da7c51182c15870",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b0ef7140955a44c8b5f646354c9c7a9d",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "2f5e56ce45f84dc89251250f62b8075c",
+      "Inputs": [
+        {
+          "Id": "87a6b4bf3bb14cd9b79279e62ee80b09",
+          "Name": "script",
+          "Description": "Python script to run.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e4b014a26baa41f5b91f797fbc4780ae",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "accd76e972424802a22ff5d3e4520b8d",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c91c1aa4eb1644978d4f108d77cea6a4",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ea55c73f850d4235ba78aa141e84e7fb",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs a Python script from a string."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "f = open(\"C:\\\\Users\\\\NGUYEN NGOC DUE\\\\OneDrive\\\\03_DYNAMO\\\\DYNAMO_TRAINING API NND\\\\2. WORKING\\\\Code Python Import Into Dyn\\\\test.py\",\"r\")\r\nOUT = f.read()",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "74bb76b81c124b06bf6dc74892949e29",
+      "Inputs": [
+        {
+          "Id": "3e6071938b794e628039042f6a591461",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e3243dc2e78a42a998a4f0c0bbb61f7e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "8f613572727248c7be9cf76ca977c7ad",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "26ef7e1ea10e48009a21a8d1c60aa689",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\ndef listRank(item):\r\n\tlevel = 0\r\n\tif isinstance (item, list):\r\n\t\tlevel += 1\r\n\t\tif isinstance (item[0], list):\r\n\t\t\tfor i in item[0]:\r\n\t\t\t\tlevel += 1\r\n\t\t\t\tif isinstance(i, list):\r\n\t\t\t\t\tlevel += 1\r\n\t\t\t\t\tif isinstance(i[0], list):\r\n\t\t\t\t\t\tlevel += 1\r\n\t\t\t\t\t\tif isinstance(i[0][0], list):\r\n\t\t\t\t\t\t\tlevel += 1\r\n\t\t\t\t\t\telse:\r\n\t\t\t\t\t\t\treturn level\r\n\t\t\t\t\telse:\r\n\t\t\t\t\t\treturn level\t\r\n\t\t\t\telse:\r\n\t\t\t\t\treturn level\r\n\t\telse:\r\n\t\t\treturn level\r\n\telse:\r\n\t\treturn level\r\n\treturn level\r\n\r\ndef getGeometryRevitToDyn(item):\r\n\tlevelLst = listRank(item)\r\n\tif (levelLst == 1):\r\n\t\treturn [i.ToProtoType() for i in item]\r\n\telif levelLst == 2:\r\n\t\treturn [j.ToProtoType() for i in item for j in i]\r\n\telif levelLst == 3:\r\n\t\treturn [t.ToProtoType() for i in item for j in i for t in j]\r\n\telse:\r\n\t\treturn item.ToProtoType()\r\nitem = IN[1]\r\nOUT = getGeometryRevitToDyn(item)",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "767c3667cd1d42bba5357c4e3b7295a8",
+      "Inputs": [
+        {
+          "Id": "ca16545523ff4ec2aeceab44862cb6ae",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "83de286f8ca54d709521e4f37b159086",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "158c0e4c484246dab6ab6e1e694d7343",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a.Volume;",
+      "Id": "472341226cc845438436411f3ce5ac47",
+      "Inputs": [
+        {
+          "Id": "acb42725f152413d8736234f22b932bf",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c9cdeab9710047f394f33eb8a2bba9b8",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n#Preparing input from dynamo to revit\r\nelement = UnwrapElement(IN[0])\r\n\r\n#Do some action in a Transaction\r\n#TransactionManager.Instance.EnsureInTransaction(doc)\r\n\"\"\"Now, You Can Code \"\"\"\r\n\r\n\r\n\r\n#TransactionManager.Instance.TransactionTaskDone()\r\n\r\nOUT = [i  for i in element if i != None ]",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "c083a9a7c8b948889a8d5c522e2d3703",
+      "Inputs": [
+        {
+          "Id": "f0ccdf790e1145aba0d9556d72957f2e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c31deb55fbf44e09a30fad7495bf603",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\ndef listRank(item):\r\n\tlevel = 0\r\n\tif isinstance (item, list):\r\n\t\tlevel += 1\r\n\t\tif isinstance (item[0], list):\r\n\t\t\tfor i in item[0]:\r\n\t\t\t\tlevel += 1\r\n\t\t\t\tif isinstance(i, list):\r\n\t\t\t\t\tlevel += 1\r\n\t\t\t\t\tif isinstance(i[0], list):\r\n\t\t\t\t\t\tlevel += 1\r\n\t\t\t\t\t\tif isinstance(i[0][0], list):\r\n\t\t\t\t\t\t\tlevel += 1\r\n\t\t\t\t\t\telse:\r\n\t\t\t\t\t\t\treturn level\r\n\t\t\t\t\telse:\r\n\t\t\t\t\t\treturn level\t\r\n\t\t\t\telse:\r\n\t\t\t\t\treturn level\r\n\t\telse:\r\n\t\t\treturn level\r\n\telse:\r\n\t\treturn level\r\n\treturn level\r\n\r\ndef getGeometryRevitToDyn(item):\r\n\tlevelLst = listRank(item)\r\n\tif (levelLst == 1):\r\n\t\treturn [i.ToProtoType() for i in item]\r\n\telif levelLst == 2:\r\n\t\treturn [j.ToProtoType() for i in item for j in i]\r\n\telif levelLst == 3:\r\n\t\treturn [t.ToProtoType() for i in item for j in i for t in j]\r\n\telse:\r\n\t\treturn item.ToProtoType()\r\nitem = IN[1]\r\nOUT = getGeometryRevitToDyn(item)",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "0ed5bb0a7d144b33bf2a1aab65e19a35",
+      "Inputs": [
+        {
+          "Id": "243b3adb5da848c786cdbfd05b58abc3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2b0c3f32d2ca432c84f8a0009da1ffe3",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "800bae65e09d41629545c0292890efca",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[1];",
+      "Id": "05f67fd59f96463993ca3e33c20050a2",
+      "Inputs": [
+        {
+          "Id": "46a07d4d82024da0be38fbb50c03158d",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "389753293afa4a01b556dedc464a9a81",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\r\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\r\nimport clr \r\nimport sys\r\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n#Preparing input from dynamo to revit\r\nelement = UnwrapElement(IN[0])\r\n\r\n#Do some action in a Transaction\r\n#TransactionManager.Instance.EnsureInTransaction(doc)\r\n\"\"\"Now, You Can Code \"\"\"\r\n\r\n\r\n\r\n#TransactionManager.Instance.TransactionTaskDone()\r\n\r\nOUT = element.Centroid()",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "5fa731f7972142ffb909adfadee19811",
+      "Inputs": [
+        {
+          "Id": "789c0053d5e645659f69fa47715e3114",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "04b36c072d64499dbd88f4e9c4b5cc0f",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.IntersectAll@Autodesk.DesignScript.Geometry.Geometry[]",
+      "Id": "c4eec5bfa0694643838feaf903446080",
+      "Inputs": [
+        {
+          "Id": "f43dacd1c056457a86812272305729c9",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "74e6b841c08749dea8733e01c8b2fa05",
+          "Name": "others",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "84fe1f084a704588b310a81b412df698",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the intersection of Geometry for this object and a collection of other Geometries. Finds common geometry of all participants.\n\nGeometry.IntersectAll (others: Geometry[]): Geometry[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\n'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'\n\"\"\"________________Welcome to BIM3DM-DYNAMO API___________________\"\"\"\nimport clr\nimport sys\nsys.path.append(r'C:\\Program Files\\Autodesk\\Revit 2020\\AddIns\\DynamoForRevit\\IronPython.StdLib.2.7.8')\nimport math\nfrom System.Collections.Generic import *\n\nclr.AddReference(\"ProtoGeometry\")\nfrom Autodesk.DesignScript.Geometry import *\n\nclr.AddReference('RevitAPI')\nimport Autodesk\nfrom Autodesk.Revit.DB import *\n\nclr.AddReference('RevitAPIUI')\nfrom Autodesk.Revit.UI import*\nfrom  Autodesk.Revit.UI.Selection import*\n\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\nclr.ImportExtensions(Revit.GeometryConversion)\n\nclr.AddReference(\"RevitServices\")\nimport RevitServices\nfrom RevitServices.Persistence import DocumentManager\nfrom RevitServices.Transactions import TransactionManager\n\n\n\ndef lstFlattenL2(list): #List.Flatten\n    result = []\n    for i in list:\n        for j in i:\n            result.append(j)\n    return result\n#----------------------------------------------------------------\nele1 = lstFlattenL2(IN[1])\nre = []\nfor i in ele1:\n    itemIntersec = BooleanOperationsUtils.ExecuteBooleanOperation(ele1[0],i,BooleanOperationsType.Union)\n    re.append(itemIntersec)\nOUT = re;",
+      "Id": "da47690e13464549be18cfcb3577f809",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1. Edit path of your python file (.py)\n2. Copy all content of the code block node to your python (.py);",
+      "Id": "51143aad53374748897296cfed835fb4",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3d579b17221441388dc4ea82f70ed591",
+      "End": "50307256a2ba4f818e17e0b22280d03a",
+      "Id": "145f772b29cb4f9fb29ef2ed6c16ba99"
+    },
+    {
+      "Start": "35d37173ba104a389b3d35b414918365",
+      "End": "565839c21f0c47e08b6bb60dca1ed4b7",
+      "Id": "696e36654c294bc5b77a71c5553b78a1"
+    },
+    {
+      "Start": "bf9c1ecc210344cea8590e4cf5f890cc",
+      "End": "39788918487e445e8da7c51182c15870",
+      "Id": "a6b092b34bb441d3958513b2c2518bf3"
+    },
+    {
+      "Start": "b0ef7140955a44c8b5f646354c9c7a9d",
+      "End": "e4b014a26baa41f5b91f797fbc4780ae",
+      "Id": "0252090c3335455c9299cc7ca1f20b25"
+    },
+    {
+      "Start": "b0ef7140955a44c8b5f646354c9c7a9d",
+      "End": "accd76e972424802a22ff5d3e4520b8d",
+      "Id": "9944e328393e4dbba9ee0f3e4c6e69e9"
+    },
+    {
+      "Start": "b0ef7140955a44c8b5f646354c9c7a9d",
+      "End": "2b0c3f32d2ca432c84f8a0009da1ffe3",
+      "Id": "ce76712656364ce48e29a600924452b5"
+    },
+    {
+      "Start": "ea55c73f850d4235ba78aa141e84e7fb",
+      "End": "83de286f8ca54d709521e4f37b159086",
+      "Id": "adb13ee1185f4e6cbce3e1c4ee5ca86f"
+    },
+    {
+      "Start": "e3243dc2e78a42a998a4f0c0bbb61f7e",
+      "End": "87a6b4bf3bb14cd9b79279e62ee80b09",
+      "Id": "3e4fb782f2ad480fa56bccedae7a4bac"
+    },
+    {
+      "Start": "26ef7e1ea10e48009a21a8d1c60aa689",
+      "End": "3e6071938b794e628039042f6a591461",
+      "Id": "99919c6765f04bcaae7ef9a001887cb1"
+    },
+    {
+      "Start": "158c0e4c484246dab6ab6e1e694d7343",
+      "End": "f0ccdf790e1145aba0d9556d72957f2e",
+      "Id": "4bc262a0db1e4371b97092c741c5ecdf"
+    },
+    {
+      "Start": "5c31deb55fbf44e09a30fad7495bf603",
+      "End": "acb42725f152413d8736234f22b932bf",
+      "Id": "85f7c49190314ccb862650a6751303a8"
+    },
+    {
+      "Start": "5c31deb55fbf44e09a30fad7495bf603",
+      "End": "46a07d4d82024da0be38fbb50c03158d",
+      "Id": "9d3135178df84370bc916ec038fbbd94"
+    },
+    {
+      "Start": "389753293afa4a01b556dedc464a9a81",
+      "End": "789c0053d5e645659f69fa47715e3114",
+      "Id": "32bd2e0c38f24475866e68b8b88bf31a"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 23672.919921875,
+      "EyeY": 9113.451171875,
+      "EyeZ": -75336.2578125,
+      "LookX": -3936.71875,
+      "LookY": -4720.6005859375,
+      "LookZ": -1217.21875,
+      "UpX": -0.568239152431488,
+      "UpY": 0.8038564920425415,
+      "UpZ": -0.1758379191160202
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "b4e9295a4236417aaf0723eeaea5538f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -53.233983498057114,
+        "Y": 1321.4997109937256
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "generateList",
+        "Id": "14c237b2e79c4e6bbf35562ec9e6453d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 262.3414607818325,
+        "Y": 1325.4343976455668
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetGeoElement",
+        "Id": "1785e8cec7214b6183e8b286861acafd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 542.42512711254142,
+        "Y": 1322.5377940649096
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetSolidFromGeo",
+        "Id": "6743a4fb539b41379bc4d5f11cad45e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 830.84989647149428,
+        "Y": 1314.280542695147
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
+        "Id": "2f5e56ce45f84dc89251250f62b8075c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1628.7479987653826,
+        "Y": 1287.4056657279855
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "74bb76b81c124b06bf6dc74892949e29",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1029.2180549009067,
+        "Y": 249.02626377936076
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "8f613572727248c7be9cf76ca977c7ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 874.65886601907448,
+        "Y": 245.82985426124742
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "getGeometryRevitToDyn",
+        "Id": "767c3667cd1d42bba5357c4e3b7295a8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1877.7492637409048,
+        "Y": 1279.3859988885436
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "472341226cc845438436411f3ce5ac47",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2372.6584011621926,
+        "Y": 1298.1232925798408
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "c083a9a7c8b948889a8d5c522e2d3703",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2171.4253515409532,
+        "Y": 1297.6102712168761
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "getGeometryRevitToDyn",
+        "Id": "0ed5bb0a7d144b33bf2a1aab65e19a35",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1035.4830881792166,
+        "Y": 1486.1419067163733
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "05f67fd59f96463993ca3e33c20050a2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2441.7528929853434,
+        "Y": 1430.6391767776704
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5fa731f7972142ffb909adfadee19811",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2657.6166139800771,
+        "Y": 1419.5602128596543
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.IntersectAll",
+        "Id": "c4eec5bfa0694643838feaf903446080",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2353.8543374699107,
+        "Y": 1405.7779145189886
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "da47690e13464549be18cfcb3577f809",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1223.8383058518737,
+        "Y": 293.9774090673867
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "51143aad53374748897296cfed835fb4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1227.8336010034895,
+        "Y": 205.20178665063423
+      }
+    ],
+    "Annotations": [],
+    "X": 327.00463072133334,
+    "Y": -318.71867745583393,
+    "Zoom": 0.529000470528505
+  }
+}
