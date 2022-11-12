@@ -5,7 +5,7 @@ Hi,
 
     "faithful people with the same passion as me"!
 
-I hope work and study always get better day by day. That's one of reasons to built this repository. May i call it is " Dynamo API - Python". This repository contains all the information and help you need to do well. if you vitsit and explore my Github and Youtube chanel and that is a lucky with me. Because I have a chance to share srcripts , node, function and much more as soon as expirences I have. Moreover, my VietNam country has lots of students want to learn that one. So I want to contribute a few things I know about Dynamo and Revit to help friends have inspirations on the road of career decided.
+I hope work and study always get better day by day. That's one of reasons to built this repository. May i call it is " Dynamo API - Python". This repository contains all the information and help you need to do well. if you vitsit and explore my Github and Youtube chanel and that is a lucky with me. Because I have a chance to share srcripts , node, function and much more as soon as expirences I have. Moreover, my VietNam country has lots of students want to learn that one. So I want to contribute a few things I know about Dynamo and Revit to help friends have inspirations on the road of career decisions.
 
 This is an exciting time to be learning about, working with, and developing for Dynamo. Let's get started!
 
