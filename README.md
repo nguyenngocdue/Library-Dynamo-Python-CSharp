@@ -1,9 +1,10 @@
 # WELCOME TO MY RESPOSITORY
+
 DYNAMO API PYTHON
 
----
+Hi,
 
-Hi "faithful people with the same passion as me",
+    "faithful people with the same passion as me"!
 
 I hope work and study always get better day by day. That's one of reasons to built this repository. May i call it is " Dynamo API - Python". This repository contains all the information and help you need to do well. if you vitsit and explore my Github and Youtube chanel and that is a lucky with me. Because i have a chance to share srcripts , node, function and much more as soon as expirences i have. Moreover, my VietNam country has lots of students want to learn that one. So i want to contribute a few things i know about Dynamo and Revit to help friends have an inspiration on the raod of career decided.
 
@@ -11,7 +12,7 @@ Can not waiting for add munites and seconds.!!!
 
 Let's go my repository!
 
-## **Table of Content**
+## Table of Content
 
 ### 1. Parameter Template.
 
