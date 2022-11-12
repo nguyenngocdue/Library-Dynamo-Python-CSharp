@@ -3,7 +3,7 @@ DYNAMO API PYTHON
 
 Hi,
 
-    "faithful people with the same passion as me"!
+"faithful people with the same passion as me"!
 
 I hope work and study always get better day by day. That's one of reasons to built this repository. May i call it is " Dynamo API - Python". This repository contains all the information and help you need to do well. if you vitsit and explore my Github and Youtube chanel and that is a lucky with me. Because I have a chance to share srcripts , node, function and much more as soon as expirences I have. Moreover, my VietNam country has lots of students want to learn that one. So I want to contribute a few things I know about Dynamo and Revit to help friends have inspirations on the road of career decisions.
 
@@ -27,31 +27,31 @@ updating ...
 
 ## 3. Excel template
 
-    As you known, Excel is a software not known with a civil engineer. Especially, when you do it with BIM's software is a necessity. I will share with you ways that we can interac its each other by Python.
+As you known, Excel is a software not known with a civil engineer. Especially, when you do it with BIM's software is a necessity. I will share with you ways that we can interac its each other by Python.
 
 updating ...
 
 ### 4. Winform template
 
-    Another you write logics in srcipts you can also take cafe of user interface which will help users don't know Dynamo they still can use it. At topic I will introduce to you about winform which use to design UX/UI.
+Another you write logics in srcipts you can also take cafe of user interface which will help users don't know Dynamo they still can use it. At topic I will introduce to you about winform which use to design UX/UI.
 
 updating ...
 
 ## 5. WPF template
 
-    With me i saw WPF more advanced than Winform. With its strength  will be supported design complex interfaces, bring many experiences.
+With me i saw WPF more advanced than Winform. With its strength  will be supported design complex interfaces, bring many experiences.
 
 updating ...
 
 ## 6. Available Script
 
-    I was a modeler at a network company. Luckily, I was alowed experience varity of project from transport to high buildings. I always try create many methods to down works to related "hands and foot". I have already written near 100 scripts for one year. At this top i will list names of scripts to you are easy referent.
+I was a modeler at a network company. Luckily, I was alowed experience varity of project from transport to high buildings. I always try create many methods to down works to related "hands and foot". I have already written near 100 scripts for one year. At this top i will list names of scripts to you are easy referent.
 
 updating ...
 
 ## 7. YOUTUBE
 
-    I have a youtube chane which ofen about BIM's software. I hope that in future time i would record another topics by English. Bellow is list of lesson i did it.
+I have a youtube chane which ofen about BIM's software. I hope that in future time i would record another topics by English. Bellow is list of lesson i did it.
 
 updating ...
 
