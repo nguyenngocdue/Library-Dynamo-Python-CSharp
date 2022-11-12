@@ -21,7 +21,7 @@ Can not wait for add minutes and seconds.!!!
 
 ## 2. Cad template
 
-    Almost projects Revit has related to Audocad's drawing. As I have worked many Japan projects. I saw that all of their document is Autocad file. You have to import its into Revit. So, extracting data of drawings are an advantage.
+Almost projects Revit has related to Audocad's drawing. As I have worked many Japan projects. I saw that all of their document is Autocad file. You have to import its into Revit. So, extracting data of drawings are an advantage.
 
 updating ...
 
