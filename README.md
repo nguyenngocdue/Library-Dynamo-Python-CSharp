@@ -2,13 +2,13 @@
 
 ---
 
-
-
 Hi,
 
-"faithful people with the same passion as me"!
+The believers in the same passion as I do!
 
-I hope work and study always get better day by day. That's one of the reasons to build this repository. I may temporarily call it "Dynamo API - Python". This repository contains all the information and help you need to do well. If you are the first in here, have already visited this repository, or even know about me via my Youtube channel those are an honor and lucky for me. Because I have a chance to share scripts, nodes, functions, and much more as soon as experiences I have. Moreover, my VietNam country has lots of students who want to learn that one. So I want to contribute a few things I know about Dynamo and Revit to help friends have inspirations on the road to career decisions.
+My hope is that work and study continue to improve day by day. That's one of the reasons to build this repository. I may temporarily call it "Dynamo API - Python". This repository contains all the information and help you need to do well.
+
+Being the first here, having already visited the repository, or even knowing about me via my YouTube channel is an honor and blessing for me. Because I have a chance to share scripts, nodes, functions, and much more as well as experiences. Moreover, my country, Vietnam has lots of students who want to learn that. Thus, I would like to share what I know about Dynamo and Revit to encourage believers to find inspiration on the road to their careers.
 
 This is an exciting time to be learning about, working with, and developing for Dynamo. Let's get started!
 
@@ -20,51 +20,59 @@ Can not wait for add minutes and seconds.!!!
 
 #### 1.1 Parameter Template
 
-I dentify this topic is parameter template. The meaning is you will do with parameter of Revit to extract its data. You can refer the table below to understand more:
+I identify this topic is the parameter template. The meaning is you will do with the parameters of Revit to extract its data. You can refer to pictures below to understand more:
 
 ![1668223509830](image/README/1668223509830.png)
 
 #### 1.2 Geometry Template
 
+In this chapter, I want to mention how to retrieve objects of geometry such as points, lines, edges, surfaces, etc. Follow along through below some pictures. Furthermore, you can refer to the functions in "GeometryTemplate.py" and the courses on my YouTube channel. ([https://www.youtube.com/watch?v=NDsK93AkrWo&amp;list=PLAw0jKncEcw6IA_zVEzMJR0pzfuClgbUy]())
+
+![1668313093683](image/README/1668313093683.png)
+
 updating ...
 
 ### 2. Cad template
 
-Almost projects Revit has related to Audocad's drawing. As I have worked many Japan projects. I saw that all of their document is Autocad file. You have to import its into Revit. So, extracting data of drawings are an advantage.
+    Almost the projects Revit have related to Autocad's drawing. As I have worked through many Japan projects. I saw that all of their document often is Autocad files. You have to import it into Revit. So, you know how to extract data from drawings is an advantage.
 
 updating ...
 
 ### 3. Excel template
 
-As you known, Excel is a software not known with a civil engineer. Especially, when you do it with BIM's software is a necessity. I will share with you ways that we can interac its each other by Python.
+    As you known, Excel is a software common with almost engineering. Especially, when you use it with BIM's software is a necessity.Today, I will share with you ways that we can interact between Dynamo and Python through "Python Script" node.
 
 updating ...
 
 ### 4. Winform template
 
-Another you write logics in srcipts you can also take cafe of user interface which will help users don't know Dynamo they still can use it. At topic I will introduce to you about winform which use to design UX/UI.
+    As you write logic in scripts, you also need to take care of the user interface that allows users who are not familiar with Dynamo can use it easily. This chapter introduces you to Winform, which is used to design UX/UI.
 
 updating ...
 
 ### 5. WPF template
 
-With me i saw WPF more advanced than Winform. With its strength will be supported design complex interfaces, bring many experiences.
+Not negating Winform's effective functions. Furthermore, you want to improve **the users experience better.** Let you study WPF.
 
 updating ...
 
 ### 6. Available Script
 
-I was a modeler at a network company. Luckily, I was alowed experience varity of project from transport to high buildings. I always try create many methods to down works to related "hands and foot". I have already written near 100 scripts for one year. At this top i will list names of scripts to you are easy referent.
+I was a modeler at a network company. Luckily, I was given the oppotunities to work on a variety of projects, from transportations to high buildings.
+
+Whenever I can, I try to create as many practical solutions as possible to reduce work related to "hands and feet".
+
+I have already written more than 100 scripts in one year. In this topic, I will list the name of scripts that are easy to reference.
 
 updating ...
 
 ### 7. YOUTUBE - BIM3DM
 
-I have a youtube chane which ofen about BIM's software. I hope that in future time i would record another topics by English. Bellow is list of lesson i did it.
+BIM's software is often discussed on my YouTube channel. I hope that in the near future time I will be able to record another topic in English. The following is a list of lessons I completed.
 
 updating ...
 
-**_Youtube ✪ Subscribe:_** https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g
+**_YouTube ✪ Subscribe:_** https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g
 
 ---
 
