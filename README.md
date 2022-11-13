@@ -1,5 +1,9 @@
 # WELCOME TO MY RESPOSITORY DYNAMO API PYTHON
 
+---
+
+
+
 Hi,
 
 "faithful people with the same passion as me"!
