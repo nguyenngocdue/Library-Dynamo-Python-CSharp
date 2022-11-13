@@ -1,4 +1,5 @@
 # WELCOME TO MY RESPOSITORY
+
 DYNAMO API PYTHON
 
 Hi,
@@ -15,7 +16,7 @@ Can not wait for add minutes and seconds.!!!
 
 ## 1. Parameter Template
 
-    I dentify this topic is parameter template. The meaning is you will do with parameter of Revit to extract its data. You can refer the table below to understand more:
+I dentify this topic is parameter template. The meaning is you will do with parameter of Revit to extract its data. You can refer the table below to understand more:
 
 ![1668223509830](image/README/1668223509830.png)
 
