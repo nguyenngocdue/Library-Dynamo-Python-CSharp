@@ -58,11 +58,7 @@ updating ...
 
 ### 6. Available Script
 
-    I was a modeler at a network company. Luckily, I was given the oppotunities to work on a variety of projects, from transportations to high buildings.
-
-Whenever I can, I try to create as many practical solutions as possible to reduce work related to "hands and feet".
-
-I have already written more than 100 scripts in one year. In this topic, I will list the name of scripts that are easy to reference.
+    I was a modeler at a network company. Luckily, I was given the oppotunities to work on a variety of projects, from transportations to high buildings. Whenever I can, I try to create as many practical solutions as possible to reduce work related to "hands and feet". I have already written more than 100 scripts in one year. In this topic, I will list the name of scripts that are easy to reference.
 
 updating ...
 
