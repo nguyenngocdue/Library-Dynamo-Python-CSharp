@@ -22,8 +22,6 @@ Can not wait for add minutes and seconds.!!!
 
 I identify this topic is the parameter template. The meaning is you will do with the parameters of Revit to extract its data. You can refer to pictures below to understand more:
 
-![1668223509830](image/README/1668223509830.png)
-
 ![1668322538174](image/README/1668322538174.png "Get - Set Parameter Value By Name")
 
 ![1668322722758](image/README/1668322722758.png)
