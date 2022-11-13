@@ -24,6 +24,10 @@ I identify this topic is the parameter template. The meaning is you will do with
 
 ![1668223509830](image/README/1668223509830.png)
 
+![1668322538174](image/README/1668322538174.png "Get - Set Parameter Value By Name")
+
+![1668322722758](image/README/1668322722758.png)
+
 #### 1.2 Geometry Template
 
 In this chapter, I want to mention how to retrieve objects of geometry such as points, lines, edges, surfaces, etc. Follow along through below some pictures. Furthermore, you can refer to the functions in "GeometryTemplate.py" and the courses on my YouTube channel. ([https://www.youtube.com/watch?v=NDsK93AkrWo&amp;list=PLAw0jKncEcw6IA_zVEzMJR0pzfuClgbUy]())
@@ -36,23 +40,32 @@ updating ...
 
 Almost the projects Revit have related to Autocad's drawing. As I have worked through many Japan projects. I saw that all of their document often is Autocad files. You have to import it into Revit. So, you know how to extract data from drawings is an advantage.
 
+![1668322860008](image/README/1668322860008.png)
+
 updating ...
 
 ### 3. Excel template
 
 As you known, Excel is a software common with almost engineering. Especially, when you use it with BIM's software is a necessity.Today, I will share with you ways that we can interact between Dynamo and Python through "Python Script" node.
 
+![1668322986908](image/README/1668322986908.png)
+
 updating ...
+
 
 ### 4. Winform template
 
 As you write logic in scripts, you also need to take care of the user interface that allows users who are not familiar with Dynamo can use it easily. This chapter introduces you to Winform, which is used to design UX/UI.
+
+![1668323173290](image/README/1668323173290.png)
 
 updating ...
 
 ### 5. WPF template
 
 Not negating Winform's effective functions. Furthermore, you want to improve **the users experience better.** Let you study WPF.
+
+![1668323231190](image/README/1668323231190.png)
 
 updating ...
 
