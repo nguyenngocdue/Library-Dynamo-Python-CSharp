@@ -52,13 +52,13 @@ updating ...
 
 ### 5. WPF template
 
-Not negating Winform's effective functions. Furthermore, you want to improve **the users experience better.** Let you study WPF.
+    Not negating Winform's effective functions. Furthermore, you want to improve**the users experience better.** Let you study WPF.
 
 updating ...
 
 ### 6. Available Script
 
-I was a modeler at a network company. Luckily, I was given the oppotunities to work on a variety of projects, from transportations to high buildings.
+    I was a modeler at a network company. Luckily, I was given the oppotunities to work on a variety of projects, from transportations to high buildings.
 
 Whenever I can, I try to create as many practical solutions as possible to reduce work related to "hands and feet".
 
@@ -68,7 +68,7 @@ updating ...
 
 ### 7. YOUTUBE - BIM3DM
 
-BIM's software is often discussed on my YouTube channel. I hope that in the near future time I will be able to record another topic in English. The following is a list of lessons I completed.
+    BIM's software is often discussed on my YouTube channel. I hope that in the near future time I will be able to record another topic in English. The following is a list of lessons I completed.
 
 updating ...
 
