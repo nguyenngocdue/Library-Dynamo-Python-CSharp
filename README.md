@@ -34,19 +34,19 @@ updating ...
 
 ### 2. Cad template
 
-    Almost the projects Revit have related to Autocad's drawing. As I have worked through many Japan projects. I saw that all of their document often is Autocad files. You have to import it into Revit. So, you know how to extract data from drawings is an advantage.
+Almost the projects Revit have related to Autocad's drawing. As I have worked through many Japan projects. I saw that all of their document often is Autocad files. You have to import it into Revit. So, you know how to extract data from drawings is an advantage.
 
 updating ...
 
 ### 3. Excel template
 
-    As you known, Excel is a software common with almost engineering. Especially, when you use it with BIM's software is a necessity.Today, I will share with you ways that we can interact between Dynamo and Python through "Python Script" node.
+As you known, Excel is a software common with almost engineering. Especially, when you use it with BIM's software is a necessity.Today, I will share with you ways that we can interact between Dynamo and Python through "Python Script" node.
 
 updating ...
 
 ### 4. Winform template
 
-    As you write logic in scripts, you also need to take care of the user interface that allows users who are not familiar with Dynamo can use it easily. This chapter introduces you to Winform, which is used to design UX/UI.
+As you write logic in scripts, you also need to take care of the user interface that allows users who are not familiar with Dynamo can use it easily. This chapter introduces you to Winform, which is used to design UX/UI.
 
 updating ...
 
