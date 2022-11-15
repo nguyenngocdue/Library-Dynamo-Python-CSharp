@@ -17,12 +17,3 @@ def tree(i):
                 hr.backward(i)
 tree(100)
 turtle.done()
-
-
-quocan.architecture@gmail.com
-engr.datnt97@gmai.com
-ngdoanhoa@gmail.com
-tranhoaivuut@gmail.com
-danhnhanhuynh1@gmail.com
-haulph99.xd@gmail.com
-nguyendung10198@gmail.com
