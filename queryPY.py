@@ -524,7 +524,6 @@ def get_sheets(include_placeholders=True, include_noappear=True, doc=None):
                   .AsInteger() > 0]
     if not include_placeholders:
         return [x for x in sheets if not x.IsPlaceholder]
-
     return sheets
 
 
@@ -1562,4 +1561,6 @@ def get_geometry(element, include_invisible=False):
         else:
             geom_objs.append(gobj)
     return geom_objs
+
+
 
