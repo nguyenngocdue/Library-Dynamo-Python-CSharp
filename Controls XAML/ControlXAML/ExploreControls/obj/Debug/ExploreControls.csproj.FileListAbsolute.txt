@@ -1,0 +1,8 @@
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls.csproj.AssemblyReference.cache
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\MainWindow.baml
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\App.g.cs
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls_MarkupCompile.cache
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls.g.resources
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls.Properties.Resources.resources
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls.csproj.GenerateResource.cache
+A:\Library-Dynamo-Python-CSharp\Controls XAML\ControlXAML\ExploreControls\obj\Debug\ExploreControls.csproj.CoreCompileInputs.cache
