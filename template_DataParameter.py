@@ -30,7 +30,7 @@ view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 
-#--------------------------------------------------------------List - Modifily-----------------------------------------------#
+#-------------------------------------------------------------List - Modifily-----------------------------------------------#
 def ClearList(primList):
     result = []
     for sublist in primList:
