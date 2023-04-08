@@ -16,14 +16,7 @@
         <Label Content="ListView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnOK" Content="OK" Click="fnBtnOk" HorizontalAlignment="Left" Margin="294,189,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnCancel" Content="Cancel" Click="fnBtnCancel" HorizontalAlignment="Left" Margin="402,189,0,0" VerticalAlignment="Top" Width="75"/>
-        <ListView SelectionChanged="onSelectionChanged" Margin="10,10,10,47" Name="lvUsers" ItemsSource="{Binding data}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}" />
-                    <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="21" Margin="130,74,0,0" VerticalAlignment="Top" Width="267" />
+        <TextBlock x:Name="progressText" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,30" Text="{Binding Path=ProgressBarValue, StringFormat='{}{0}%'}"/>
     </Grid>
 </Window>

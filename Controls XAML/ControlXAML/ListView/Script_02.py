@@ -32,27 +32,37 @@ from System.Windows import Application, Window
 from System.Windows.Data import Binding
 
 
-
+class Person:
+    def __init__(self, name, age, mail):
+        self.Name = name
+        self.Age = age
+        self.Mail = mail
 
 class ViewModel:
-    def __init__(self, *args):
-        self.Name = "123"
-        self.Age = "123"
-        self.Mail = "123"
+    def __init__(self, people):
+        self.People = people
 
 
 class MyWindow(Window):
     def __init__(self, viewModel):
-        self.ui = wpf.LoadComponent(self,  "A:\Library-Dynamo-Python-CSharp\Controls XAML\myform.xaml")
-        self.ui.DataContext= viewModel
-        self.lvUsers.ItemsSource = [i for i in range(5)]
-        
+        self.ui = wpf.LoadComponent(self, "A:\Library-Dynamo-Python-CSharp\Controls XAML\myform.xaml")
+        self.ui.DataContext = viewModel
+        self.lvUsers.ItemsSource = viewModel.People
+
+    def onSelectionChanged(self, sender, e):
+        selected_item = self.lvUsers.SelectedItem
+        if selected_item is not None:
+            print("Selected item:", selected_item.Name, selected_item.Age, selected_item.Mail)
     def fnBtnOk(self, sender, e):
         self.Close()
 
     def fnBtnCancel(self, sender, e):
-       self.Close()
+        self.Close()
 
-viewModel = ViewModel()
+people = [
+    Person("Alice", 25, "alice@example.com"),
+    Person("Bob", 30, "bob@example.com")
+]
+viewModel = ViewModel(people)
 window = MyWindow(viewModel)
 showDialog = window.ShowDialog()

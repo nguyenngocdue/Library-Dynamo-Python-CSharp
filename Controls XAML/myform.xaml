@@ -9,23 +9,17 @@
     ResizeMode="NoResize" 
     ShowInTaskbar="True" 
     WindowStartupLocation="CenterScreen"
-    Height="255" Width="494"
+    Height="245" Width="494"
     Topmost="True">
 
     <Grid>
-        <Label Content="ListView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="379*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
+        <Slider x:Name="sliderControl" HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" Width="319"/>
         <Button x:Name="btnOK" Content="OK" Click="fnBtnOk" HorizontalAlignment="Left" Margin="294,189,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="Cancel" Click="fnBtnCancel" HorizontalAlignment="Left" Margin="402,189,0,0" VerticalAlignment="Top" Width="75"/>
-        <Grid>
-            <ListView Margin="10,10,10,47" Name="lvUsers">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}" />
-                        <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
+        <Button x:Name="btnCancel" Content="Cancel" Click="fnBtnCancel" HorizontalAlignment="Left" Margin="23,189,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Slider HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" Width="319"/>
     </Grid>
 </Window>
