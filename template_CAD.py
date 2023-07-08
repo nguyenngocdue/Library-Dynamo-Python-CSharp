@@ -37,7 +37,7 @@ def getInstanceGeo(dwg): # getInstanceGeometry (DB(Line,PolyLine,Solid))
             geoIns.append(j)
         return geoIns
 
-def getLineFromGeoIns(lstGeoIns):
+def getLinesFromGeoIns(lstGeoIns):
     sol = []
     for i in lstGeoIns:
         if i.GetType() == Autodesk.Revit.DB.Line:
@@ -92,7 +92,7 @@ def lstFlattenL2(list): #List.Flatten
             result.append(j)
     return result
 
-def getGraphicsStyleid(lstPlanar): # Get GraphicsStyleid
+def getGraphicsStyleId(lstPlanar): # Get GraphicsStyleid
     re = []
     for t in lstPlanar:
         re.append(t.GraphicsStyleId)

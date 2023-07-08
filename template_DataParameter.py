@@ -583,7 +583,7 @@ def MidPointOfPoint(x,y):
 def MidPoint (line):
 	return MidPointOfPoint(line.GetEndPoint(0),line.GetEndpoint(1))
 ###------------------------------------------------ Pick Object ---------------------------------------------------------###
-def pickobject():
+def pickObject():
     from Autodesk.Revit.UI.Selection import ObjectType
     picked = uidoc.Selection.PickObjects(ObjectType.Element)
     return picked
@@ -835,6 +835,18 @@ def setBasic(x):
     else:
         return XYZ.BasisZ
 
+import clr
+clr.AddReference('ProtoGeometry')
+from Autodesk.DesignScript.Geometry import Vector, Point, Line
+import Autodesk.DesignScript.Geometry as DS
+def getVectorFromPoints(start_point, end_point):
+    vector = Vector.ByTwoPoints(start_point, end_point)
+    return vector
+start_point = UnwrapElement(IN[0])
+end_point = UnwrapElement(IN[1])
+OUT =  getVectorFromPoints(start_point, end_point)
+
+
 def getVectorOfDBLine(lstDBline):
     vec = []
     pts1Line = [i.GetEndPoint(0) for i in lstDBline]
@@ -1064,3 +1076,22 @@ def centerPointbyDBLine(lstDBLine):
     endP = [i.GetEndPoint(0) for i in lstDBLine]
     cenP = [(i + j) / 2 for i, j in zip(starP, endP)]
     return cenP
+
+def getPointByLine(references):
+    endpoints = []
+    for reference in references:
+        element = doc.GetElement(reference.ElementId)
+        curve = element.GeometryCurve
+        start_point = curve.GetEndPoint(0)
+        end_point = curve.GetEndPoint(1)
+        endpoints.append([start_point, end_point])
+    return endpoints
+def get_pipe_endpoints(pipe_refs):
+    endpoints = []
+    for ref in pipe_refs:
+        pipe = doc.GetElement(ref) # Get the pipe object from the reference
+        location_curve = pipe.Location.Curve # Get the location curve of the pipe
+        start_point = location_curve.GetEndPoint(0) # Get the start point
+        end_point = location_curve.GetEndPoint(1) # Get the end point
+        endpoints.append([start_point, end_point])
+    return endpoints

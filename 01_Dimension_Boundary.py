@@ -40,6 +40,14 @@ def lstFlattenL2(list):
         for j in i:
             result.append(j)
     return result
+def flatten_array(arr):
+    flat_arr = []
+    for item in arr:
+        if isinstance(item, list):
+            flat_arr.extend(flatten_array(item))
+        else:
+            flat_arr.append(item)
+    return flat_arr
 class SelectionFilter(ISelectionFilter):
 	def __init__(self, ctgName1 , ctgName2):
 		self.ctgName1 = ctgName1
