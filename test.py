@@ -34,6 +34,12 @@ from System.Windows import RoutedEventHandler
 from System.Runtime.InteropServices import Marshal
 from System.Collections.ObjectModel import ObservableCollection
 from System.Windows.Data import ListCollectionView
+from System.ComponentModel import INotifyPropertyChanged
+import clr
+from System.Collections.ObjectModel import ObservableCollection
+from System.Windows.Data import ListCollectionView
+from System.ComponentModel import INotifyPropertyChanged, PropertyChangedEventArgs
+
 try:
     import wpf
 except ImportError:
@@ -154,15 +160,50 @@ keys = ['sheet_numbers','sheet_names', 'title_blocks']
 dictInfoSheets = {k : i[1:] for i , k in zip(dataOfCols, keys)}
 keysInfoSheets = dictInfoSheets.keys()
 sheetNumbers = dictInfoSheets[keysInfoSheets[0]]
-sheetNames =  dictInfoSheets[keysInfoSheets[1]]
-titleBlocks = dictInfoSheets[keysInfoSheets[2]]
+sheetNames =  dictInfoSheets[keysInfoSheets[2]]
+titleBlocks = dictInfoSheets[keysInfoSheets[1]]
 allTitleBlocks = getAllTitleBlocks()
 
 sheetInfoDictionary = getSheetInfoDictionary()
 sheetNumbersOnRevit = sheetInfoDictionary[keys[0]]
 
+allSheets = getAllSheets()
+
 # ----------------------------------------------------------------
 #FORM
+import clr
+from System.Collections.ObjectModel import ObservableCollection
+from System.Windows.Data import ListCollectionView
+from System.ComponentModel import INotifyPropertyChanged, PropertyChangedEventArgs
+
+
+class PropertyChangedEventHandler(object):
+    def __init__(self, func):
+        self.func = func
+
+    def HandlePropertyChanged(self, sender, args):
+        self.func(sender, args)
+
+class ViewModelBase(INotifyPropertyChanged):
+    PropertyChanged = None
+
+    @staticmethod
+    def add_PropertyChanged(instance, value):
+        if instance.PropertyChanged is None:
+            instance.PropertyChanged = PropertyChangedEventHandler(value).HandlePropertyChanged
+        else:
+            instance.PropertyChanged += PropertyChangedEventHandler(value).HandlePropertyChanged
+
+    @staticmethod
+    def remove_PropertyChanged(instance, value):
+        if instance.PropertyChanged is not None:
+            handler = PropertyChangedEventHandler(value).HandlePropertyChanged
+            instance.PropertyChanged -= handler
+
+    def OnPropertyChanged(self, prop_name=""):
+        if self.PropertyChanged is not None:
+            args = PropertyChangedEventArgs(prop_name)
+            self.PropertyChanged(self, args)
 
 class ViewModel():
     def __init__(self, cgv1, cgv2, cgv3, cgv4):
@@ -174,59 +215,115 @@ class ViewModel():
     @property
     def gvSheetName(self):
         return self._gvSheetName
+
     @property
     def gvSheetNumber(self):
         return self._gvSheetNumber
+
     @property
     def gvTitleBlock(self):
-        return self._gvTitleBlock    
+        return self._gvTitleBlock
+
     @property
     def gvNo(self):
         return self._gvNo
+
+    @gvSheetName.setter
+    def gvSheetName(self, value):
+        if self._gvSheetName != value:
+            self._gvSheetName = value
+            self.OnPropertyChanged("gvSheetName")
+
+    @gvSheetNumber.setter
+    def gvSheetNumber(self, value):
+        if self._gvSheetNumber != value:
+            self._gvSheetNumber = value
+            self.OnPropertyChanged("gvSheetNumber")
+
+    @gvTitleBlock.setter
+    def gvTitleBlock(self, value):
+        if self._gvTitleBlock != value:
+            self._gvTitleBlock = value
+            self.OnPropertyChanged("gvTitleBlock")
+
+    @gvNo.setter
+    def gvNo(self, value):
+        if self._gvNo != value:
+            self._gvNo = value
+            self.OnPropertyChanged("gvNo")
 
 class MyWindow(Window):
     def __init__(self, dataModels):
         self.ui = wpf.LoadComponent(self, r'A:\TRAINING DYNAMO API\PART 26 CURD Sheet\Forms\CURD_SHEETS\CURD_SHEETS\MainWindow.xaml')
         self.selectedElements = []
-        
-        
-        # for k, v in dataModels.items():
-        #     control = self.FindName(k)
-        #     if control is not None:
-        #         control.ItemsSource = v
 
-        
+        for k, v in dataModels.items():
+            control = self.FindName(k)
+            if control is not None:
+                control.ItemsSource = v
+
+    def OnItemPropertyChanged(self, sender, event):
+        self.lvSheetsRevit.Items.Refresh()
+        self.lvSheetsExcel.Items.Refresh()
+
 
     def btnRefresh(self, sender, event):
-        pass
+        MessageBox.Show('Loading data')
+        self.loadExcelData()
+    def loadExcelData(self):
+        viewModelSheetsRevit = createModel(sheetInfoDictionary)
+        viewModelSheetsExcel = createModel(dictInfoSheets)
+        dataModels = {'lvSheetsRevit': viewModelSheetsRevit, 'lvSheetsExcel': viewModelSheetsExcel}
+        self.lvSheetsRevit.ItemsSource = dataModels['lvSheetsRevit']
+        self.lvSheetsExcel.ItemsSource = dataModels['lvSheetsExcel']
+        self.refreshListView(self.lvSheetsExcel)
+    def refreshListView(self, listView):
+        collectionView = ListCollectionView(listView.ItemsSource)
+        collectionView.Refresh()
+
+
     def btnUploadExcel(self, sender, event):
         pass
+
     def btnExploreExcel(self, sender, event):
         pass
+    
+
     def btnCreateSheets(self, sender, event):
         sheets = []
         try:
-            for num, name, titleBlock in zip(dictInfoSheets['sheet_numbers'], dictInfoSheets['sheet_names'], dictInfoSheets['title_blocks']):
-                logger('202',  sheetNumbersOnRevit)
-                if str(num) in sheetNumbersOnRevit: continue
-                for t in allTitleBlocks:
-                    if t.Name == titleBlock:
+            for i in range(len(dictInfoSheets['sheet_numbers'])):
+                for num, name, titleBlock in zip(dictInfoSheets['sheet_numbers'], dictInfoSheets['sheet_names'], dictInfoSheets['title_blocks']):
+                    if str(num) in sheetNumbersOnRevit:
+                        for sheet in allSheets:
+                            if sheet.SheetNumber ==  num and name != sheet.Name:
+                                TransactionManager.Instance.EnsureInTransaction(doc)
+                                sheet.Name = name
+                                TransactionManager.Instance.TransactionTaskDone()
+                    else:
                         sheet = createSheet(num, name)
                         sheets.append(sheet)
+        except Exception as e:
             self.Hide()
             # After creating sheets, refresh the Revit UI to display the changes
             uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
             uidoc.RefreshActiveView()
-            MessageBox.Show( 'sheets were created')
-            self.lvSheetsRevit.Items.Refresh()
-            self.Show()
-        except Exception :
+            viewModelSheetsRevit = createModel(sheetInfoDictionary)
+            for k, v in viewModelSheetsRevit.items():
+                control = self.FindName(k)
+                if control is not None:
+                    control.ItemsSource = v
+            # self.lvSheetsRevit.Items.Refresh()
             self.UpdateLayout()
-            pass
+            # self.Show()
+
     def btnCancel(self, sender, event):
         self.Close()
 
+
 def createModel(dictData):
+    # viewModelType = clr.GetClrType(ViewModel)
+    # viewModels = ObservableCollection[viewModelType]()
     viewModels = []
     keys = dictData.keys()
     for i in range(len(dictData[keys[0]])):
@@ -236,18 +333,17 @@ def createModel(dictData):
             cgv3=dictData[keys[2]][i],
             cgv4=dictData[keys[1]][i],
         )
-        viewModels.append(viewModel)
+        viewModels.Add(viewModel)
     return viewModels
 
 viewModelSheetsRevit = createModel(sheetInfoDictionary)
 viewModelSheetsExcel = createModel(dictInfoSheets)
-dataModels = {'lvSheetsRevit' : viewModelSheetsRevit, 'lvSheetsExcel': viewModelSheetsExcel}
+dataModels = {'lvSheetsRevit': viewModelSheetsRevit, 'lvSheetsExcel': viewModelSheetsExcel}
 
-OUT = sheetInfoDictionary
+OUT = allTitleBlocks,allTitleBlocks[0].Id
 
 myWindow = MyWindow(dataModels)
 myWindow.ShowDialog()
-
 
 
 
