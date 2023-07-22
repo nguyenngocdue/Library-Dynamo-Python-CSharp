@@ -83,9 +83,49 @@ def remove_element(element):
     TransactionManager.Instance.TransactionTaskDone()
     return "Element removed successfully"
 
-def sortPoints(points):
-	points = sorted(points, key = lambda points: points.X and points.Y and points.Z)
-	return points[0], points[-1]
+class GenerationPipe:
+    def __init__(self):
+        pass
+    @staticmethod
+    def create_placeHolder(points, elementIds):
+        result = []
+        for pts in points:
+            if(len(pts)) == 2:
+                pipe_start = pts[0]
+                pipe_end = pts[1]
+                sysTypeId = elementIds[1]
+                pipeTypeId = elementIds[0]
+                levelId = elementIds[2]
+                TransactionManager.Instance.EnsureInTransaction(doc)
+                pipe = Autodesk.Revit.DB.Plumbing.Pipe.CreatePlaceholder(doc, sysTypeId, pipeTypeId, levelId, pipe_start, pipe_end)
+                TransactionManager.Instance.TransactionTaskDone()
+                result.append(pipe)
+        return result
+    @staticmethod
+    def connect_placeHolder(elements):
+        result = []
+        for ele in elements:
+            TransactionManager.Instance.EnsureInTransaction(doc)
+            re = Autodesk.Revit.DB.Plumbing.PlumbingUtils.ConnectPipePlaceholdersAtElbow(doc, ele[0].Id, ele[1].Id)
+            TransactionManager.Instance.TransactionTaskDone()
+            result.append(re)
+        return result
+    @staticmethod
+    def convert_to_pipe(elements):
+        pipes = []
+        for ele in elements:
+            placeholderIds = List[ElementId]([ele[0].Id, ele[1].Id])
+            TransactionManager.Instance.EnsureInTransaction(doc)
+            pipe = Autodesk.Revit.DB.Plumbing.PlumbingUtils.ConvertPipePlaceholders(doc, placeholderIds)
+            TransactionManager.Instance.TransactionTaskDone()
+            pipes.append(pipe)
+        return pipes
 
+    elements = UnwrapElement(IN[0])
+    #Step 7:Connect PipePlaceholdersAtElbow
+    connPlaceHolder = GenerationPipe.connect_placeHolder(elements)
+    #Step 8: convert PipePlaceHolder to Pipe
+    pipes = GenerationPipe.convert_to_pipe(elements)
 
+    OUT = pipes
 

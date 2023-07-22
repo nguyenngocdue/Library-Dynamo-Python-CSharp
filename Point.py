@@ -72,47 +72,6 @@ def getPointFromConnectors(connectors , objectType='xyz'):
       points.append(conn.Origin)
     return points
 
-import clr
-import System
-import math
-from System.Collections.Generic import *
-
-clr.AddReference("ProtoGeometry")
-from Autodesk.DesignScript.Geometry import *
-
-clr.AddReference("RevitAPI")
-import Autodesk
-from Autodesk.Revit.DB import *
-
-clr.AddReference("RevitAPIUI")
-from Autodesk.Revit.UI import *
-from Autodesk.Revit.UI.Selection import *
-
-clr.AddReference("RevitNodes")
-import Revit
-
-clr.ImportExtensions(Revit.Elements)
-clr.ImportExtensions(Revit.GeometryConversion)
-
-clr.AddReference("RevitServices")
-import RevitServices
-from RevitServices.Persistence import DocumentManager
-from RevitServices.Transactions import TransactionManager
-
-
-import os
-import sys
-import logging
-sys.path.append(r"C:\\Users\\NGUYEN NGOC DUE\\.vscode\\ironpython-stubs-master\\release\\stubs.min\\pyrevit\\coreutils")
-sys.path.append(os.path.dirname(__file__))
-
-
-
-doc = DocumentManager.Instance.CurrentDBDocument
-view = doc.ActiveView
-uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-
-from Autodesk.Revit.DB import XYZ
 class PointCalculator:
     def __init__(self, point_pairs):
         """
@@ -261,22 +220,86 @@ class PointCalculator:
             doc.Create.NewDetailCurve(doc.ActiveView, line)
         TransactionManager.Instance.TransactionTaskDone()
         return lines
+class GenerationPoint:
+    def __init__(self):
+        self.params = "params"
+    def pickPoints(self, num_points, offset):
+        uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
+        points = []
+        try:
+            while True:
+                base_point = uidoc.Selection.PickPoint("Select Base Point")
+                group = []
+                group.append(base_point)  # add original points into group
+                for _ in range(num_points - 1):
+                    offset_point = self.offset_point(group[-1], offset/304.84)  # Offset from point before
+                    group.append(offset_point)
+                points.append(group)
+        except Autodesk.Revit.Exceptions.OperationCanceledException:
+            pass
+        return points
+    
+    def offset_point(self, point, offset):
+        new_point = XYZ(point.X, point.Y - offset, point.Z)
+        return new_point
 
-# point_pairs = [xyz for xyz in IN[0]]
+    generationPoint = GenerationPoint()
+    grouped_points = generationPoint.pickPoints(4, 1000)
+    re = []
+    for i, group in enumerate(grouped_points):
+        re.append(group)
+    OUT = re
 
-# # Create an instance of PointCalculator with the point pairs
-# calculator = PointCalculator(point_pairs)
+def sortPoints(points):
+	points = sorted(points, key = lambda points: points.X and points.Y and points.Z)
+	return points[0], points[-1]
 
-# # Calculate the midpoints
-# midpoints = calculator.calculate_midpoints
-# distance = calculator.distance
-# dbLines = PointCalculator.create_lines(point_pairs,doc)
-
-
-# # Print the results
-
-# result = []
-
-# for i, dis in enumerate(dbLines):
-#     result.append(dis)
-# OUT = result
+def chunks(l,n):
+    n = max(1,n)
+    return (l[i:i+n] for i in range(0, len(l), n))
+class GenerationPoint:
+    def __init__(self):
+        pass
+    @property
+    def pickPoints(self):
+        points = []
+        try:
+            while True:
+                base_points = uidoc.Selection.PickPoint("Select Base Points")
+                points.append(base_points)
+        except Autodesk.Revit.Exceptions.OperationCanceledException:
+            pass
+        return points
+    @staticmethod
+    def generate_square(points):
+        square_points = []
+        for i in range(0,len(points),2):
+            if i + 1  < len(points):
+                point1 = points[i]
+                point3 = points[i+1]
+                offset_x = point3.X - point1.X
+                offset_y = point3.Y - point1.Y
+                point2 = XYZ(point1.X + offset_x, point1.Y, point1.Z)
+                point4 = XYZ(point3.X - offset_x, point3.Y, point3.Z)
+                square_points.append([point1, point2, point3, point4])
+        return square_points
+    @staticmethod
+    def get_points_from_square(points):
+        result = []
+        for i in range(0, len(points)):
+            spPoint = points[i]
+            point1 = spPoint[0]
+            point2 = spPoint[1]
+            point3 = spPoint[2]
+            arrPoints = [point1, point2, point3]
+            result.append(arrPoints)
+        return result
+    @staticmethod
+    def pairWise(points):
+        paired_points = []
+        for lst in points:
+            for i in range(len(lst)-1):
+                if(i + 1 > len(lst)): break
+                pair = [lst[i], lst[i+1]]
+                paired_points.append(pair)
+        return paired_points

@@ -1095,3 +1095,22 @@ def get_pipe_endpoints(pipe_refs):
         end_point = location_curve.GetEndPoint(1) # Get the end point
         endpoints.append([start_point, end_point])
     return endpoints
+
+def flatten_to_minimum_level(lst, level):
+    def flatten_helper(items, curr_level):
+        flattened = []
+        for item in items:
+            if curr_level < level and isinstance(item, list):
+                flattened.extend(flatten_helper(item, curr_level + 1))
+            else:
+                flattened.append(item)
+        return flattened
+
+    return flatten_helper(lst, 1)
+
+def logger(title, content):
+    import datetime
+    date = datetime.datetime.now()
+    f = open(r"A:\Library-Dynamo-Python-CSharp\python.log", 'a')
+    f.write(str(date) + '\n' + title + '\n' + str(content) + '\n')
+    f.close()
