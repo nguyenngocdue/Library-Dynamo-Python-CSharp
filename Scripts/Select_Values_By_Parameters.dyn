@@ -2,7 +2,7 @@
   "Uuid": "3193e51e-599d-4972-b5b3-e8df7b83ad2e",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "Select_Values_By_Parameters",
+  "Name": "Select_Values_by_Parameters",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -345,13 +345,13 @@
         "Height": 405.87711936340565,
         "FontSize": 36.0,
         "InitialTop": 841.56508476202271,
-        "InitialHeight": 436.82710087165219,
+        "InitialHeight": 352.87711936340565,
         "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": -560.55233449566708,
-    "Y": -362.7367699226275,
-    "Zoom": 0.716655404625167
+    "X": -212.58944932901676,
+    "Y": -29.66953531585375,
+    "Zoom": 0.45429111860917781
   }
 }
