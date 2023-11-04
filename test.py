@@ -58,6 +58,17 @@ def listToDict(lst):
         dictionary[str(index)] = str(item)
     return dictionary
 
+def getParameterValueFromLookupParameter(element, parameter_name):
+    parameter = element.LookupParameter(parameter_name)
+    if parameter is not None and parameter.HasValue:
+        if parameter.StorageType == StorageType.Double:
+            return parameter.AsDouble() / 304.84
+        elif parameter.StorageType == StorageType.String:
+            return parameter.AsString()
+        else:
+            return None 
+    else:
+        return None
 
 def getValuesByParams(lstEle,paramNames, showAll=False):
     doc = DocumentManager.Instance.CurrentDBDocument
@@ -69,10 +80,13 @@ def getValuesByParams(lstEle,paramNames, showAll=False):
     for ele in elements:
         result = {}
         for name in paramNames:
-            try:
-                result[name] = ele.LookupParameter(name).AsDouble()/304.84
-                paramNamesEle.append(name)
-            except:
+            parameter = ele.LookupParameter(name)
+            if parameter:
+                valueOfParam = getParameterValueFromLookupParameter(ele, name)
+                if valueOfParam:
+                    result[name] = valueOfParam
+                    paramNamesEle.append(name)
+            else:
                 familyType = doc.GetElement(ele.GetTypeId())
                 allParams = familyType.Parameters
                 paramNamesEle = paramNamesEle + [p.Definition.Name for p in allParams]
@@ -90,7 +104,7 @@ def getValuesByParams(lstEle,paramNames, showAll=False):
 fa = IN[0]
 paramOnProperties = IN[1]
 
-OUT = getValuesByParams(fa,paramOnProperties, True)
+OUT = getValuesByParams(fa,paramOnProperties, IN[2])
 
 
 

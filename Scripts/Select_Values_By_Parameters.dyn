@@ -2,7 +2,7 @@
   "Uuid": "3193e51e-599d-4972-b5b3-e8df7b83ad2e",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "Select_Values_By_Parameter",
+  "Name": "Select_Values_By_Parameters",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -12,7 +12,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\nimport clr \r\nimport System\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\nimport math\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n\r\ndef getParameterValue(parameter):\r\n  value= None\r\n  if parameter.StorageType == StorageType.Double:\r\n    value =  parameter.AsDouble()\r\n  elif parameter.StorageType == StorageType.Integer:\r\n    if parameter.Definition.ParameterType == ParameterType.Integer:\r\n      value = parameter.AsInteger()\r\n    else:\r\n      value = parameter.AsValueString()\r\n  elif parameter.StorageType == StorageType.String:\r\n    value = parameter.AsString()\r\n  elif parameter.StorageType == StorageType.ElementId:\r\n    value = parameter.AsElementId()\r\n  return value\r\n\r\ndef diffArrays(arr1, arr2):\r\n    diff = []\r\n    for item in arr1:\r\n        if item not in arr2:\r\n            diff.append(item)\r\n    return diff\r\n\r\ndef listToDict(lst):\r\n    dictionary = {}\r\n    for index, item in enumerate(lst):\r\n        dictionary[str(index)] = str(item)\r\n    return dictionary\r\n\r\n\r\ndef getValuesByParams(lstEle,paramNames, showAll=False):\r\n    doc = DocumentManager.Instance.CurrentDBDocument\r\n    allValues, paramUndefine, paramNamesEle = [], [], []\r\n    if isinstance(lstEle,list):\r\n        elements = UnwrapElement(lstEle)\r\n    else:\r\n        elements = [UnwrapElement(lstEle)]\r\n    for ele in elements:\r\n        result = {}\r\n        for name in paramNames:\r\n            try:\r\n                result[name] = ele.LookupParameter(name).AsDouble()/304.84\r\n                paramNamesEle.append(name)\r\n            except:\r\n                familyType = doc.GetElement(ele.GetTypeId())\r\n                allParams = familyType.Parameters\r\n                paramNamesEle = paramNamesEle + [p.Definition.Name for p in allParams]\r\n                for p in allParams:\r\n                    if showAll:\r\n                        result[p.Definition.Name] = getParameterValue(p)\r\n                    else:\r\n                        for name in paramNames:\r\n                            if p.Definition.Name == name:\r\n                                result[name] = getParameterValue(p)\r\n        allValues.append(result)\r\n        paramUndefine.append(listToDict(diffArrays(paramNames, paramNamesEle)))\r\n    return allValues, paramUndefine\r\n    \r\nfa = IN[0]\r\nparamOnProperties = IN[1]\r\n\r\nOUT = getValuesByParams(fa,paramOnProperties, True)\r\n\r\n\r\n\r\n\r\n",
+      "Code": "\"\"\"Copyright(c) 2019 by: duengocnguyen@gmail.com\"\"\"\r\nimport clr \r\nimport System\r\nimport math \r\nfrom System.Collections.Generic import *\r\n\r\nclr.AddReference(\"ProtoGeometry\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('RevitAPI')\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import*\r\nfrom  Autodesk.Revit.UI.Selection import*\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\nimport math\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nview = doc.ActiveView\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\n\r\n\r\ndef getParameterValue(parameter):\r\n  value= None\r\n  if parameter.StorageType == StorageType.Double:\r\n    value =  parameter.AsDouble()\r\n  elif parameter.StorageType == StorageType.Integer:\r\n    if parameter.Definition.ParameterType == ParameterType.Integer:\r\n      value = parameter.AsInteger()\r\n    else:\r\n      value = parameter.AsValueString()\r\n  elif parameter.StorageType == StorageType.String:\r\n    value = parameter.AsString()\r\n  elif parameter.StorageType == StorageType.ElementId:\r\n    value = parameter.AsElementId()\r\n  return value\r\n\r\ndef diffArrays(arr1, arr2):\r\n    diff = []\r\n    for item in arr1:\r\n        if item not in arr2:\r\n            diff.append(item)\r\n    return diff\r\n\r\ndef listToDict(lst):\r\n    dictionary = {}\r\n    for index, item in enumerate(lst):\r\n        dictionary[str(index)] = str(item)\r\n    return dictionary\r\n\r\ndef getParameterValueFromLookup(element, parameter_name):\r\n    parameter = element.LookupParameter(parameter_name)\r\n    if parameter is not None and parameter.HasValue:\r\n        if parameter.StorageType == StorageType.Double:\r\n            return parameter.AsDouble() / 304.84\r\n        elif parameter.StorageType == StorageType.String:\r\n            return parameter.AsString()\r\n        else:\r\n            return None \r\n    else:\r\n        return None\r\n\r\ndef getValuesByParams(lstEle,paramNames, showAll=False):\r\n    doc = DocumentManager.Instance.CurrentDBDocument\r\n    allValues, paramUndefine, paramNamesEle = [], [], []\r\n    if isinstance(lstEle,list):\r\n        elements = UnwrapElement(lstEle)\r\n    else:\r\n        elements = [UnwrapElement(lstEle)]\r\n    for ele in elements:\r\n        result = {}\r\n        for name in paramNames:\r\n            parameter = ele.LookupParameter(name)\r\n            if parameter:\r\n                valueOfParam = getParameterValueFromLookup(ele, name)\r\n                if valueOfParam:\r\n                    result[name] = valueOfParam\r\n                    paramNamesEle.append(name)\r\n            else:\r\n                familyType = doc.GetElement(ele.GetTypeId())\r\n                allParams = familyType.Parameters\r\n                paramNamesEle = paramNamesEle + [p.Definition.Name for p in allParams]\r\n                for p in allParams:\r\n                    if showAll:\r\n                        result[p.Definition.Name] = getParameterValue(p)\r\n                    else:\r\n                        for name in paramNames:\r\n                            if p.Definition.Name == name:\r\n                                result[name] = getParameterValue(p)\r\n        allValues.append(result)\r\n        paramUndefine.append(listToDict(diffArrays(paramNames, paramNamesEle)))\r\n    return allValues, paramUndefine\r\n    \r\nfa = IN[0]\r\nparamOnProperties = IN[1]\r\n\r\nOUT = getValuesByParams(fa,paramOnProperties, IN[2])\r\n\r\n\r\n\r\n\r\n",
       "Engine": "IronPython2",
       "VariableInputPorts": true,
       "Id": "8fe915f749ee4f21a6fb5297fec68a71",
@@ -30,6 +30,15 @@
           "Id": "237ca0798d6840d4979894cd5724a308",
           "Name": "IN[1]",
           "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c259df860edf4f779ba280e2bb1df5a3",
+          "Name": "IN[2]",
+          "Description": "Input #2",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -117,7 +126,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": false,
+      "InputValue": true,
       "Id": "02f7590b70d740a0b5cf5a53d0ea2e7d",
       "Inputs": [],
       "Outputs": [
@@ -157,12 +166,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "[\"Length\", \"Volume\", \"Elevation at Top\", \"Elevation at Bottom\", \"Comments\", \"Test 1\", \"Test 2\"];",
+      "Code": "[\"b\", \"h\", \"REBAR\",\"Length\", \"Volume\", \"Elevation at Top\", \"Elevation at Bottom\", \"Comments\", \"Test 1\", \"Test 2\"];",
       "Id": "5ecdefcf99bc4f9381f8d245f16cf259",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "e5dc21bbdf2f4a4fb83b1464d221243d",
+          "Id": "d9b3368cd12c4034b770114a88d6cfcc",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -173,13 +182,33 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "e184fbdfa44944d6900fe5652f01eb37",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9c06070ac2204dd89707d5e783167c86",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
     }
   ],
   "Connectors": [
     {
       "Start": "593b67b93e7044f5ae3b7fd333282eb2",
       "End": "6727f777b7a74a488f38468461b704fa",
-      "Id": "6db215b7048a4838be86cf842aefda00"
+      "Id": "404389f5f3444c599e02795808bcb767"
     },
     {
       "Start": "526161c9421a4d3a8fa804408cbe6428",
@@ -192,9 +221,14 @@
       "Id": "db62e6cd48234e95a70359dcc1ddac40"
     },
     {
-      "Start": "e5dc21bbdf2f4a4fb83b1464d221243d",
+      "Start": "d9b3368cd12c4034b770114a88d6cfcc",
       "End": "237ca0798d6840d4979894cd5724a308",
-      "Id": "f2656de6b9354fa1926d2a8e36636d4a"
+      "Id": "a16044c68c0741d496a3e1d7878ad9eb"
+    },
+    {
+      "Start": "9c06070ac2204dd89707d5e783167c86",
+      "End": "c259df860edf4f779ba280e2bb1df5a3",
+      "Id": "159eaaf5654040278c8b23cae058182d"
     }
   ],
   "Dependencies": [],
@@ -228,9 +262,9 @@
         "Id": "8fe915f749ee4f21a6fb5297fec68a71",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Excluded": true,
-        "X": 1663.0500910839351,
-        "Y": 911.52281503250288
+        "Excluded": false,
+        "X": 1819.3587613981974,
+        "Y": 963.6137419714255
       },
       {
         "ShowGeometry": true,
@@ -279,14 +313,24 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 872.1057416497049,
-        "Y": 1116.5985849606823
+        "X": 1011.2301685663579,
+        "Y": 1049.4422041254284
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "show All",
+        "Id": "e184fbdfa44944d6900fe5652f01eb37",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1435.1992576563821,
+        "Y": 1169.8473766440284
       }
     ],
     "Annotations": [
       {
         "Id": "15891e3cb2554b68b05b46da29c6fbd7",
-        "Title": "get values by parameters from Properties Bar & Edit Type",
+        "Title": "To retrieve values of parameters from the Properties Bar and Edit Type in Revit",
         "Nodes": [
           "a0407dc148df4358bc6269d34388c216",
           "02f7590b70d740a0b5cf5a53d0ea2e7d",
@@ -295,19 +339,19 @@
           "5ecdefcf99bc4f9381f8d245f16cf259",
           "8fe915f749ee4f21a6fb5297fec68a71"
         ],
-        "Left": 862.1057416497049,
-        "Top": 788.56508476202271,
-        "Width": 991.94434943423016,
-        "Height": 430.03350019865957,
+        "Left": 1001.2301685663579,
+        "Top": 745.56508476202271,
+        "Width": 1009.1285928318396,
+        "Height": 405.87711936340565,
         "FontSize": 36.0,
         "InitialTop": 841.56508476202271,
-        "InitialHeight": 407.03350019865957,
-        "TextblockHeight": 43.0,
+        "InitialHeight": 436.82710087165219,
+        "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": -712.861933744245,
-    "Y": -382.47680839194834,
-    "Zoom": 0.88467542334045324
+    "X": -560.55233449566708,
+    "Y": -362.7367699226275,
+    "Zoom": 0.716655404625167
   }
 }
