@@ -222,6 +222,44 @@ def GetPointFromGeo(lstGeo):
     return pts
     #OUT = [GetPointFromGeo(i) for i in IN[1]]
 
+def mappingXYZ_to_xoz_plane(lstXYZ):
+    reesult = []
+    for _xyz in lstXYZ:
+        x = _xyz.X
+        y = _xyz.Y
+        z = 0
+        xyz = XYZ(x, y, z)
+        reesult.append(xyz)
+    return reesult
+
+lstXYZ = mappingXYZ_to_xoz_plane(IN[1])
+OUT = lstXYZ
+
+data = IN[0]
+def removeDuplicatesXYZ(data):
+    unique_points = set()
+    for xyz in data:
+        x, y, z = round(xyz.X, 6), round(xyz.Y, 6), round(xyz.Z, 6)
+        unique_points.add((x, y, z))
+    result = [XYZ(x, y, z) for x, y, z in unique_points]
+    return result
+OUT = removeDuplicatesXYZ(data)
+    
+
+def removeDuplicateXYZ(lstXYZ):
+    distinct_points = list(set(lstXYZ))
+    return distinct_points
+OUT = removeDuplicateXYZ( IN[1])
+
+def getXYZByDBLines(dbLines):
+	points = []
+	for dbLine in dbLines:
+		start_point = dbLine.GetEndPoint(0)
+		end_point = dbLine.GetEndPoint(1)
+		points.append(start_point)
+		points.append(end_point)
+	return points
+
 def GetGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
@@ -286,6 +324,13 @@ def GetPlanarFormSolid(solids): # Get Planarface from solids
                 plaf.append(j)
     return plaf
     #getFaceFraming = [GetPlanarFormSolid(i) for i in getSolidFraming]
+def calculateFacesArea(faces):
+    total_area = 0.0
+    for face in faces:
+        total_area += face.Area
+    return total_area
+areas = calculateFacesArea(IN[0])
+OUT = areas
 def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
     pfaces = []
     for i in lstplanars:
@@ -587,11 +632,20 @@ def pickObject():
     from Autodesk.Revit.UI.Selection import ObjectType
     picked = uidoc.Selection.PickObjects(ObjectType.Element)
     return picked
+def pickObject():
+    from Autodesk.Revit.UI.Selection import ObjectType
+    refs = uidoc.Selection.PickObject(ObjectType.Element)
+    return  doc.GetElement(refs.ElementId)	
+
+def pickObjects():
+    from Autodesk.Revit.UI.Selection import ObjectType
+    refs = uidoc.Selection.PickObjects(ObjectType.Element)
+    return  [doc.GetElement(i.ElementId) for i in refs]	
+
 def pickObjectsFilter(filter):
 	el_ref = uidoc.Selection.PickObjects(ObjectType.Element, filter)
 	typelist = list()
 	for i in el_ref:
-		
 		try:
 			typelist.append(doc.GetElement(i.ElementId))
 		except:
