@@ -1168,3 +1168,15 @@ def logger(title, content):
     f = open(r"A:\Library-Dynamo-Python-CSharp\python.log", 'a')
     f.write(str(date) + '\n' + title + '\n' + str(content) + '\n')
     f.close()
+
+
+def getValueByKeyObject(keys, objects):
+    arrKeys, values = [], []
+    for k in keys:
+        if k in objects.keys():
+            arrKeys.append(k)
+            val =  str(objects[k])
+            if val.isnumeric(): values.append(round(float(val),2))
+            else: values.append(str(objects[k]))
+
+    return arrKeys, values
