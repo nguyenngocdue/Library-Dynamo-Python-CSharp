@@ -62,46 +62,67 @@ def getParameterValueFromLookup(element, parameter_name):
     parameter = element.LookupParameter(parameter_name)
     if parameter is not None and parameter.HasValue:
         if parameter.StorageType == StorageType.Double:
-            return parameter.AsDouble()*304.84
+            if not parameter.AsDouble(): return "empty value"
+            else: return parameter.AsDouble()*304.84
         elif parameter.StorageType == StorageType.String:
-            return parameter.AsString()
+            if not parameter.AsString(): return "empty value"
+            else: return parameter.AsString()
         else:
             return "" 
     else:
         return None
+def logger(title, content):
+    import datetime
+    date = datetime.datetime.now()
+    f = open(r"A:\Library-Dynamo-Python-CSharp\python.log", 'a')
+    f.write(str(date) + '\n' + title + '\n' + str(content) + '\n')
+    f.close()
 
-def getValuesByParams(lstEle,paramNames, showAll=False):
+def getValuesByParams(lstEle,paramNames, isShowAll=False):
     doc = DocumentManager.Instance.CurrentDBDocument
-    allValues, paramUndefine, paramNamesEle = [], [], []
+    allValues, paramNamesEle = [], []
     if isinstance(lstEle,list):
         elements = UnwrapElement(lstEle)
     else:
         elements = [UnwrapElement(lstEle)]
     for ele in elements:
+        familyType = doc.GetElement(ele.GetTypeId())
+        allParams = familyType.Parameters
+        allNamePrams = [p.Definition.Name for p in allParams]
         result = {}
         for name in paramNames:
-            parameter = ele.LookupParameter(name)
-            if not parameter or showAll:
-                familyType = doc.GetElement(ele.GetTypeId())
-                allParams = familyType.Parameters
-                paramNamesEle = paramNamesEle + [p.Definition.Name for p in allParams]
-                for p in allParams:
-                    if showAll:
-                        result[p.Definition.Name] = getParameterValue(p)
-                    else:
+            valueOfParam = getParameterValueFromLookup(ele, name)
+            if not isShowAll:
+                if valueOfParam:
+                    result[name] = valueOfParam
+                    paramNamesEle.append(name)
+                else:
+                    for p in allParams:
                         for name in paramNames:
                             if p.Definition.Name == name:
                                 result[name] = getParameterValue(p)
-            if parameter or showAll:
-                valueOfParam = getParameterValueFromLookup(ele, name)
-                result[name] = valueOfParam
-                paramNamesEle.append(name)
+                                paramNamesEle.append(name)
+            else:
+                if valueOfParam and isShowAll:
+                    result[name] = valueOfParam
+                    paramNamesEle.append(name)
+                if not valueOfParam and isShowAll:
+                    for p in allParams:
+                        result[p.Definition.Name] = getParameterValue(p)
+                        # for name in paramNames:
+                        #     if p.Definition.Name == name:
+                        #         result[name] = getParameterValue(p)
+                        #         paramNamesEle.append(name)
+               
+        paramNamesEle = list(set(paramNamesEle + allNamePrams))
+        diffNamesEle = diffArrays(paramNames, paramNamesEle)
+
         result['id'] = ele.Id
         allValues.append(result)
-        paramUndefine.append(listToDict(diffArrays(paramNames, paramNamesEle)))
-    return allValues, paramUndefine
+        
+    return allValues, listToDict(diffNamesEle)
     
 fa = IN[0]
-paramOnProperties = IN[1]
+paramOnProperties = IN[2]
 
-OUT = getValuesByParams(fa,paramOnProperties, IN[2])
+OUT = getValuesByParams(fa,paramOnProperties, IN[1])
