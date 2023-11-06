@@ -137,7 +137,7 @@ def ReferenceFromSurface(ElementSurface): # Get Revit.DB.Reference from Surface
         ref.append(re)
     return ref
     #OUT = ReferenceFromSurface(UnwrapElement(IN[1]))
-def GetDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
+def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
@@ -150,6 +150,16 @@ def GetDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
         ln.append(re)
     return ln
     #OUT = GetDBLineFormEleLine(IN[1])
+def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
+    opt = Options()
+    opt.ComputeReferences = True
+    opt.IncludeNonVisibleObjects = True
+    opt.View = doc.ActiveView
+    ln = []
+    for i in ElementLines:
+        ln.append(UnwrapElement(i).ToRevitType())
+    return ln
+
 def GetRefOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
     opt = Options()
     opt.ComputeReferences = True
@@ -877,9 +887,8 @@ def getVectorOfDBLine(lstDBline): # Get Vector from DBLine
     for i in lstDBline:
         pts1Line = i.GetEndPoint(0)
         pts2Line = i.GetEndPoint(1)
-        vec = pts1Line - pts2Line
+        vec.append(pts1Line - pts2Line)
     return vec
-    OUT = [getVectorOfDBLine(element)]
 
 def setBasic(x):
     if x == "x":
