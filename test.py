@@ -31,10 +31,10 @@ view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 ################################################################
 
-def createRebarStyle(isStandard):
-    if isStandard:
-        return Autodesk.Revit.DB.Structure.RebarStyle().Standard
-    return Autodesk.Revit.DB.Structure.RebarStyle().StirrupTie
+def createRebarHookOrientation(isLeft):
+    if isLeft:
+        return RebarHookOrientation.Left
+    return RebarHookOrientation.Right
 
 
-OUT = createRebarStyle(IN[0])
+OUT = createRebarHookOrientation(IN[0])
