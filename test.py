@@ -30,9 +30,11 @@ doc = DocumentManager.Instance.CurrentDBDocument
 view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 ################################################################
-def getRebarType(isStandard):
-    if(isStandard):
+
+def createRebarStyle(isStandard):
+    if isStandard:
         return Autodesk.Revit.DB.Structure.RebarStyle().Standard
     return Autodesk.Revit.DB.Structure.RebarStyle().StirrupTie
 
-OUT = rebarStyleStandard, rebarStirrupTie
+
+OUT = createRebarStyle(IN[0])
