@@ -1,4 +1,8 @@
-"""Copyright(c) 2019 by: duengocnguyen@gmail.com"""
+"""Copyright(c) 2023 by: duengocnguyen@gmail.com"""
+"site_url: https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g",
+"repository_url:https://github.com/nguyenngocdue/Library-Dynamo-Python-CSharp"
+"""________________Welcome to BIM3DM-DYNAMO API___________________"""
+
 import clr 
 import System
 import math 
@@ -28,7 +32,7 @@ from RevitServices.Transactions import TransactionManager
 doc = DocumentManager.Instance.CurrentDBDocument
 view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-
+################################################################################################
 
 #-------------------------------------------------------------List - Modifily-----------------------------------------------#
 def ClearList(primList):
@@ -52,16 +56,23 @@ def filter_IsListInList(lst1,lst2):
     re = []
     for i in len(lst1):
         re.append(i)
+#public
 def chunks(l, n): #List.Chop
     n = max(1, n)
     return (l[i:i+n] for i in range(0, len(l), n))
     #OUT = chunks(IN[1])
+
+#public
 def GetIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
-    re = []
-    for i in lst:
-        c = i[index]
-        re.append(c)
-    return re
+	re = []
+	try:
+		for i in lst:
+			c = i[index]
+			re.append(c)
+	except:
+		re.append(None)
+	return re
+
 def lstFlattenL1(list): #List.Flatten
     result = []
     for i in list:
@@ -73,15 +84,15 @@ def lstFlattenL2(list): #List.Flatten
         for j in i:
             result.append(j)
     return result
-def RemoveValueNone(lst): # Get Value Not Null Value
-    value = []
+# public
+def RemoveValueNone(lst): # Get Non-None Values
+    values = []
     for i in lst:
-		if i == None: value.append(i)
-		else: value.append(i)
-		return value
-    OUT = [RemoveValueNone(i) for i in IN[1]]
+        if i is not None:
+            values.append(i)
+    return values
 
-def GetFace_Zmax(lstPlface): # Get Horizaontal PlannarFaces 
+def getFace_Zmax(lstPlface): # Get Horizaontal PlannarFaces 
     coor_Z = []
     faH = []
     index = []
@@ -96,9 +107,10 @@ def GetFace_Zmax(lstPlface): # Get Horizaontal PlannarFaces
         faH.append(r1)
         index.append(get_inx)
     return faH
-def getOrigin_level (lstPlanar):
+#public
+def getXYZOriginByPlanarFaces (lstPlanar):
     re = []
-    for i in ele:
+    for i in lstPlanar:
         r1 = []
         for j in i:
             ori =j.Origin
@@ -115,8 +127,10 @@ def CreateLine(point1,point2): # Take Revit.DB.Line by XYZ.Bisis
     lineDB = Line.CreateBound(point1.ToXyz(),point2.ToXyz())
     return lineDB
 
-def CreateLine(xyzp1,xyzp2): # Take Revit.DB.Line by XYZ.Bisis
+#public
+def CreateLine(xyzp1,xyzp2,toProtoType = True ): # Take Revit.DB.Line by XYZ.Bisis
     lineDB = Line.CreateBound(xyzp1,xyzp2)
+    if toProtoType: return lineDB.ToProtoType()
     return lineDB
 
 
@@ -150,6 +164,16 @@ def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
         ln.append(re)
     return ln
     #OUT = GetDBLineFormEleLine(IN[1])
+#public
+def getDBLineFormEleLine(elementLines): # Get Revit.DB.Line from Curve Elements
+    opt = Options()
+    opt.ComputeReferences = True
+    opt.IncludeNonVisibleObjects = True
+    opt.View = doc.ActiveView
+    ln = []
+    for j in elementLines:
+    	ln.append(UnwrapElement(j).ToRevitType())
+    return ln
 def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
     opt = Options()
     opt.ComputeReferences = True
@@ -160,7 +184,7 @@ def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
         ln.append(UnwrapElement(i).ToRevitType())
     return ln
 
-def GetRefOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
+def getRefOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
@@ -172,7 +196,7 @@ def GetRefOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
         [refGrids.append(j.Reference) for j in f if str(j).Contains("Line")]
     return refGrids
     #OUT = GetRefOfGrid(IN[1])
-def GetRefArrayByEleLine(linelist): # Get ReferenceArray by Element Line
+def getRefArrayByEleLine(linelist): # Get ReferenceArray by Element Line
     refArray = []
     for i in linelist:
         rArr = ReferenceArray()
@@ -181,7 +205,8 @@ def GetRefArrayByEleLine(linelist): # Get ReferenceArray by Element Line
         refArray.append(rArr)
     return refArray
     #OUT = GetRefArrayByEleLine(UnwrapElement(IN[2]))
-def GetRef(lstPlanar):
+#public
+def getRef(lstPlanar):
     re = []
     for i in lstPlanar:
         re.append(i.Reference)
@@ -192,11 +217,13 @@ def GetRefArray(lstPlanar):
         reArray.Append(i.Reference)
     return reArray
     #OUT = GetReferenceArray(IN[1])
+
 def GetRefArrayFromRef(ref):
     re = ReferenceArray()
     for i in ref:
         re.Append(i)
     return re
+
 def Combine_EleSurface_EleCurve_RefGrids(EleCurve,EleSurface,RefGrids): # Combine Ref's Surface and Ref
     Ref=[]
     for i in range(0,len(EleSurface)):
@@ -224,6 +251,7 @@ def GetLocationPoint(element): # Get LocationPoint of element.
     return re
     #OUT = [GetLocationPoint(i) for i in UnwrapElement(IN[1])]
 
+#public
 def GetPointFromGeo(lstGeo):
     pts = []
     for i in lstGeo:
@@ -261,16 +289,18 @@ def removeDuplicateXYZ(lstXYZ):
     return distinct_points
 OUT = removeDuplicateXYZ( IN[1])
 
+#public
 def getXYZByDBLines(dbLines):
-	points = []
+	XYZs = []
 	for dbLine in dbLines:
 		start_point = dbLine.GetEndPoint(0)
 		end_point = dbLine.GetEndPoint(1)
-		points.append(start_point)
-		points.append(end_point)
-	return points
+		XYZs.append(start_point)
+		XYZs.append(end_point)
+	return XYZs
 
-def GetGeoElement(element): # Get geometry of element.
+
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -281,7 +311,8 @@ def GetGeoElement(element): # Get geometry of element.
     return geo
     #getGeoFraming = [GetGeoElement(i) for i in eleFraming]
 
-def GetGeoElement(element): # Get geometry of element.
+#public
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     geoByElement = element.get_Geometry(opt)
@@ -312,6 +343,8 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                     sol.append(j)
     return sol
     #getSolidFraming = [GetSolidFromGeo(i) for i in getGeoFraming]
+
+#public
 def GetSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
@@ -325,6 +358,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
         	sol.append(j)
     return sol
     #getSolidFraming = [GetSolidFromGeo(i) for i in IN[1]]
+#public
 def GetPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
@@ -334,6 +368,8 @@ def GetPlanarFormSolid(solids): # Get Planarface from solids
                 plaf.append(j)
     return plaf
     #getFaceFraming = [GetPlanarFormSolid(i) for i in getSolidFraming]
+
+#public
 def calculateFacesArea(faces):
     total_area = 0.0
     for face in faces:
@@ -341,26 +377,32 @@ def calculateFacesArea(faces):
     return total_area
 areas = calculateFacesArea(IN[0])
 OUT = areas
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+
+#public
+def removeFaceNone(lstplanars): # Get planarFaces Not Null Value
     pfaces = []
     for i in lstplanars:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def Isparalel(p,q):
+
+def isParallel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
+#public
+def filterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
     faH = []
     z = XYZ.BasisZ # You can change that value to have a new direction
     for i in lstPlface:
     	if type(i) == Autodesk.Revit.DB.PlanarFace:
-            check = Isparalel(z, i.FaceNormal)
+            check = isParallel(z, i.FaceNormal)
             if check == True:
                 faH.append(i)
     return faH
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+
+#puplic
+def getPlanarVerticalFaces(plannar): # Get Vertical PlannarFaces 
     re = []
-    remove = RemoveFaceNone(plannar)
+    remove = removeFaceNone(plannar)
     for i in remove:
         var = i.FaceNormal
         rad = var.AngleTo(XYZ.BasisZ)
@@ -407,38 +449,54 @@ def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces
         if check == True:
             faH.append(i)
     return faH
-def RightFace(lstplanar,viewin): # Get Right PlannarFaces of a Element
-    direc = view.RightDirection
+#public
+# Function to get the right planar faces of an element based on a view's right direction
+def getRightPlanarFaces(lstplanar, viewin):
+    direc = viewin.RightDirection
     for i in lstplanar:
         var = i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlannarFaces of a Element
-    direc = view.RightDirection
+    return None  # No matching face found
+
+#public
+def getLeftFace(lstplanar, viewIn):
+    direc = viewIn.RightDirection
     for i in lstplanar:
-        var = -1*i.FaceNormal
+        var = -1 * i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
+    return None  # Handle the case when no matching face is found
+
 def GetRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
     if reason == True: return RightFace(lstFace,viewin)
     elif reason == False: return LeftFace(lstFace, viewin)
-def GetTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
+
+#public
+def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
             return i
     for i in lstPlanars:
         if i.FaceNormal.Z == -1 and reason == False:
             return i
-def GetTopFacesEle(planar):
-    re = []
-    z =XYZ.BasisX
-    remove = RemoveFaceNone(planar)
-    for i in remove:
-        var = i.FaceNormal
-        rad = var.AngleTo(XYZ.BasisZ)
-        if (rad*180)/3.14 < 10 :
-            re.append(i)
-    return re
+
+#public
+def getTopPlanarFaces(planar):
+    result = []
+    z_axis = XYZ.BasisZ
+    non_none_faces = removeFaceNone(planar)
+    for face in non_none_faces:
+        normal = face.FaceNormal
+        angle_to_z = normal.AngleTo(z_axis)
+        # Convert radians to degrees for comparison
+        angle_degrees = (angle_to_z * 180) / 3.14
+        # Check if the face normal is close to the positive Z-axis
+        if angle_degrees < 10:
+            result.append(face)
+    return result
+
+
 def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
     re = []
     var = lstPlanar.EdgeLoops
@@ -447,7 +505,7 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
             re.append(j.AsCurve())
     return re
     #GetLineFraming = [RetrieveEdgesFace(i) for i in getFaVerFraming[0]]
-def GetLineMin(lstLine): # Get a min line of list line
+def getMinLines(lstLine): # Get a min line of list line
     _length = []
     for i in lstLine:
         _length.append(i.Length)
@@ -536,7 +594,7 @@ class SelectionFilter(ISelectionFilter):
 
     # selFilter = SelectionFilter("Grids")
     # elSelect = uidoc.Selection.PickElementsByRectangle(selFilter,"Selects")
-def DBLinebyGrids(lstGrids):
+def getDBLinebyGrids(lstGrids):
     re = []
     for i in lstGrids:
         re.append(i.Curve)
@@ -638,15 +696,17 @@ def MidPointOfPoint(x,y):
 def MidPoint (line):
 	return MidPointOfPoint(line.GetEndPoint(0),line.GetEndpoint(1))
 ###------------------------------------------------ Pick Object ---------------------------------------------------------###
+#public
 def pickObject():
     from Autodesk.Revit.UI.Selection import ObjectType
     picked = uidoc.Selection.PickObjects(ObjectType.Element)
     return picked
+#public
 def pickObject():
     from Autodesk.Revit.UI.Selection import ObjectType
     refs = uidoc.Selection.PickObject(ObjectType.Element)
     return  doc.GetElement(refs.ElementId)	
-
+#public
 def pickObjects():
     from Autodesk.Revit.UI.Selection import ObjectType
     refs = uidoc.Selection.PickObjects(ObjectType.Element)
@@ -862,6 +922,7 @@ def getGeoElement(element, doc , view): # Get geometry of element.
     geo = [i for i in geoByElement]
     return geo
 
+#puplic
 def getRefFromDBLine(lstDBLine): # Get reference
     ref = ReferenceArray()
     for i in lstDBLine:
@@ -882,6 +943,7 @@ def filterDBSolid(lstGeo): # Get DBSokid from Geo
             dbSolid.append(i)
     return dbSolid[0]
 
+#public
 def getVectorOfDBLine(lstDBline): # Get Vector from DBLine
     vec = []
     for i in lstDBline:
@@ -918,7 +980,7 @@ def getVectorOfDBLine(lstDBline):
         vec.append(j-i)
     return vec
 
-def extendLine(lstDBLine,distance):
+def extendDBLine(lstDBLine,distance):
     def CreateLine(point1,point2): # Take Revit.DB.Line by XYZ.Bisis
         line = Line.CreateBound(point1,point2)
         return line
@@ -981,9 +1043,9 @@ def extendLine(lstDBLine,distance):
         z2 = [i.Z for i in endPoint]
         p2 = [XYZ(x2,y2,z2) for x2,y2,z2 in zip(x2,y2,z2)]
         return [CreateLine(i,j) for i,j in zip(p2,p1)]
-    OUT = extendLine(IN[1],IN[2])
+    OUT = extendDBLine(IN[1],IN[2])
 
-#Fix
+#Fix : public
 def extendLine(lstDBLine,distance):
     def CreateLine(point1,point2): # Take Revit.DB.Line by XYZ.Bisis
         line = Line.CreateBound(point1,point2)
@@ -1116,14 +1178,16 @@ def middlePoint(lstDBline,parameter):
     return re
     OUT = middlePoint(line,0.5)
 
-def getEdgesAsCurveLoops(lstPlanar): # Get CurveLopps of PlanarFaces
+#public
+def getDBLineAsCurveLoops(lstPlanar): # Get CurveLopps of PlanarFaces
     re = []
     for i in lstPlanar:
         re.append(i.GetEdgesAsCurveLoops())
     return re
     OUT = getEdgesAsCurveLoops(lstPlanar)
 
-def getPlaneFromFlannarFace(lstPlanar):
+#public
+def getDBPlaneFromFlannarFace(lstPlanar):
     re = []
     for i in lstPlanar:
         re.append(i.GetSurface())
@@ -1189,3 +1253,12 @@ def getValueByKeyObject(keys, objects):
             else: values.append(str(objects[k]))
 
     return arrKeys, values
+
+def unwrap_elements(input_element):
+    if isinstance(input_element, list):
+        # Unwrap each element in the list
+        elements = [UnwrapElement(e) for e in input_element]
+    else:
+        # Unwrap the single element
+        elements = [UnwrapElement(input_element)]
+    return elements

@@ -1,7 +1,6 @@
 """Copyright(c) 2019 by: duengocnguyen@gmail.com"""
-__doc__ = '.........'
-__author__ = 'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'
-__title__ = '.....'
+"Site URL:https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g"
+"Repository URL: https://github.com/nguyenngocdue/Library-Dynamo-Python-CSharp"
 """________________Welcome to BIM3DM-DYNAMO API___________________"""
 import clr 
 import sys
@@ -62,6 +61,7 @@ def get_doc_categories(doc=None, include_subcats=True):
             all_cats.extend([x for x in cat.SubCategories])
     return all_cats
 
+# not yet public 
 def get_schedule_categories(doc=None):
     doc = doc
     all_cats = get_doc_categories(doc)
@@ -80,7 +80,8 @@ def get_all_linkeddocs(doc=None):
     docs = [x.GetLinkDocument() for x in linkinstances]
     return [x for x in docs if x]
     #OUT = get_all_linkeddocs()
-
+    
+#public
 def get_all_grids(doc=None):
     doc =  DocumentManager.Instance.CurrentDBDocument
     target_docs = [doc]
