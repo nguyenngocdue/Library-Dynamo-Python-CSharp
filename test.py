@@ -28,60 +28,46 @@ import RevitServices
 from RevitServices.Persistence import DocumentManager
 from RevitServices.Transactions import TransactionManager
 import math
+import random
 
 doc = DocumentManager.Instance.CurrentDBDocument
 view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 ################################################################
-def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
-    opt = Options()
-    opt.ComputeReferences = True
-    opt.IncludeNonVisibleObjects = True
-    opt.View = doc.ActiveView
-    ln = []
-    for i in ElementLines:
-        ln.append(UnwrapElement(i).ToRevitType())
-    return ln
-def getVectorOfDBLine(lstDBline): # Get Vector from DBLine
-    vec = []
-    for i in lstDBline:
-        pts1Line = i.GetEndPoint(0)
-        pts2Line = i.GetEndPoint(1)
-        vec.append(pts1Line - pts2Line)
-    return vec
+
+import clr
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+
+from Autodesk.Revit.DB import FilteredElementCollector, ViewSchedule, ScheduleFieldType, ScheduleFieldId, SectionType, Transaction
+
+# Assuming that 'doc' is defined elsewhere in your script as the current document
+
+def addColumnToSchedule(schedule, column_name):
+    # Get the existing fields
+    schedule_fields = schedule.Definition.GetSchedulableFields()
+    # Find the SchedulableField by name
+    emptyField = []
+    for field in schedule_fields:
+        if field.GetName(doc) == column_name:
+            schedulable_field = field
+            try:
+                TransactionManager.Instance.EnsureInTransaction(doc)
+                schedule.Definition.AddField(schedulable_field)
+                TransactionManager.Instance.TransactionTaskDone()
+            except:
+                emptyField.append(column_name)
+    return "'" +  ', '.join(emptyField) + "'" + 'fields is included in Schedule'
+        
+
+# Example usage
+schedule = UnwrapElement(IN[0])
+column_name = UnwrapElement(IN[1])
+
+OUT = [addColumnToSchedule(schedule, i) for i in column_name]
 
 
 
-curves = UnwrapElement(IN[1])
-element = UnwrapElement(IN[2])
-rebarStyle = IN[3]
-rebarType = UnwrapElement(IN[4])
-hookTypeStart = UnwrapElement(IN[5])
-hookTypeEnd = UnwrapElement(IN[6])
-rebarHookOrientationStart = UnwrapElement(IN[7])
-rebarHookOrientationEnd = UnwrapElement(IN[8])
-normal = XYZ(1,0,0)
-
-dbLines = getDBLineFormEleLine(curves)
-
-vectorDBlines = getVectorOfDBLine(dbLines)
 
 
-rebars = []
-TransactionManager.Instance.EnsureInTransaction(doc)
-for index, curve in enumerate(dbLines): 
-    rebar = Rebar.CreateFromCurves(doc, 
-                                    rebarStyle, 
-                                    rebarType, 
-                                    hookTypeStart, 
-                                    hookTypeEnd, 
-                                    element, 
-                                    normal, 
-                                    List[Curve]([curve]), 
-                                    rebarHookOrientationStart, 
-                                    rebarHookOrientationEnd, 
-                                    True, 
-                                    True)            
-    rebars.append(rebar)
-TransactionManager.Instance.TransactionTaskDone()
-OUT = rebars
+

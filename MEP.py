@@ -1,12 +1,14 @@
-def get_pipe_endpoints(pipe_refs):
-    endpoints = []
+#public
+def getXYZOfPipes(pipe_refs):
+    xyz = []
     for ref in pipe_refs:
         pipe = doc.GetElement(ref) # Get the pipe object from the reference
         location_curve = pipe.Location.Curve # Get the location curve of the pipe
-        start_point = location_curve.GetEndPoint(0) # Get the start point
-        end_point = location_curve.GetEndPoint(1) # Get the end point
-        endpoints.append([start_point, end_point])
-    return endpoints
+        start = location_curve.GetEndPoint(0) # Get the start point
+        end = location_curve.GetEndPoint(1) # Get the end point
+        xyz.append([start, end])
+    return xyz
+#public
 def get_mep_connections(elements):
     result = []
     for element in elements:
@@ -19,11 +21,14 @@ def get_mep_connections(elements):
                 connectors = []
         result.append([x for x in connectors])
     return result
-def getPointFromConnector(connectors):
-    points = []
-    for conn in connectors:
-        points.append(conn.Origin.ToPoint())
-    return points
+
+#public
+def get_connector_XYZ(connectors):
+	xyz = []
+	for conn in connectors:
+		location = conn.CoordinateSystem
+		xyz.append(location.Origin)
+	return xyz
 def getToVectorFromConnector(connectors):
     vector = []
     for conn in connectors:
