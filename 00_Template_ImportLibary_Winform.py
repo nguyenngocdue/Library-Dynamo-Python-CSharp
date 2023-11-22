@@ -35,6 +35,7 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 #########################################################################
 self._cbbFil.Items.AddRange(System.Array[System.Object](filStatus))
+self._cbbx.Items.AddRange(System.Array[System.Object](["a", "b", "c", "d"]))
 
 
 

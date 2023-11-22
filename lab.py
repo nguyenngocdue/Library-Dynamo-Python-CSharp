@@ -316,7 +316,8 @@ def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     geoByElement = element.get_Geometry(opt)
-    geoEnum = geoByElement.GetEnumerator(); geoEnum.MoveNext()
+    geoEnum = geoByElement.GetEnumerator() 
+    geoEnum.MoveNext()
     geoNext = geoEnum.Current.GetInstanceGeometry()
     geo = [i for i in geoNext]
     out = []
