@@ -332,6 +332,20 @@ def getGeoElement(element): # Get geometry of element.
     return out
     getGeoFraming = [GetGeoElement(i) for i in element]
 
+#public
+def getGeoElement(element): # Get geometry of rebar.
+    geo = []
+    opt = Options()
+    opt.View = doc.ActiveView
+    opt.ComputeReferences = True
+    opt.IncludeNonVisibleObjects = True
+    geoByElement = element.get_Geometry(opt)
+    return geoByElement
+objects = getList(IN[1])
+OUT = [getGeoElement(UnwrapElement(i)) for i in objects];
+
+
+
 def GetSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:

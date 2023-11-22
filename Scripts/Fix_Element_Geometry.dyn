@@ -1,0 +1,502 @@
+{
+  "Uuid": "3193e51e-599d-4972-b5b3-e8df7b83ad2e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Fix_Element_Geometry",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "af67eda4-5aac-4cb7-b561-67a6e7e4c72e",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "6621f5a27e194348942a0e73e86d9689",
+      "Inputs": [
+        {
+          "Id": "3ec92dac23a847fd980b976bce60af6f",
+          "Name": "Objects",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "03ad7c3648dd450691608859d1f9232c",
+          "Name": "OUT",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return an object entity that can be displayed on the Dynamo interface."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "ff20c29f-c40f-4ac8-8667-6f9db09c91f7",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "a219692d69ca4bceb5b7e97962354084",
+      "Inputs": [
+        {
+          "Id": "682a34f7c6f1468abf03f0900cab6648",
+          "Name": "DBGeometry",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cd2bcee0e61248e083952563a895c906",
+          "Name": "DBLine",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extract actual Autodesk.Revit.DB.Line from Geometries."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "1b60f366-8807-46df-8d65-3464861ee6f7",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "c7f598a3068046088f19a16a9bf0ff28",
+      "Inputs": [
+        {
+          "Id": "2ac5d6fb76da4861badc67cd9612058b",
+          "Name": "rabars",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b2f9212e730040359f42d912f9bfc970",
+          "Name": "DBGeometry",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "A node written for the case of retrieving geometric objects within a Rebar."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "5e156052-1a3b-4de2-8044-4ea391eaba8f",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "6b1f232eeb9e43fa80453a4925109a66",
+      "Inputs": [
+        {
+          "Id": "f1efaefcb8504ae2962c6677b2326144",
+          "Name": "reset",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bd837500e70e4762851490e05d3e69b0",
+          "Name": "Family",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2c0446b2b74747e88336ba25b7d61eae",
+          "Name": "Reference",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Selection.PickObjects allow the user to pick multiple objects include (referece & family)  in Autodesk Revit using the Revit API."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "0bd3293f01f94b459259c96663bb1eed",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "242d826bd6674a34a5d3eed0f965b9f1",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "9bde34e2-70e4-40a2-8974-c865795e34d9",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "4ffa4ff59bb745e195a677624e34779b",
+      "Inputs": [
+        {
+          "Id": "e375598e10f44967a5562224187a6864",
+          "Name": "DBGeometry",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f999a5b43ed14e3c95a887acbaf14713",
+          "Name": "DBSolid",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extract actual Autodesk.Revit.DB.Solid from Geometries."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "47671276-7bcf-42d8-a67b-d9915fc34060",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "f6f5b846219341d7a7fe8058d3ad91e0",
+      "Inputs": [
+        {
+          "Id": "0ac83e7a4b784c9994713ad7090375be",
+          "Name": "Objects",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "382f617cf5614231abe70db64b191ceb",
+          "Name": "OUT",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return an object that Dynamo can display for you."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "47671276-7bcf-42d8-a67b-d9915fc34060",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "6c2312e145974c218be5792ef3df20a2",
+      "Inputs": [
+        {
+          "Id": "e94e56107e4e443fa6ff9778ef6f6c30",
+          "Name": "Objects",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bd065c0d73c5403982dbb0e99b61879e",
+          "Name": "OUT",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return an object that Dynamo can display for you."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Id": "6fe06606c4fa49cd97b25b75eeb40413",
+      "Inputs": [
+        {
+          "Id": "f296d0811d274bf18d2d938cf6435fd0",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3cbb3141a9da43aabc6819e1abfe369f",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all of the Geometry associated with this object\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "9f132756-a3e2-43b2-9241-93404b70e5f1-0008350b"
+      ],
+      "Id": "419256ead8d34087b5942e793fb990ce",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f472646211e24af9888193214434fd11",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "cd2bcee0e61248e083952563a895c906",
+      "End": "3ec92dac23a847fd980b976bce60af6f",
+      "Id": "8fc506af6bf144d3835558704151c7be"
+    },
+    {
+      "Start": "cd2bcee0e61248e083952563a895c906",
+      "End": "0ac83e7a4b784c9994713ad7090375be",
+      "Id": "eb41cb702eb04431a2c9b2d1b584fa10"
+    },
+    {
+      "Start": "b2f9212e730040359f42d912f9bfc970",
+      "End": "682a34f7c6f1468abf03f0900cab6648",
+      "Id": "78ae39caec364b00bd68671cc3c5c7c0"
+    },
+    {
+      "Start": "b2f9212e730040359f42d912f9bfc970",
+      "End": "e375598e10f44967a5562224187a6864",
+      "Id": "ff76a8ce5ca14d45a18765899ba4afd6"
+    },
+    {
+      "Start": "bd837500e70e4762851490e05d3e69b0",
+      "End": "2ac5d6fb76da4861badc67cd9612058b",
+      "Id": "a962b71c7b274b6893302fa2eb3a8583"
+    },
+    {
+      "Start": "242d826bd6674a34a5d3eed0f965b9f1",
+      "End": "f1efaefcb8504ae2962c6677b2326144",
+      "Id": "03f772d0c9db400bafc83eda4accb2c8"
+    },
+    {
+      "Start": "f999a5b43ed14e3c95a887acbaf14713",
+      "End": "e94e56107e4e443fa6ff9778ef6f6c30",
+      "Id": "0e52d81d687749a28a2e9501349d5261"
+    },
+    {
+      "Start": "f472646211e24af9888193214434fd11",
+      "End": "f296d0811d274bf18d2d938cf6435fd0",
+      "Id": "e512dfc9c4c546a18465879f57b27ccd"
+    }
+  ],
+  "Dependencies": [
+    "af67eda4-5aac-4cb7-b561-67a6e7e4c72e",
+    "ff20c29f-c40f-4ac8-8667-6f9db09c91f7",
+    "1b60f366-8807-46df-8d65-3464861ee6f7",
+    "5e156052-1a3b-4de2-8044-4ea391eaba8f",
+    "9bde34e2-70e4-40a2-8974-c865795e34d9",
+    "47671276-7bcf-42d8-a67b-d9915fc34060"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "BIM3DM",
+      "Version": "2.1.4",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "6621f5a27e194348942a0e73e86d9689",
+        "a219692d69ca4bceb5b7e97962354084",
+        "6b1f232eeb9e43fa80453a4925109a66",
+        "4ffa4ff59bb745e195a677624e34779b"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 1285.67578125,
+      "EyeY": 5592.86767578125,
+      "EyeZ": 4972.970703125,
+      "LookX": -281.6163330078125,
+      "LookY": -3603.74951171875,
+      "LookZ": -4228.09814453125,
+      "UpX": -0.031200887635350227,
+      "UpY": 0.88294768333435059,
+      "UpZ": -0.46843364834785461
+    },
+    "NodeViews": [
+      {
+        "Id": "6621f5a27e194348942a0e73e86d9689",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "ConversionRtD",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1605.0207124113419,
+        "Y": 1005.9652422618557
+      },
+      {
+        "Id": "a219692d69ca4bceb5b7e97962354084",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "DBLineByGeometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1551.9561872437985,
+        "Y": 618.71097308325386
+      },
+      {
+        "Id": "c7f598a3068046088f19a16a9bf0ff28",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "GeometryByElementsV3",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1231.2494538061726,
+        "Y": 495.14411940036842
+      },
+      {
+        "Id": "6b1f232eeb9e43fa80453a4925109a66",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "SelectionPickObjects",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 604.62682206758927,
+        "Y": 442.59137282390827
+      },
+      {
+        "Id": "0bd3293f01f94b459259c96663bb1eed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 456.70955620785162,
+        "Y": 442.87304314591836
+      },
+      {
+        "Id": "4ffa4ff59bb745e195a677624e34779b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "DBSolidByGeometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1590.7930333482288,
+        "Y": 162.69671978695155
+      },
+      {
+        "Id": "f6f5b846219341d7a7fe8058d3ad91e0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "ToProtoTypeLevel3",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1924.6021569786942,
+        "Y": 644.32955484779916
+      },
+      {
+        "Id": "6c2312e145974c218be5792ef3df20a2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "ToProtoTypeLevel3",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1917.4423772315843,
+        "Y": 171.76958785940803
+      },
+      {
+        "Id": "6fe06606c4fa49cd97b25b75eeb40413",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Element.Geometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 755.63170835772121,
+        "Y": 246.95598099488893
+      },
+      {
+        "Id": "419256ead8d34087b5942e793fb990ce",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Select Model Element",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 491.95449917758867,
+        "Y": 246.79831490325765
+      }
+    ],
+    "Annotations": [],
+    "X": -271.03993106660442,
+    "Y": 50.611481798848246,
+    "Zoom": 0.84920353761330414
+  }
+}
