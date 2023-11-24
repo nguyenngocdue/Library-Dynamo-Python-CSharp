@@ -40,7 +40,6 @@ def flatten_to_minimum_level(lst, level):
     return flatten_helper(lst, 1)
     
 
-    
 def traverse_nested_list(IN):
     def traverse_helper(lst):
         result = []

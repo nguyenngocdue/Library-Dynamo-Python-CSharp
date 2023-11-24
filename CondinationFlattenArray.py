@@ -42,15 +42,8 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 #########################################################################
 
-#public
-def is_array(obj):
-    return "List" in obj.__class__.__name__
-#public
-def get_array_rank(array):
-    if is_array(array):
-        return 1 + max(get_array_rank(item) for item in array)
-    else:
-        return 0
+
+#########################################################################
 
 def flatten_to_1d(arr):
     result = []
@@ -64,30 +57,25 @@ def flatten_to_1d(arr):
     recursive_flatten(arr)
     return result
 
+def is_array(obj):
+    return "List" in obj.__class__.__name__
 
-def filterElementsByGeometryType(elements, typeName='Line'):
+def get_array_rank(array):
+    if is_array(array):
+        return 1 + max(get_array_rank(item) for item in array)
+    else:
+        return 0
+
+def flatten_array_more_then_num(objects, level):
     result = []
-    if typeName == 'Solid': typeName = 'Mesh'
-    for element in elements:
-        element = UnwrapElement(element)
-        try:
-            if(str(element.ToRevitType()).Contains(typeName)):
-                result.append(element)
-        except:
-            continue
-
+    for item in objects:
+        newRank = get_array_rank(item)
+        if  is_array(item) and newRank >= level:
+            arr = flatten_to_1d(item)
+            result.append(arr)
+        else:
+            result.append(item)
     return result
 
 objects = UnwrapElement(IN[1])
-typeName = IN[2]
-
-rank = get_array_rank(objects)
-if rank == 1:
-    OUT = filterElementsByGeometryType(objects, typeName)
-elif rank == 2:
-    out = []
-    for element in objects: out.append(filterElementsByGeometryType(element, typeName))
-    OUT = out
-else:
-    elements = flatten_to_1d(objects)
-    OUT = filterElementsByGeometryType(elements, typeName)
+OUT = flatten_array_more_then_num(objects, 2)
