@@ -1,3 +1,10 @@
+def get_array_rank(array):
+    if is_array(array):
+        return 1 + max(get_array_rank(item) for item in array)
+    else:
+        return 0
+
+
 objects = UnwrapElement(IN[1])
 typeName = IN[2]
 

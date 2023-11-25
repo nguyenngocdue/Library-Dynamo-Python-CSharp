@@ -763,7 +763,7 @@ def GetView( view,doc):
 		return  doc.GetElement(numview)
 ###------------------------------------------------ Get All Family ---------------------------------------------------------###
 
-def Get_Dicof_FamilyNames(category):
+def getFamilyNames(category):
 	collector = FilteredElementCollector(doc).OfCategory(category).WhereElementIsElementType().ToElements()
 	All_Families = {}
 	for family in collector:
@@ -772,8 +772,16 @@ def Get_Dicof_FamilyNames(category):
 			All_Families[name]= family
 	return (All_Families)
 # Get OST of BuilinCategory
+#public
 def getBuilIncategory_OTS(nameCategory): # Get Name of BuiltInCategory
-    return [i for i in System.Enum.GetValues(BuiltInCategory) if str(i) == "OST_"+nameCategory]
+    return [i for i in System.Enum.GetValues(BuiltInCategory) if str(i) == "OST_"+nameCategory or str(i) == nameCategory ]
+#public
+def getFamilyByOfCategory(OST_cateNane, isElementType):
+	collector = FilteredElementCollector(doc).OfCategory(OST_cateNane).WhereElementIsNotElementType().ToElements()
+	if isElementType:
+		collector = FilteredElementCollector(doc).OfCategory(OST_cateNane).WhereElementIsElementType().ToElements()
+	return collector, OST_cateNane
+
 def getAllFamilyOfBuiltInCategory(OST_cateNane): # Get all family from BuilInCategory
     collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_PlumbingFixtures).OfClass(FamilySymbol).ToElements()
     families = set()

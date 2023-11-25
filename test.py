@@ -1,8 +1,3 @@
-"""Copyright(c) 2023 by: duengocnguyen@gmail.com"""
-"site_url: https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g",
-"repository_url:https://github.com/nguyenngocdue/Library-Dynamo-Python-CSharp"
-"""________________Welcome to BIM3DM-DYNAMO API___________________"""
-
 import clr
 import System
  
@@ -25,33 +20,13 @@ from  Autodesk.Revit.UI.Selection import ISelectionFilter
 clr.AddReference('RevitAPI')
 from Autodesk.Revit.DB import*
 #########################################################################
-clr.AddReference('System.Windows.Forms')
-clr.AddReference('System.Drawing')
-clr.AddReference('System.Windows.Forms.DataVisualization')
-import System.Windows.Forms
-import System.Drawing
-from System.Drawing import *
-from System.Windows.Forms import *
-from System.Collections.Generic import *
-from Autodesk.Revit.DB import FilteredElementCollector, BuiltInCategory, Transaction
-from Autodesk.Revit.DB import Line, Solid, Arc
-#########################################################################
-doc = DocumentManager.Instance.CurrentDBDocument
-#View = doc.ActiveView
-uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-
-#########################################################################
-
-#public
 def is_array(obj):
     return "List" in obj.__class__.__name__
-#public
 def get_array_rank(array):
     if is_array(array):
         return 1 + max(get_array_rank(item) for item in array)
     else:
         return 0
-
 def flatten_to_1d(arr):
     result = []
     def recursive_flatten(subarray):
@@ -64,30 +39,24 @@ def flatten_to_1d(arr):
     recursive_flatten(arr)
     return result
 
+#########################################################################
+doc = DocumentManager.Instance.CurrentDBDocument
+View = doc.ActiveView
+uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
+#########################################################################
 
-def filterElementsByGeometryType(elements, typeName='Line'):
-    result = []
-    if typeName == 'Solid': typeName = 'Mesh'
-    for element in elements:
-        element = UnwrapElement(element)
-        try:
-            if(str(element.ToRevitType()).Contains(typeName)):
-                result.append(element)
-        except:
-            continue
 
-    return result
+
+def getFamilyByOfCategory(OST_cateNane):
+	collector = FilteredElementCollector(doc).OfCategory(OST_cateNane).OfClass(Family).ToElements()
+	return collector, OST_cateNane
 
 objects = UnwrapElement(IN[1])
-typeName = IN[2]
-
 rank = get_array_rank(objects)
-if rank == 1:
-    OUT = filterElementsByGeometryType(objects, typeName)
-elif rank == 2:
-    out = []
-    for element in objects: out.append(filterElementsByGeometryType(element, typeName))
-    OUT = out
+if rank == 0:
+    OUT = getFamilyByOfCategory(objects)
+elif rank == 1:
+    OUT = [getFamilyByOfCategory(element) for element in objects]
 else:
     elements = flatten_to_1d(objects)
-    OUT = filterElementsByGeometryType(elements, typeName)
+    OUT = getFamilyByOfCategory(objects)
