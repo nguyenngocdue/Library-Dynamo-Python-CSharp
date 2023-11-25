@@ -22,6 +22,7 @@ from Autodesk.Revit.DB import*
 #########################################################################
 def is_array(obj):
     return "List" in obj.__class__.__name__
+
 def get_array_rank(array):
     if is_array(array):
         return 1 + max(get_array_rank(item) for item in array)
@@ -46,17 +47,19 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 #########################################################################
 
 
+def getDBPlanarFormSolid(solid): # Get Planarface from solids
+    return solid.Faces
 
-def getFamilyByOfCategory(OST_cateNane):
-	collector = FilteredElementCollector(doc).OfCategory(OST_cateNane).OfClass(Family).ToElements()
-	return collector, OST_cateNane
 
 objects = UnwrapElement(IN[1])
+
 rank = get_array_rank(objects)
-if rank == 0:
-    OUT = getFamilyByOfCategory(objects)
-elif rank == 1:
-    OUT = [getFamilyByOfCategory(element) for element in objects]
+if rank == 0: #a
+    OUT = getDBPlanarFormSolid(objects)
+elif rank == 1: #[a]
+    OUT = [getDBPlanarFormSolid(element) for element in objects]
+elif rank == 2: #[[a]]
+    OUT = [getDBPlanarFormSolid(i) for j in objects for i in j]
 else:
-    elements = flatten_to_1d(objects)
-    OUT = getFamilyByOfCategory(objects)
+    elements = flatten_to_1d(objects) #[a]
+    OUT =  getDBPlanarFormSolid(elements)
