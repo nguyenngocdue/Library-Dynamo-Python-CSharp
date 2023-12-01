@@ -27,38 +27,40 @@ clr.AddReference("RevitServices")
 import RevitServices
 from RevitServices.Persistence import DocumentManager
 from RevitServices.Transactions import TransactionManager
+from Autodesk.DesignScript.Geometry import Point
+
 #########################################################################
 def is_array(obj):
-    return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
+	return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
 
 def get_array_rank(array):
-    if is_array(array):
-        return 1 + max(get_array_rank(item) for item in array)
-    else:
-        return 0
+	if is_array(array):
+		return 1 + max(get_array_rank(item) for item in array)
+	else:
+		return 0
 def flatten_to_1d(arr):
-    result = []
-    def recursive_flatten(subarray):
-        for item in subarray:
-            if is_array(item):
-                recursive_flatten(item)
-            else:
-                result.append(item)
+	result = []
+	def recursive_flatten(subarray):
+		for item in subarray:
+			if is_array(item):
+				recursive_flatten(item)
+			else:
+				result.append(item)
 
-    recursive_flatten(arr)
-    return result
+	recursive_flatten(arr)
+	return result
 def returnOUT(objects, fn):
-    rank = get_array_rank(objects)
-    if rank == 1: #a
-        return fn(objects)
-    elif rank == 2: #[a]
-        return [fn(element) for element in objects]
-    elif rank == 3: #[[a]]
-        return [fn(i) for j in objects for i in j]
-    else:
-        elements = flatten_to_1d(objects) #[a]
-        return fn(elements)
-    return None
+	rank = get_array_rank(objects)
+	if rank == 1: #a
+		return fn(objects)
+	elif rank == 2: #[a]
+		return [fn(element) for element in objects]
+	elif rank == 3: #[[a]]
+		return [fn(i) for j in objects for i in j]
+	else:
+		elements = flatten_to_1d(objects) #[a]
+		return fn(elements)
+	return None
 
 
 #########################################################################
@@ -67,20 +69,19 @@ View = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application 
 ###############################CODE HERE#################################
-def getXYZByDBLines(dbLines):
-	XYZs = []
-	for dbLine in dbLines:
-		start_point = dbLine.GetEndPoint(0)
-		end_point = dbLine.GetEndPoint(1)
-		XYZs.append(start_point)
-		XYZs.append(end_point)
-	return XYZs
-
+def getDBLineFormEleLine(elementLines): # Get Revit.DB.Line from Curve Elements
+    opt = Options()
+    opt.ComputeReferences = True
+    opt.IncludeNonVisibleObjects = True
+    opt.View = doc.ActiveView
+    ln = []
+    for j in elementLines:
+    	ln.append(UnwrapElement(j).ToRevitType())
+    return ln
 
 objects = IN[1]
 #change name of your def
-fn = getXYZByDBLines
-
+fn = getDBLineFormEleLine
 
 ###############################END CODE##################################
 OUT = returnOUT(objects, fn)

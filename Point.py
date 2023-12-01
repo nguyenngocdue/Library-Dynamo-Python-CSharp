@@ -305,5 +305,22 @@ class GenerationPoint:
         return paired_points
 
 ----------------------------------------------------------------
+#public
+def getPointByLines(lines):
+    points = []
+    for line in lines:
+        start_point = Point.ByCoordinates(line.StartPoint.X, line.StartPoint.Y, line.StartPoint.Z)
+        end_point = Point.ByCoordinates(line.EndPoint.X, line.EndPoint.Y, line.EndPoint.Z)
+        points.append([start_point, end_point])
+    return points
+#public
+def getXYZByPoints(points):
+    xyz_coordinates = []
+    for point in points:
+        x = round(point.X, 3)
+        y = round(point.Y, 3)
+        z = round(point.Z, 3)
+        xyz_coordinates.append(XYZ(x, y, z))
+    return xyz_coordinates
 def getXYZFromPoint(point):
     return XYZ(line.StartPoint.X, line.StartPoint.Y, line.StartPoint.Z)

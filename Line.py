@@ -41,3 +41,13 @@ def get_xyz_from_db_line(db_line):
 
     # Return the XYZ coordinates
     return start_xyz, end_xyz
+#public
+def getDBLineFormEleLine(elementLines): # Get Revit.DB.Line from Curve Elements
+    opt = Options()
+    opt.ComputeReferences = True
+    opt.IncludeNonVisibleObjects = True
+    opt.View = doc.ActiveView
+    ln = []
+    for j in elementLines:
+    	ln.append(UnwrapElement(j).ToRevitType())
+    return ln
