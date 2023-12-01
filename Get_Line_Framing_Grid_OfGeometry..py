@@ -37,8 +37,6 @@ class SelectionFilter(ISelectionFilter):
 		self.ctgName1 = ctgName1
 		self.ctgName2 = ctgName2
 		self.ctgName3 = ctgName3
-
-
 	def AllowElement(self, element):
 		if element.Category.Name == self.ctgName1 or element.Category.Name == self.ctgName2 or element.Category.Name == self.ctgName3:
 			return True

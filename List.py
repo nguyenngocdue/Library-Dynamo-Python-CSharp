@@ -19,3 +19,11 @@ def flatten_to_1d(arr):
 
     recursive_flatten(arr)
     return result
+# public
+def getValueByKeyObject(keys, objects):
+    arrKeys, values = [], []
+    for k in keys:
+        if k in objects.keys():
+            arrKeys.append(k)
+            values.append(objects[k])
+    return arrKeys, values

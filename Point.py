@@ -303,3 +303,7 @@ class GenerationPoint:
                 pair = [lst[i], lst[i+1]]
                 paired_points.append(pair)
         return paired_points
+
+----------------------------------------------------------------
+def getXYZFromPoint(point):
+    return XYZ(line.StartPoint.X, line.StartPoint.Y, line.StartPoint.Z)

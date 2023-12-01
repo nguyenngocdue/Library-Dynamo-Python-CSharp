@@ -1274,7 +1274,6 @@ def getValueByKeyObject(keys, objects):
             val =  str(objects[k])
             if val.isnumeric(): values.append(round(float(val),2))
             else: values.append(str(objects[k]))
-
     return arrKeys, values
 
 def unwrap_elements(input_element):

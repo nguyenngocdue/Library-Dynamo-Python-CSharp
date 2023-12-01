@@ -1,5 +1,6 @@
 """Copyright(c) 2023 by: duengocnguyen@gmail.com"""
-'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'
+"site_url: https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g",
+"repository_url:https://github.com/nguyenngocdue/Library-Dynamo-Python-CSharp"
 """________________Welcome to BIM3DM-DYNAMO API___________________"""
 import clr 
 import sys

@@ -20,9 +20,9 @@ from  Autodesk.Revit.UI.Selection import ISelectionFilter
 clr.AddReference('RevitAPI')
 from Autodesk.Revit.DB import*
 #########################################################################
-#public
+#not yet public
 def is_array(obj):
-    return "List" in obj.__class__.__name__
+    return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
 #public
 def get_array_rank(array):
     if is_array(array):
