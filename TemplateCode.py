@@ -48,7 +48,7 @@ def flatten_to_1d(arr):
 
     recursive_flatten(arr)
     return result
-def returnOUT(objects):
+def returnOUT(objects, fn):
     rank = get_array_rank(objects)
     if rank == 1: #a
         return fn(objects)
@@ -84,4 +84,4 @@ fn = getXYZByDBLines
 
 
 ###############################END CODE##################################
-OUT = returnOUT(objects)
+OUT = returnOUT(objects, fn)
