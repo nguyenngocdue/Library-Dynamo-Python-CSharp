@@ -27,8 +27,6 @@ clr.AddReference("RevitServices")
 import RevitServices
 from RevitServices.Persistence import DocumentManager
 from RevitServices.Transactions import TransactionManager
-from Autodesk.DesignScript.Geometry import Point
-
 #########################################################################
 def is_array(obj):
 	return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
@@ -49,17 +47,17 @@ def flatten_to_1d(arr):
 
 	recursive_flatten(arr)
 	return result
-def returnOUT(fn):
+def returnOUT(objects, fn):
 	rank = get_array_rank(objects)
 	if rank == 1: #a
-		return fn
+		return fn(objects)
 	elif rank == 2: #[a]
-		return [fn for element in objects]
+		return [fn(element) for element in objects]
 	elif rank == 3: #[[a]]
-		return [fn for j in objects for i in j]
+		return [fn(i) for j in objects for i in j]
 	else:
 		elements = flatten_to_1d(objects) #[a]
-		return fn
+		return fn(elements)
 	return None
 
 
@@ -69,20 +67,18 @@ View = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application 
 ###############################CODE HERE#################################
-#public
-def sortPointsByAxis(points, axis='X', descending=False):
-    # Define a lambda function to extract the specified axis value from a point
-    key_function = lambda point: getattr(point, axis)
-    # Sort the points based on the specified axis
-    sorted_points = sorted(points, key=key_function, reverse=descending)
-    return sorted_points
-
+def getPointsFromXYZ(lstXYZ):
+	result = []
+	for xyz in lstXYZ:
+		x = xyz.X/304.8
+		y = xyz.Y/304.8
+		z = xyz.Z/304.8
+		result.append(XYZ(x,y,z).ToPoint())
+	return result
 
 objects = IN[1]
-descending = IN[2]
-axis = IN[3]
 #change name of your def
-fn = sortPointsByAxis(objects,axis, descending)
+fn = getPointsFromXYZ
 
 ###############################END CODE##################################
-OUT = returnOUT(fn) 
+OUT = returnOUT(objects, fn)

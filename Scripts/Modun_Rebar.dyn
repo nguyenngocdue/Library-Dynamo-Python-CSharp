@@ -1,0 +1,1709 @@
+{
+  "Uuid": "3193e51e-599d-4972-b5b3-e8df7b83ad2e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Modun_Rebar",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "512e597c-e6de-4dea-b934-2980ba4f9c2e",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "e0d4cd7b462e4b2fb700b2f94d38bdbe",
+      "Inputs": [
+        {
+          "Id": "72d718d018324cf68a9a7c81ab8c2a70",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "96724c6e7aa345248ebe2e873039951f",
+          "Name": "Quantity",
+          "Description": "The number of bar positions in rebar set\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eb30af255ae74adf8d56578754398a98",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5aaf7f25b8f1478b8b2f7f296ad62e60",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6eb18e7c8cbf40fb8036751d2c356587",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "13995ca18af840428c1a22f1ede52c68",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "73c79887ce974dcd87244570cf3711c4",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a58839618ba84ac2a4ca70d34acbf484",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Set the arrangement rule of the rebar set to 'NumberWithSpacing'"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "ef17a769a2d445ff85020c67f33e9a9d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "79780c8ba20a40c48c5289bfc23b9ee7",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "dbb9d1e5-9db1-4ffd-9362-cdf9edb31c8a",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "acb6ad7b91e14b578190ceb7cfcbb4c6",
+      "Inputs": [
+        {
+          "Id": "88a0e8ce687e45d8b3ce07ecaa865574",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42ac00c8f89248ef8e0313e694fa520b",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d141b4a3e18c4e38bfb7a70ca194bdd2",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fd2b20f042f94279bea0d0a6c6f6c6d9",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a8242e14a9304ea89191319f672be211",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1e4c883f04040e494ef82c726aba66c",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0da190d9c1874c168d0b5ab9a746a70e",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a08d2f5e07fd457b95cddfddcccded11",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adjusts the rebar set's Layout Rule property to use 'Minimum Clear Spacing'."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "d63a2b1d14df422db27eca6e65776426",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7a008e818da8478a9bc027733012c016",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 100.0,
+      "Id": "fb18ac4a1ad1435b95eeb375cf36cde6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "196cc06eb96e4b6c872d21a26f8a0706",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 200.0,
+      "Id": "3ffa1be2b8394436b417a0bdc41562e1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0cecbaf7955a4480ab64384388717b80",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 50.0,
+      "Id": "cb68452390644732a44a5ff6902cbc66",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "93d80cd895064cc5918e31f85779c285",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 10000.0,
+      "Id": "3a5c8fb2cd7a4718a5f239d7aad49834",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "fb54442e60744f028cfadb176d47e2e7",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "680d7f2639b448df9677cb870c9adf2f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a0dba41679224492b9b6d822d4f7d746",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "d25638b101f14eeb91673382c43e2148",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "564db7b4cf7a45ac818bce565e46aecf",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "8f9d2c82-2d79-430c-aff0-98e9558388be-0007da6f"
+      ],
+      "Id": "ba7fb0ddc2354f259c43817b96bb80aa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "254ad439bdc34427aae5808d9b435958",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "8f9d2c82-2d79-430c-aff0-98e9558388be-0007da6f"
+      ],
+      "Id": "fa3ef1cad2284bdc97fe3657639293c6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "68d86ce958214c498f509f8de2e92460",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "19beed20-7c4b-497e-a82a-77e4eb51299a",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "1ac2e6ac23a24f2bb17cb11e8293aa43",
+      "Inputs": [
+        {
+          "Id": "8e80a352ad3f445e80d46a49b789fe6e",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b305c65b824d49719c5e7bb540c59ec4",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6dcf34fd042c4ed9b3c50de212e4f0e2",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "49cc16a1b60a4188b6fa5aefdcd6a261",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c2d50c2f808f402f9be047da077ff14e",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8bed3338e12e489bb9bdb7c201394c96",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3aa9fb02e22d422fb2715e7ecc2c522b",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ad8561e4d324619a0726313724ecc11",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the Layout Rule property of rebar set to Maximum Spacing"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "014884cb-f530-4cba-848f-3cb518e4fd42",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "655155ee8f27410cb4ecb0be495f39cb",
+      "Inputs": [
+        {
+          "Id": "efad7da2dd2848849346beb016322ccf",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0c5fbe245f5b472999141e4dad1cfaf9",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "15762c46f86341c298697156e1bcb1c7",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "59652f1f14fa409895ee9418b90f6cbf",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "36939ce81f934723b801a8978fd04780",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "218939eee2a0409f897584593065f415",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4468445356be4d60b046d8bb384d8276",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "158d06e926d145629d25384ef8bc844f",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the Layout Rule property of rebar set to MinimumClearSpacing."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "824721d7-944e-4d05-a74d-faa0e698265b",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "90a4d10923ef4360b7f736630da508e2",
+      "Inputs": [
+        {
+          "Id": "6874aed056284ccf9972cbe125b5af41",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cf4da352299e412491d478c7510c594a",
+          "Name": "Quantity",
+          "Description": "The number of bar positions in rebar set\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "29d83c6410fc4e0ea0c49edbbca1fc66",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0099e436213740748a7333798c0e4549",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eb632ecbaf47428f94c29ff2c5ffd0ef",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5da7be589ff5437abfb77b90fe52af9e",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "75fd3844bdd74e9fa36c210623d62a6b",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eaa51210a70e49aca5d8257691fb8037",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the Layout Rule property of rebar set to NumberWithSpacing"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "20f41051-aece-4901-937b-4026e65bc854",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "a46cc7b5330245b4b045ed01d577267b",
+      "Inputs": [
+        {
+          "Id": "15ed33c15dc549e8af138e859b3cd8dc",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "91b21592bf284a11a3a143fd82a70c19",
+          "Name": "Spacing",
+          "Description": "The maximum spacing between rebar in rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8233f1c353fa491db9385f19852882a2",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8638c02064a84cbc8ade65fea088b8a5",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side\nof the rebar plane indicated by the normal\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5b32db80029e47178d62b39c0c653a58",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e2e623bc46f14ebbbe7c67b65c034790",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6b81d909665e4a2dbcfbb32c212f4987",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8683a2ad6ab9480bbde4fa3baf1980e5",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adjusts the rebar set's Layout Rule property to use Maximum Spacing."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "8f9d2c82-2d79-430c-aff0-98e9558388be-0007da6f"
+      ],
+      "Id": "51a49066203b4239813ecddab99ec36a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1681f9375cc24eb0b5f52fd8edc01ec2",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "6971e426809b4afdb73055f3fa4538e6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5817540297af4309a2d50de39994490e",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 5000.0,
+      "Id": "3f855c275bd649478136f43eb41ce8f1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a8472ded3e8e4cce8bab7211738f21da",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "c31189f5ec3b41febbceb80036ff849b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "00f6122dfcda4d1a9141eaab906a181a",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 50.0,
+      "Id": "7f742c4c62654b3e878d536e78d691e9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7b53500d2f864b75a7a02abd6fae71ca",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "e3e2ff19-ccb6-4fd5-829d-d4fe0f43e3ac",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "bb1424f94dc64782b4d01a6f2f8568a7",
+      "Inputs": [
+        {
+          "Id": "a21dba867b174b17a5bd9d5341d2c955",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7213ffd4ec3d482ca1d0c8be659bd650",
+          "Name": "Quantity",
+          "Description": "The number of bar positions in rebar set\n\nint",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d27eecef8bba4886a339607e180e7c6c",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "194c9353a02b458492c0bdae48b43c1f",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b9066cc6230846089feca2a83129e234",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "279b4fe0194240058384380be626bac7",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4c74c1babf024338a6743f5e61189f60",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7f34f16ac60e43c790473e5994f5dc26",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adjusts the rebar set's Layout Rule property to use 'Fixed Number'."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "ebf59fe0-d2a5-40d9-986d-7e1e0e6e53ae",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "e5e63ffb2d444f72a3ec637a1778568e",
+      "Inputs": [
+        {
+          "Id": "a0389b7200864cbf975aa0dfef6730a8",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f0ec0451213045aea45136f0f1d8b938",
+          "Name": "Quantity",
+          "Description": "The number of bar positions in rebar set\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d8553c97b26742ef8a326c24d8bcdab7",
+          "Name": "RebarSetLength",
+          "Description": "The distribution length of rebar set\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b710be4fecfb4e8682971623481fc4f6",
+          "Name": "barsOnNormalSide",
+          "Description": "Identifies if the bars of the rebar set are on the same side \nof the rebar plane indicated by the normal\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6ddc3481a22b49e494d80cd0d56d294d",
+          "Name": "IncludeFirstBar",
+          "Description": "Identifies if the first bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ce9d27fa7a7f40889e80f8f4736bc8f3",
+          "Name": "IncludeLastBar",
+          "Description": "dentifies if the last bar in rebar set is shown\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c5884c4ff2e44ae3be485b05b1495dce",
+          "Name": "InputInMM",
+          "Description": "Input the value in mm (true) or feet (false)\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "39a973ca50e84c88b12be344c9d0c7ab",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the Layout Rule property of rebar set to FixedNumber."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "0249298158ab438fb999cdddf185d135",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "fedc1881f41b4560be1917bf97b289f2",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "fa9b4fc4e8104e2094708e47d4b2071b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bda0dbeb7524479d8b6b1eb35bab78df",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 10000.0,
+      "Id": "3adfc8858fce4ba79a9b923728dfe021",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "eeb97c85418b49eaaebb445049fe7b47",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 200.0,
+      "Id": "44df08513dce4f54ad481d45f5b205ac",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b3ee77acf4d04dcdb5f7fe915a195de5",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "9f132756-a3e2-43b2-9241-93404b70e5f1-0008350c"
+      ],
+      "Id": "25f892865586419db9ba81749d65dd7a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "addc72c1bd36481eb5ffa5f6f5b103d6",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "3db5f2f1-2070-492b-b95c-4da63806439c",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "57ec7d6e2c2643a3ae8815a3c808bfd7",
+      "Inputs": [
+        {
+          "Id": "49957611965f45d49f9001a40a53cc3f",
+          "Name": "rebarElement",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7bdee84f6f4049f19eb5364455af8e81",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Changes the Layout Rule property of the rebar set to Single."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "97ff9e0c-15d2-4f77-8cf3-913dda3dc1db",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "a978d98edd12408eba8f344069c4cfbf",
+      "Inputs": [
+        {
+          "Id": "d52be79361054bf1aae3a36a8730c1ba",
+          "Name": "rebarElement",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3a00d75525854744a175b9e5ec9f60cd",
+          "Name": "DistributionType",
+          "Description": "Choose the distribution type\nTrue = Varying Length\nFalse = Uniform\n\nbool\nDefault value : tTypedIdent0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8f55034d79e14f3cb9cb642d2f3d9e29",
+          "Name": "rebarElement",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Toggle to set the distribution type of a rebar set to \"Varying Length\" (True) or \"Uniform\" (False)"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "8f9d2c82-2d79-430c-aff0-98e9558388be-0007da6f"
+      ],
+      "Id": "a5e33d97fa1d4254b7ceb0fc3fadd251",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3ee05a5f7713435ea166369212c4ba55",
+          "Name": "Elements",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "79780c8ba20a40c48c5289bfc23b9ee7",
+      "End": "73c79887ce974dcd87244570cf3711c4",
+      "Id": "02daab31cb214a658768aa0f7fb8a78c"
+    },
+    {
+      "Start": "7a008e818da8478a9bc027733012c016",
+      "End": "5aaf7f25b8f1478b8b2f7f296ad62e60",
+      "Id": "d4bd4cce61e8423ebdd05ae6a5e7ac11"
+    },
+    {
+      "Start": "7a008e818da8478a9bc027733012c016",
+      "End": "6eb18e7c8cbf40fb8036751d2c356587",
+      "Id": "96d1c2f611a743668c12ec30ca1f2ccf"
+    },
+    {
+      "Start": "7a008e818da8478a9bc027733012c016",
+      "End": "13995ca18af840428c1a22f1ede52c68",
+      "Id": "2998a97a3e4c46fe9f90838253ece578"
+    },
+    {
+      "Start": "196cc06eb96e4b6c872d21a26f8a0706",
+      "End": "eb30af255ae74adf8d56578754398a98",
+      "Id": "0ad621f5108f4f7f85cd59330dcf785d"
+    },
+    {
+      "Start": "0cecbaf7955a4480ab64384388717b80",
+      "End": "96724c6e7aa345248ebe2e873039951f",
+      "Id": "371365180d864c3ab8050185aa7733d5"
+    },
+    {
+      "Start": "93d80cd895064cc5918e31f85779c285",
+      "End": "42ac00c8f89248ef8e0313e694fa520b",
+      "Id": "e0c70e5178de4ecc859d0d3a9b5c5cdf"
+    },
+    {
+      "Start": "fb54442e60744f028cfadb176d47e2e7",
+      "End": "d141b4a3e18c4e38bfb7a70ca194bdd2",
+      "Id": "a5f4187c13674f4b9c218bce79f2c5dc"
+    },
+    {
+      "Start": "a0dba41679224492b9b6d822d4f7d746",
+      "End": "fd2b20f042f94279bea0d0a6c6f6c6d9",
+      "Id": "4b7cf29203bc47f5abdf3eda15bd4a72"
+    },
+    {
+      "Start": "a0dba41679224492b9b6d822d4f7d746",
+      "End": "a8242e14a9304ea89191319f672be211",
+      "Id": "21fbb4787df64b7182b420287fbf453a"
+    },
+    {
+      "Start": "a0dba41679224492b9b6d822d4f7d746",
+      "End": "b1e4c883f04040e494ef82c726aba66c",
+      "Id": "f1e5691a32d142f18e9395941fee4c2f"
+    },
+    {
+      "Start": "564db7b4cf7a45ac818bce565e46aecf",
+      "End": "0da190d9c1874c168d0b5ab9a746a70e",
+      "Id": "7a53facdcf2a4a2ea600080e94b40ce7"
+    },
+    {
+      "Start": "254ad439bdc34427aae5808d9b435958",
+      "End": "88a0e8ce687e45d8b3ce07ecaa865574",
+      "Id": "2c14667b9f424826b2ac95fcbd897ac5"
+    },
+    {
+      "Start": "68d86ce958214c498f509f8de2e92460",
+      "End": "72d718d018324cf68a9a7c81ab8c2a70",
+      "Id": "f6dc187afd754db687d87eff76a6eef1"
+    },
+    {
+      "Start": "1681f9375cc24eb0b5f52fd8edc01ec2",
+      "End": "15ed33c15dc549e8af138e859b3cd8dc",
+      "Id": "afdeb088a1d44c608146776edca52630"
+    },
+    {
+      "Start": "5817540297af4309a2d50de39994490e",
+      "End": "6b81d909665e4a2dbcfbb32c212f4987",
+      "Id": "93df9351e50d4d7cb4244d77efd087d1"
+    },
+    {
+      "Start": "a8472ded3e8e4cce8bab7211738f21da",
+      "End": "8233f1c353fa491db9385f19852882a2",
+      "Id": "b66e219037854fea93924cc6fb96835f"
+    },
+    {
+      "Start": "00f6122dfcda4d1a9141eaab906a181a",
+      "End": "8638c02064a84cbc8ade65fea088b8a5",
+      "Id": "cf323a0ce33c4ce69251efc30f5430ca"
+    },
+    {
+      "Start": "00f6122dfcda4d1a9141eaab906a181a",
+      "End": "5b32db80029e47178d62b39c0c653a58",
+      "Id": "1f4c9e61a1224c1d9111b6be4d3a41aa"
+    },
+    {
+      "Start": "00f6122dfcda4d1a9141eaab906a181a",
+      "End": "e2e623bc46f14ebbbe7c67b65c034790",
+      "Id": "6c607a78083340fd967d27673078caa2"
+    },
+    {
+      "Start": "7b53500d2f864b75a7a02abd6fae71ca",
+      "End": "91b21592bf284a11a3a143fd82a70c19",
+      "Id": "9d83dd5a5b2246b3b972f86041db1389"
+    },
+    {
+      "Start": "fedc1881f41b4560be1917bf97b289f2",
+      "End": "4c74c1babf024338a6743f5e61189f60",
+      "Id": "45f5315b6036474d9aed2aab41e6fcd3"
+    },
+    {
+      "Start": "bda0dbeb7524479d8b6b1eb35bab78df",
+      "End": "194c9353a02b458492c0bdae48b43c1f",
+      "Id": "55dfb2acf5504737a9a109b7e59d95d1"
+    },
+    {
+      "Start": "bda0dbeb7524479d8b6b1eb35bab78df",
+      "End": "b9066cc6230846089feca2a83129e234",
+      "Id": "0ff159a3df8b423f853a94bf7935cc1b"
+    },
+    {
+      "Start": "bda0dbeb7524479d8b6b1eb35bab78df",
+      "End": "279b4fe0194240058384380be626bac7",
+      "Id": "ef044204463744be866ed30e27cc5f2f"
+    },
+    {
+      "Start": "eeb97c85418b49eaaebb445049fe7b47",
+      "End": "d27eecef8bba4886a339607e180e7c6c",
+      "Id": "5e727051eea0481fb71c12fff6f7038b"
+    },
+    {
+      "Start": "b3ee77acf4d04dcdb5f7fe915a195de5",
+      "End": "7213ffd4ec3d482ca1d0c8be659bd650",
+      "Id": "24e46fc9ef0249bfb2525a85f4cdcaf0"
+    },
+    {
+      "Start": "addc72c1bd36481eb5ffa5f6f5b103d6",
+      "End": "a21dba867b174b17a5bd9d5341d2c955",
+      "Id": "874440439dba4e44878674d00f451933"
+    },
+    {
+      "Start": "3ee05a5f7713435ea166369212c4ba55",
+      "End": "49957611965f45d49f9001a40a53cc3f",
+      "Id": "72d7d79ae172477e98be7e0a05650a5e"
+    }
+  ],
+  "Dependencies": [
+    "512e597c-e6de-4dea-b934-2980ba4f9c2e",
+    "dbb9d1e5-9db1-4ffd-9362-cdf9edb31c8a",
+    "19beed20-7c4b-497e-a82a-77e4eb51299a",
+    "014884cb-f530-4cba-848f-3cb518e4fd42",
+    "824721d7-944e-4d05-a74d-faa0e698265b",
+    "20f41051-aece-4901-937b-4026e65bc854",
+    "e3e2ff19-ccb6-4fd5-829d-d4fe0f43e3ac",
+    "ebf59fe0-d2a5-40d9-986d-7e1e0e6e53ae",
+    "3db5f2f1-2070-492b-b95c-4da63806439c",
+    "97ff9e0c-15d2-4f77-8cf3-913dda3dc1db"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "BIM4Struc.Rebar",
+      "Version": "1.3.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "1ac2e6ac23a24f2bb17cb11e8293aa43",
+        "655155ee8f27410cb4ecb0be495f39cb",
+        "90a4d10923ef4360b7f736630da508e2",
+        "e5e63ffb2d444f72a3ec637a1778568e",
+        "a978d98edd12408eba8f344069c4cfbf"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "RebarSetLayoutAsNumberWithSpacing",
+        "Id": "e0d4cd7b462e4b2fb700b2f94d38bdbe",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 3208.1221700942142,
+        "Y": 527.00246748938366
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "ef17a769a2d445ff85020c67f33e9a9d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3017.1760261775444,
+        "Y": 770.5893693253638
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RebarSetLayoutAsMinimumClearSpacing",
+        "Id": "acb6ad7b91e14b578190ceb7cfcbb4c6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2572.1092582668343,
+        "Y": 503.13102834191363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "d63a2b1d14df422db27eca6e65776426",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2987.8532606551144,
+        "Y": 687.13103467029373
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "fb18ac4a1ad1435b95eeb375cf36cde6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3038.6712000642046,
+        "Y": 607.01415030229373
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "3ffa1be2b8394436b417a0bdc41562e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3042.5277411527741,
+        "Y": 544.00692431063385
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "cb68452390644732a44a5ff6902cbc66",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2337.6221040906739,
+        "Y": 586.94392651414364
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "3a5c8fb2cd7a4718a5f239d7aad49834",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2333.7655630021045,
+        "Y": 649.95115250580375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "680d7f2639b448df9677cb870c9adf2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2282.9476235930142,
+        "Y": 730.06803687380375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "d25638b101f14eeb91673382c43e2148",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2312.2703891154442,
+        "Y": 813.52637152887382
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "ba7fb0ddc2354f259c43817b96bb80aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2310.5910772799243,
+        "Y": 464.62729588622369
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "fa3ef1cad2284bdc97fe3657639293c6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2937.5560054477246,
+        "Y": 421.75622279263371
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rebar.SetLayoutAsMaximumSpacing",
+        "Id": "1ac2e6ac23a24f2bb17cb11e8293aa43",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1893.1892729840938,
+        "Y": 232.84578715443376
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rebar.SetLayoutAsMinimumClearSpacing",
+        "Id": "655155ee8f27410cb4ecb0be495f39cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2560.8128557570844,
+        "Y": 257.91852072993379
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rebar.SetLayoutAsNumberWithSpacing",
+        "Id": "90a4d10923ef4360b7f736630da508e2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3213.122355319374,
+        "Y": 265.63204221973365
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RebarSetLayoutAsMaximumSpacing",
+        "Id": "a46cc7b5330245b4b045ed01d577267b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 1897.8004089757642,
+        "Y": 524.00919527548376
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "51a49066203b4239813ecddab99ec36a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1671.4772622368146,
+        "Y": 360.6325645624438
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "6971e426809b4afdb73055f3fa4538e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1673.1565740723345,
+        "Y": 709.53164020509371
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "3f855c275bd649478136f43eb41ce8f1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1701.3914987866638,
+        "Y": 548.65232151309374
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "c31189f5ec3b41febbceb80036ff849b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1643.8338085499045,
+        "Y": 626.07330555002363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "7f742c4c62654b3e878d536e78d691e9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1698.5082890475642,
+        "Y": 482.94919519036375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RebarSetLayoutAsFixedNumber",
+        "Id": "bb1424f94dc64782b4d01a6f2f8568a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1268.7131947625239,
+        "Y": 501.42092032711366
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rebar.SetLayoutAsFixedNumber",
+        "Id": "e5e63ffb2d444f72a3ec637a1778568e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1270.8184897999745,
+        "Y": 240.94877345239365
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "0249298158ab438fb999cdddf185d135",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1054.4582620840238,
+        "Y": 771.73925658029384
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "fa9b4fc4e8104e2094708e47d4b2071b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1025.1354965616038,
+        "Y": 688.28092192522377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "3adfc8858fce4ba79a9b923728dfe021",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1075.953435970684,
+        "Y": 608.16403755722376
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "44df08513dce4f54ad481d45f5b205ac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1079.8099770592544,
+        "Y": 545.15681156556366
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "25f892865586419db9ba81749d65dd7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 974.838241354204,
+        "Y": 422.90611004757375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RebarSetLayoutAsSingle",
+        "Id": "57ec7d6e2c2643a3ae8815a3c808bfd7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 617.3286223147943,
+        "Y": 437.05517052527375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rebar.SetDistributionType",
+        "Id": "a978d98edd12408eba8f344069c4cfbf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 588.16395533170453,
+        "Y": 261.9369584835938
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Elements",
+        "Id": "a5e33d97fa1d4254b7ceb0fc3fadd251",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 381.51447214579457,
+        "Y": 408.25559204157366
+      }
+    ],
+    "Annotations": [],
+    "X": 183.60949861387502,
+    "Y": 144.10003987655475,
+    "Zoom": 0.38229583335904704
+  }
+}

@@ -47,6 +47,13 @@ def get_xyz_from_detail_line(detail_line):
 def sortPoints(points):
 	points = sorted(objects, key = lambda objects: objects.X and objects.Y and objects.Z)
 	return points[0], points[-1]
+#public
+def sortPointsByAxis(points, axis='X', descending=False):
+    # Define a lambda function to extract the specified axis value from a point
+    key_function = lambda point: getattr(point, axis)
+    # Sort the points based on the specified axis
+    sorted_points = sorted(points, key=key_function, reverse=descending)
+    return sorted_points
 
 def find_farthest_and_nearest_points(points):
     farthest_point = None
@@ -324,3 +331,65 @@ def getXYZByPoints(points):
     return xyz_coordinates
 def getXYZFromPoint(point):
     return XYZ(line.StartPoint.X, line.StartPoint.Y, line.StartPoint.Z)
+#public
+def pointToMiddlePoint(start_point, end_point):
+    # Calculate the middle point as a Point
+    middle_point = Point.ByCoordinates(
+        (start_point.X + end_point.X) / 2,
+        (start_point.Y + end_point.Y) / 2,
+        (start_point.Z + end_point.Z) / 2
+    )
+    return middle_point
+#public
+def vectorToPoint(vectors):
+	result = []
+	for vector in vectors:
+		x = vector.X
+		y = vector.Y
+		z = vector.Z
+		# Create a point using the vector's coordinates
+		point = Point.ByCoordinates(x, y, z)
+		result.append(point)
+	return result
+#public
+def pointToVector(point):
+    x = point.X
+    y = point.Y
+    z = point.Z
+    # Create a vector using the point's coordinates
+    vector = Vector.ByCoordinates(x, y, z)
+    return vector
+#public
+def getPointsByLines(lines):
+    points_dict = {'start': [], 'middle': [], 'end': []}
+    for line in lines:
+        start_point = line.StartPoint
+        end_point = line.EndPoint
+
+        # Convert points to vectors
+        start_vector = pointToVector(start_point)
+        end_vector = pointToVector(end_point)
+
+        # Convert vectors to points for start and end
+        start_point_converted = Point.ByCoordinates(start_vector.X, start_vector.Y, start_vector.Z)
+        end_point_converted = Point.ByCoordinates(end_vector.X, end_vector.Y, end_vector.Z)
+
+        # Calculate the middle point as a Point
+        middle_point = pointToMiddlePoint(start_point, end_point)
+
+        points_dict['start'].append(start_point_converted)
+        points_dict['middle'].append(middle_point)
+        points_dict['end'].append(end_point_converted)
+    return points_dict
+#public
+def getX_Y_Z(vectors):
+	cX, cY, cZ = [], [], []
+	for vector in vectors:
+		x = vector.X
+		y = vector.Y
+		z = vector.Z
+		cX.append(x)
+		cY.append(y)
+		cZ.append(z)
+	result_dict = {"x" : cX, "y": cY, "z": cZ}
+	return result_dict
