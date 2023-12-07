@@ -34,6 +34,7 @@ from Autodesk.DesignScript.Geometry import Point
 path_to_check = r'C:\Users\NGUYEN NGOC DUE\AppData\Roaming\Dynamo\Dynamo Revit\2.10\packages\packages\BIM3DM\lib'
 import sys
 sys.path.append(path_to_check)
+import BIM3DM
 #########################################################################
 def is_array(obj):
     return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
@@ -74,30 +75,38 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application
 DB = Autodesk.Revit.DB
 ############################### FUNCTION #################################
-def getFamilyByName(objects, names, nameInput):
-    for fa, name in zip(objects, names):
-        if name == nameInput:
-            return [fa]
-    return None 
+def setLayoutAsMinimumClearSpacingForRebar(rebar, spacing, arrayLength, barsOnNormalSide=True, inclFirstBar=True, inclLastBar=True):
+    TransactionManager.Instance.EnsureInTransaction(doc)
+    rebar = UnwrapElement(rebar)
+    re = rebar.GetShapeDrivenAccessor()
+    re.SetLayoutAsMinimumClearSpacing(spacing,arrayLength,barsOnNormalSide,inclFirstBar,inclLastBar)
+    TransactionManager.Instance.TransactionTaskDone()
+    return rebar
 
 ############################### INPUT #################################
 objects = UnwrapElement(IN[0])
-names = IN[1]
-nameInput = IN[2]
+spacing = IN[1]
+arrayLength = IN[2]
+barsOnNormalSide = IN[3]
+inclFirstBar = IN[4]
+inclLastBar = IN[5]
+# Convert from mm to feet:
+if IN[6]:
+    spacing = spacing / 304.8
+    arrayLength = arrayLength / 304.8
+    
+allVariable = [objects, spacing, arrayLength,barsOnNormalSide, inclFirstBar, inclLastBar]
+
 
 ############################### OUTPUT ##################################
 rank = get_array_rank(objects)
-objects = objects if rank else [objects]
-
-allVariable = [objects, names, nameInput]
-
-if rank == 1:  # a
-    OUT = getFamilyByName(*allVariable)
-elif rank == 2:  # [a]
-    OUT = [getFamilyByName(*allVariable) for element in objects]
-elif rank == 3:  # [[a]]
-    OUT = [getFamilyByName(i, *allVariable) for j in objects for i in j]
+if rank == 0:  # a
+    OUT = setLayoutAsMinimumClearSpacingForRebar(*allVariable)
+elif rank == 1:  # [a]
+    OUT = [setLayoutAsMinimumClearSpacingForRebar(element, *allVariable) for element in objects]
+elif rank == 2:  # [[a]]
+    OUT = [setLayoutAsMinimumClearSpacingForRebar(i, *allVariable) for j in objects for i in j]
 else:
     elements = flatten_to_1d(objects)  # [a]
-    OUT = getFamilyByName(elements,*allVariable )
+    OUT = setLayoutAsMinimumClearSpacingForRebar(elements,*allVariable )
 

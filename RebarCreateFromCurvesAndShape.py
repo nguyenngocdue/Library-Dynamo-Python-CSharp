@@ -88,7 +88,7 @@ rank = get_array_rank(curves)
 if rank == 0: curves = [curves]
 
 element = UnwrapElement(IN[2])
-rebarStyle = IN[3]
+rebarShape = UnwrapElement(IN[3])
 rebarType = UnwrapElement(IN[4])
 hookTypeStart = UnwrapElement(IN[5])
 hookTypeEnd = UnwrapElement(IN[6])
@@ -106,8 +106,8 @@ vectorDBlines = getVectorOfDBLine(dbLines)
 rebars = []
 TransactionManager.Instance.EnsureInTransaction(doc)
 for index, curve in enumerate(dbLines): 
-    rebar = Rebar.CreateFromCurves(doc, 
-                                    rebarStyle, 
+    rebar = Rebar.CreateFromCurvesAndShape(doc,
+                                    rebarShape,
                                     rebarType, 
                                     hookTypeStart, 
                                     hookTypeEnd, 
@@ -116,8 +116,7 @@ for index, curve in enumerate(dbLines):
                                     List[Curve]([curve]), 
                                     rebarHookOrientationStart, 
                                     rebarHookOrientationEnd, 
-                                    True, 
-                                    True)            
+                                    )            
     rebars.append(rebar)
 TransactionManager.Instance.TransactionTaskDone()
 OUT = rebars
