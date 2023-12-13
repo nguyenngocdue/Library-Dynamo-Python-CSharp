@@ -31,9 +31,6 @@ from RevitServices.Transactions import TransactionManager
 from Autodesk.DesignScript.Geometry import Point
 
 
-path_to_check = r'C:\Users\NGUYEN NGOC DUE\AppData\Roaming\Dynamo\Dynamo Revit\2.10\packages\packages\BIM3DM\lib'
-import sys
-sys.path.append(path_to_check)
 #########################################################################
 def is_array(obj):
     return "List" in obj.__class__.__name__ or "list" in obj.__class__.__name__ 
@@ -74,30 +71,34 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application
 DB = Autodesk.Revit.DB
 ############################### FUNCTION #################################
-def getFamilyByName(objects, names, nameInput):
-    for fa, name in zip(objects, names):
-        if name == nameInput:
-            return [fa]
-    return None 
+class SelectionFilter(ISelectionFilter):
+    def __init__(self, *category_names):
+        self.category_names = category_names
+
+    def AllowElement(self, element):
+        return element.Category.Name in self.category_names
+
+    def AllowReference(self, ref, xyz):
+        return False
+
+
+points = []
+text_style = UnwrapElement(IN[2])
+condition = True
+n = 0
+try:
+    for i in range(0, 1000):
+        TransactionManager.Instance.EnsureInTransaction(doc)
+        pickPoint = uidoc.Selection.PickPoint(ObjectSnapTypes.Nearest)
+        text_note = DB.TextNote.Create(doc, View.Id, pickPoint, "AVC - " + str(n), text_style.Id)
+        TransactionManager.Instance.TransactionTaskDone()
+        n += 1 
+except Exception as e:
+    condition = False
+    OUT = str(e)
+
 
 ############################### INPUT #################################
-objects = UnwrapElement(IN[0])
-names = IN[1]
-nameInput = IN[2]
 
 ############################### OUTPUT ##################################
-rank = get_array_rank(objects)
-objects = objects if rank else [objects]
-
-allVariable = [objects, names, nameInput]
-
-if rank == 1:  # a
-    OUT = getFamilyByName(*allVariable)
-elif rank == 2:  # [a]
-    OUT = [getFamilyByName(*allVariable) for element in objects]
-elif rank == 3:  # [[a]]
-    OUT = [getFamilyByName(i, *allVariable) for j in objects for i in j]
-else:
-    elements = flatten_to_1d(objects)  # [a]
-    OUT = getFamilyByName(elements,*allVariable )
 
