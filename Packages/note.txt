@@ -1,0 +1,6 @@
+Step 1: Please unzip the BIM3DM folder.
+
+Step 2: Copy it to the following path:
+C:\Users\NGUYEN NGOC DUE\AppData\Roaming\Dynamo\Dynamo Revit\2.10\packages
+
+Step 3: Restart Dynamo.
