@@ -31,7 +31,7 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 ele = UnwrapElement(IN[1])
 
-def GetGeoElemnt(element): # Get Geometry of Element
+def getGeoElemnt(element): # Get Geometry of Element
     geo = []
     opt = Options()
     opt.ComputeReferences = True
