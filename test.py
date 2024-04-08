@@ -1,77 +1,41 @@
-"""Copyright(c) 2023 by: duengocnguyen@gmail.com"""
-'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'
-"""________________Welcome to BIM3DM-DYNAMO API___________________"""
-import clr
-clr.AddReference("RevitServices")
-import RevitServices
-from RevitServices.Persistence import DocumentManager
-from RevitServices.Transactions import TransactionManager
-doc = DocumentManager.Instance.CurrentDBDocument
+import tkinter as tk
+from tkinter import messagebox
 
-clr.AddReference("RevitAPI")
-import Autodesk
-from Autodesk.Revit.DB import *
+def submit_action():
+    user_info = f"Name: {entry_name.get()}\nEmail: {entry_email.get()}\nMessage: {text_message.get('1.0', tk.END)}"
+    messagebox.showinfo("Form Submitted", user_info)
 
-clr.AddReference("RevitNodes")
-import Revit
-clr.ImportExtensions(Revit.Elements)
-clr.ImportExtensions(Revit.GeometryConversion)
+# Create the main window
+root = tk.Tk()
+root.title("Simple Form")
 
-################################################################
-lines = IN[0]
-pipeTypes = IN[1]
-systemTypes = IN[2]
-levels = IN[3]
-diameters = IN[4]
+# Create a label for the name
+label_name = tk.Label(root, text="Name:")
+label_name.grid(row=0, column=0, sticky="w")
 
-if isinstance(lines, list):
-    lines = lines
-else:
-    lines = [lines]
+# Create an entry for the name
+entry_name = tk.Entry(root)
+entry_name.grid(row=0, column=1)
 
-if isinstance(pipeTypes, list):
-    pipeTypes = UnwrapElement(pipeTypes)
-else:
-    pipeTypes = [UnwrapElement(pipeTypes)]
-lenPipeType = len(pipeTypes)
+# Create a label for the email
+label_email = tk.Label(root, text="Email:")
+label_email.grid(row=1, column=0, sticky="w")
 
+# Create an entry for the email
+entry_email = tk.Entry(root)
+entry_email.grid(row=1, column=1)
 
-if isinstance(systemTypes, list):
-    systemTypes = UnwrapElement(systemTypes)
-else:
-    systemTypes = [UnwrapElement(systemTypes)]
-lenSystemType = len(systemTypes)
+# Create a label for the message
+label_message = tk.Label(root, text="Message:")
+label_message.grid(row=2, column=0, sticky="nw")
 
-if isinstance(levels, list):
-    levels = UnwrapElement(levels)
-else:
-    levels = [UnwrapElement(levels)]
-lenLevel = len(levels)
+# Create a text field for the message
+text_message = tk.Text(root, height=5, width=25)
+text_message.grid(row=2, column=1)
 
-if isinstance(diameters, list):
-    diameters = diameters
-else:
-    diameters = [diameters]
-diaLen = len(diameters)
+# Create a submit button
+submit_button = tk.Button(root, text="Submit", command=submit_action)
+submit_button.grid(row=3, column=1, sticky="e")
 
-
-firstPoints = [x.StartPoint for x in lines]
-secondPoints = [x.EndPoint for x in lines]
-
-pipes = []
-TransactionManager.Instance.EnsureInTransaction(doc)
-for index, point in enumerate(firstPoints):
-    try:
-        systemTypeId = systemTypes[index%lenSystemType].Id
-        pipeTypeId = pipeTypes[index%lenPipeType].Id
-        levelId = levels[index%lenLevel].Id
-        diam = diameters[index%diaLen]
-        pipe = Autodesk.Revit.DB.Plumbing.Pipe.Create(doc, systemTypeId, pipeTypeId, levelId, point.ToXyz(),secondPoints[index].ToXyz())
-        param = pipe.get_Parameter(BuiltInParameter.RBS_PIPE_DIAMETER_PARAM)
-        param.SetValueString(diam.ToString())
-        
-        pipes.append(pipe.ToDSType(False))
-    except:
-        pipes.append(None)
-TransactionManager.Instance.TransactionTaskDone()
-OUT = pipes
+# Run the application
+root.mainloop()

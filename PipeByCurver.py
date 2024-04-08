@@ -78,3 +78,60 @@ TransactionManager.Instance.TransactionTaskDone()
 
 
 OUT = elements
+
+
+"""Copyright(c) 2019 by: duengocnguyen@gmail.com"""
+# 'https://www.youtube.com/channel/UCt2JhCDDFxpYho575WTMZ4g'
+"""________________Welcome to BIM3DM-DYNAMO API___________________"""
+import clr 
+import sys
+sys.path.append(r'C:\Program Files\Autodesk\Revit 2020\AddIns\DynamoForRevit\2.10')
+import math 
+from System.Collections.Generic import *
+
+clr.AddReference("ProtoGeometry")
+from Autodesk.DesignScript.Geometry import *
+
+clr.AddReference('RevitAPI')
+import Autodesk
+from Autodesk.Revit.DB import *
+
+clr.AddReference('RevitAPIUI')
+from Autodesk.Revit.UI import*
+from  Autodesk.Revit.UI.Selection import*
+
+clr.AddReference("RevitNodes")
+import Revit
+clr.ImportExtensions(Revit.Elements)
+clr.ImportExtensions(Revit.GeometryConversion)
+
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+doc = DocumentManager.Instance.CurrentDBDocument
+view = doc.ActiveView
+uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
+
+# Preparing input from Dynamo to Revit
+elements1 = UnwrapElement(IN[0])
+
+# Do some action in a Transaction
+TransactionManager.Instance.EnsureInTransaction(doc)
+
+# Find intersections between elements
+result = []
+for elem1, elem2 in zip(elements1, elements1):
+    intersection_points = [] 
+    for e1 in elem1:
+        for e2 in elem2:
+            intersections = e1.Intersect(e2)
+            for i in intersections:
+                if hasattr(i, 'X') and i.X is not None:
+                    intersection_points.append(i)
+    result.append(intersection_points)
+TransactionManager.Instance.TransactionTaskDone()
+
+# Output the intersection points
+OUT = result
