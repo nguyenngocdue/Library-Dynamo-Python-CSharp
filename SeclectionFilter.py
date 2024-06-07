@@ -24,7 +24,6 @@ import RevitServices
 from RevitServices.Persistence import DocumentManager
 from RevitServices.Transactions import TransactionManager
 
-import clr
 clr.AddReference('DSCoreNodes')
 from DSCore import *
 
