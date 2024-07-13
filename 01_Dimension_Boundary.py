@@ -60,7 +60,6 @@ class SelectionFilter(ISelectionFilter):
 			return False
 	def AllowReference(ref, xyZ):
 		return False
-		return False
 
 def GetGeoElement(element): # Get geometry of element.
     geo = []
