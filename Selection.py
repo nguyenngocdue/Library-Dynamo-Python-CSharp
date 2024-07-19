@@ -11,4 +11,11 @@ def classifyElementsByCategory(uidoc, selection_filter, prompt):
         categorized_elements[category_name].append(element)
     return categorized_elements
 
-    
+def isolateElement(self,elements):
+    TransactionManager.Instance.EnsureInTransaction(doc)
+    reset = View.DisableTemporaryViewMode(TemporaryViewMode.TemporaryHideIsolate)
+    IDS = List[ElementId]()
+    for i in elements:
+        IDS.Add(i.Id)
+    View.IsolateElementsTemporary(IDS)
+    TransactionManager.Instance.TransactionTaskDone()

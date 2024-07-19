@@ -89,7 +89,7 @@ class SelectionFilter(ISelectionFilter):
 			return False
 	def AllowReference(ref, xyZ):
 		return False
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -98,7 +98,7 @@ def GetGeoElement(element): # Get geometry of element.
     geoByElement = element.get_Geometry(opt)
     geo = [i for i in geoByElement]
     return geo
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -109,7 +109,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -125,7 +125,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -134,7 +134,7 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def GetTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
+def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
             return i
@@ -148,7 +148,7 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
         for j in i:
             re.append(j.AsCurve())
     return re
-def GetLineMax(lstLine): # Get a min line of list line
+def getLineMax(lstLine): # Get a min line of list line
     _length = []
     lineMax = []
     for i in lstLine:
@@ -215,7 +215,7 @@ OUT = [i.ToProtoType() for i in getLongLine]
 
 direcFraming = (getLongLine[0].Direction) # Get direction to define for Dimention Offset
 
-def GetReference(lstPlanar):
+def getReference(lstPlanar):
     re = []
     for i in lstPlanar:
         re.append(i.Reference)
@@ -255,7 +255,7 @@ OUT = line.ToProtoType() ,offsetline.ToProtoType(), direct
 
 ##############################################################################################################
 # Explain when it has 4 faces vertical
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:

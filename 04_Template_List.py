@@ -49,7 +49,7 @@ def filter_IsListInList(lst1,lst2):
 def chunks(l, n): #List.Chop
     n = max(1, n)
     return (l[i:i+n] for i in range(0, len(l), n))
-def GetIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
+def getIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
     re = []
     for i in lst:
         c = i[index]
@@ -79,7 +79,7 @@ def ReferenceFromSurface(ElementSurface): # Get Revit.DB.Reference from Surface
         ref.append(re)
     return ref
     #OUT = ReferenceFromSurface(UnwrapElement(IN[1]))
-def GetDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
+def getDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
@@ -92,7 +92,7 @@ def GetDBLineFormEleLine(ElementLines): # Get Revit.DB.Line from Curve Elements
         ln.append(re)
     return ln
     #OUT = GetDBLineFormEleLine(IN[1])
-def GetReferenceOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
+def getReferenceOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
@@ -125,7 +125,7 @@ def Combine_EleSurface_EleCurve_RefGrids(EleCurve,EleSurface,RefGrids): # Combin
     return Ref
     #OUT = Combine_EleSurface_EleCurve_RefGrids(IN[1],IN[2],IN[3])
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -135,7 +135,7 @@ def GetGeoElement(element): # Get geometry of element.
     geo = [i for i in geoByElement]
     return geo
     #getGeoFraming = [GetGeoElement(i) for i in eleFraming]
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -147,7 +147,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                     sol.append(j)
     return sol
     #getSolidFraming = [GetSolidFromGeo(i) for i in getGeoFraming]
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -163,7 +163,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
     return pfaces
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces 
+def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces 
     faV = []
     y = XYZ.BasisY
     for i in lstPlface:
@@ -172,7 +172,7 @@ def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces
         if check == True:
             faV.append(i)
     return faV
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -183,7 +183,7 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
     return re
     #getFaVerFraming = [GetFaceVertical(i) for i in getFaceFraming]
 
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -195,7 +195,7 @@ def GetMaxface(plananrs):
     return _face
     #getFaMaxVerFraming = [GetMaxface(i) for i in getFaVerFraming]
 
-def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
+def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces 
     faH = []
     z = XYZ.BasisZ
     for i in lstPlface:
@@ -203,22 +203,22 @@ def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces
         if check == True:
             faH.append(i)
     return faH
-def RightFace(lstplanar,viewin): # Get Right PlannarFaces of a Element
+def RightFace(lstplanar,viewin): # Get Right PlanarFaces of a Element
     direc = view.RightDirection
     for i in lstplanar:
         var = i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlannarFaces of a Element
+def LeftFace(lstplanar,viewIn): # Get Right PlanarFaces of a Element
     direc = view.RightDirection
     for i in lstplanar:
         var = -1*i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
-def GetRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
+def getRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
     if reason == True: return RightFace(lstFace,viewin)
     elif reason == False: return LeftFace(lstFace, viewin)
-def GetTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
+def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
             return i
@@ -234,14 +234,14 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
     return re
     #GetLineFraming = [RetrieveEdgesFace(i) for i in getFaVerFraming[0]]
 
-def GetLineMin(lstLine): # Get a min line of list line
+def getLineMin(lstLine): # Get a min line of list line
     _length = []
     for i in lstLine:
         _length.append(i.Length)
     for j in lstLine:
         if j.Length == min(_length):
             return j  
-def GetLineMax(lstLine): # Get a max line of list line
+def getLineMax(lstLine): # Get a max line of list line
     _length = []
     for i in lstLine:
         _length.append(i.Length)
@@ -260,17 +260,17 @@ def LineOffset(line,distance,direc): # Offset a line from one line earlier
     trans = Transform.CreateTranslation(newVector) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove 
-def GetReference(lstPlanar):
+def getReference(lstPlanar):
     re = []
     for i in lstPlanar:
         re.append(i.Reference)
     return re
-def GetReferenceArray(lstPlanar):
+def getReferenceArray(lstPlanar):
     reArray = ReferenceArray()
     for i in lstPlanar:
         reArray.Append(i.Reference)
     return reArray
-def GetLineVertical(lstLine): # Get vertical Line by Isparalel
+def getLineVertical(lstLine): # Get vertical Line by Isparalel
     re = []
     NorRevit = XYZ.BasisZ
     for i in lstLine:

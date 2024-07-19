@@ -30,7 +30,7 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -39,7 +39,7 @@ def GetGeoElement(element): # Get geometry of element.
     geoByElement = element.get_Geometry(opt)
     geo = [i for i in geoByElement]
     return geo
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -50,7 +50,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -66,7 +66,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
     return pfaces
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces 
+def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces 
     faV = []
     y = XYZ.BasisY
     for i in lstPlface:
@@ -75,7 +75,7 @@ def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces
         if check == True:
             faV.append(i)
     return faV
-def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
+def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces 
     faH = []
     z = XYZ.BasisZ
     for i in lstPlface:
@@ -94,7 +94,7 @@ def lstFlattenL2(list):
         for j in i:
             result.append(j)
     return result
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -103,19 +103,19 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def RightFace(lstplanar,viewin): # Get Right PlannarFaces of a Element
+def RightFace(lstplanar,viewin): # Get Right PlanarFaces of a Element
     direc = view.RightDirection
     for i in lstplanar:
         var = i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlannarFaces of a Element
+def LeftFace(lstplanar,viewIn): # Get Right PlanarFaces of a Element
     direc = view.RightDirection
     for i in lstplanar:
         var = -1*i.FaceNormal
         if var.IsAlmostEqualTo(direc):
             return i
-def GetRightOrLeft(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
+def getRightOrLeft(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
     if reason == True: return RightFace(lstFace,viewin)
     elif reason == False: return LeftFace(lstFace, viewin)
 

@@ -31,7 +31,7 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 ele  = UnwrapElement(IN[1])
 
-def GetSolidElement(element): # Get Geometry of Element
+def getSolidElement(element): # Get Geometry of Element
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -42,7 +42,7 @@ def GetSolidElement(element): # Get Geometry of Element
     #geo = [i for i in element.get_Geometry(opt)] # Way 2  
     return [i for i in geometry]
 
-def GetSolidFromGeo(lstGeo): # Get Solid of Geometry 
+def getSolidFromGeo(lstGeo): # Get Solid of Geometry 
     sol = []
     for i in lstGeo:
         if i.GetType() == Solid and i.Volume > 0:
@@ -55,7 +55,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid of Geometry
     return sol
 
 
-def GetPlanarFormSolid(solids): # Get Faces from Solid
+def getPlanarFormSolid(solids): # Get Faces from Solid
     faces = [] 
     for i in solids:
         faces.append(i.Faces)
@@ -64,7 +64,7 @@ def GetPlanarFormSolid(solids): # Get Faces from Solid
 def Isparallel(p,q):
     return p.CrossProduct(q).IsZeroLength() # U.V = 0 it is CrossProduct between  2 Vectors
 
-def GetPlanarVertical(listPlanr): # Get Faces follow Vertical 
+def getPlanarVertical(listPlanr): # Get Faces follow Vertical 
     reV = []
     y = XYZ.BasisY
     for i in listPlanr:
@@ -75,14 +75,14 @@ def GetPlanarVertical(listPlanr): # Get Faces follow Vertical
         reV.append(i)
     return reV
 
-def GetRefFromPlanar(listPlanr):
+def getRefFromPlanar(listPlanr):
     re = []
     for i in listPlanr:
         re.append(i.Reference)
     return re
 
 
-# def GetPlanrHorizontal(listPlanr): # Get Faces follow Horizontal
+# def getPlanrHorizontal(listPlanr): # Get Faces follow Horizontal
 #     reH = []
 #     z = XYZ.BasisZ
 #     for i in listPlanr:

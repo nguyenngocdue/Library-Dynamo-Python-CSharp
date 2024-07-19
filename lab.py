@@ -63,7 +63,7 @@ def chunks(l, n): #List.Chop
     #OUT = chunks(IN[1])
 
 #public
-def GetIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
+def getIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
 	re = []
 	try:
 		for i in lst:
@@ -92,7 +92,7 @@ def RemoveValueNone(lst): # Get Non-None Values
             values.append(i)
     return values
 
-def getFace_Zmax(lstPlface): # Get Horizaontal PlannarFaces 
+def getFace_Zmax(lstPlface): # Get Horizaontal PlanarFaces 
     coor_Z = []
     faH = []
     index = []
@@ -211,14 +211,14 @@ def getRef(lstPlanar):
     for i in lstPlanar:
         re.append(i.Reference)
     return re
-def GetRefArray(lstPlanar):
+def getRefArray(lstPlanar):
     reArray = ReferenceArray()
     for i in lstPlanar:
         reArray.Append(i.Reference)
     return reArray
     #OUT = GetReferenceArray(IN[1])
 
-def GetRefArrayFromRef(ref):
+def getRefArrayFromRef(ref):
     re = ReferenceArray()
     for i in ref:
         re.Append(i)
@@ -245,14 +245,14 @@ def Combine_EleSurface_EleCurve_RefGrids(EleCurve,EleSurface,RefGrids): # Combin
     return Ref
     #OUT = Combine_EleSurface_EleCurve_RefGrids(IN[1],IN[2],IN[3])
     
-def GetLocationPoint(element): # Get LocationPoint of element.
+def getLocationPoint(element): # Get LocationPoint of element.
     re = []
     re.append(element.Location.Point)
     return re
     #OUT = [GetLocationPoint(i) for i in UnwrapElement(IN[1])]
 
 #public
-def GetPointFromGeo(lstGeo):
+def getPointFromGeo(lstGeo):
     pts = []
     for i in lstGeo:
         if i.GetType() == Point:
@@ -346,7 +346,7 @@ OUT = [getGeoElement(UnwrapElement(i)) for i in objects];
 
 
 
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -360,7 +360,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
     #getSolidFraming = [GetSolidFromGeo(i) for i in getGeoFraming]
 
 #public
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if type(i)== Autodesk.Revit.DB.Solid and i.Volume > 0:
@@ -374,7 +374,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
     return sol
     #getSolidFraming = [GetSolidFromGeo(i) for i in IN[1]]
 #public
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -404,7 +404,7 @@ def removeFaceNone(lstplanars): # Get planarFaces Not Null Value
 def isParallel(p,q):
     return p.CrossProduct(q).IsZeroLength()
 #public
-def filterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
+def filterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces 
     faH = []
     z = XYZ.BasisZ # You can change that value to have a new direction
     for i in lstPlface:
@@ -415,7 +415,7 @@ def filterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces
     return faH
 
 #puplic
-def getPlanarVerticalFaces(plannar): # Get Vertical PlannarFaces 
+def getPlanarVerticalFaces(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = removeFaceNone(plannar)
     for i in remove:
@@ -425,7 +425,7 @@ def getPlanarVerticalFaces(plannar): # Get Vertical PlannarFaces
             re.append(i)
     return re
     #getFaVerFraming = [GetFaceVertical(i) for i in getFaceFraming]
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -436,7 +436,7 @@ def GetMaxface(plananrs):
             
     return _face
     #getFaMaxVerFraming = [GetMaxface(i) for i in getFaVerFraming]
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -456,7 +456,7 @@ def sortPlanarFace(lstPlanar):
     # ele = IN[1]
     # OUT = sortPlanarFace(ele)
 
-def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlannarFaces 
+def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces 
     faH = []
     z = XYZ.BasisZ
     for i in lstPlface:
@@ -483,7 +483,7 @@ def getLeftFace(lstplanar, viewIn):
             return i
     return None  # Handle the case when no matching face is found
 
-def GetRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
+def getRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
     if reason == True: return RightFace(lstFace,viewin)
     elif reason == False: return LeftFace(lstFace, viewin)
 
@@ -528,7 +528,7 @@ def getMinLines(lstLine): # Get a min line of list line
         if j.Length == min(_length):
             return j
            # OUT = [GetLineMin(i) for i in IN[1]]  
-def GetLineMax(lstLine): # Get a max line of list line
+def getLineMax(lstLine): # Get a max line of list line
     _length = []
     for i in lstLine:
         _length.append(i.Length)
@@ -559,7 +559,7 @@ def LineOffset(line, distance, direc): #Offset Revit.DB.Line
     return lineMove
 
     #dimLine = [LineOffset(i,IN[4],"Z") for i in linePlace][0]
-def GetLineVertical(lstLine): # Get vertical Line by Isparalel
+def getLineVertical(lstLine): # Get vertical Line by Isparalel
     re = []
     NorRevit = XYZ.BasisZ
     for i in lstLine:
@@ -639,7 +639,7 @@ def LineOffset(line,distance,direc1, direc2, Flip): # Offset a line from one lin
     lineMove = line.CreateTransformed(trans)
     return lineMove
         #offsetline =LineOffset(line,IN[1],"X",direcFraming, IN[2] )
-def GetToProtoType(items):
+def getToProtoType(items):
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
@@ -652,7 +652,7 @@ def GetToProtoType(items):
         re.append(r1)
     return re
     OUT = GetToProtoType(IN[1])
-def GetIntersection(face, line):
+def getIntersection(face, line):
     re = []
     results = clr.Reference[IntersectionResultArray]()
     intersect = face.Intersect(line, results)
@@ -739,7 +739,7 @@ def pickObjectsFilter(filter):
     # ele = SelectionFilter("Structural Framing", "Levels")
     # OUT = pickObjectFilter(ele)
 ###------------------------------------------------ Element ---------------------------------------------------------###
-def GetBicFromInput(var):	
+def getBicFromInput(var):	
 	bic = None
 	if var:
         cattype = var.GetType().ToString()
@@ -755,7 +755,7 @@ def ElementsByCategory(bic, doc):
 	collector = FilteredElementCollector(doc).OfCategory(bic).WhereElementIsNotElementType()
 	return collector.ToElements()
 ###------------------------------------------------ VIEW ---------------------------------------------------------###
-def GetView( view,doc):
+def getView( view,doc):
 	numview = view.ViewTemplateId
 	if numview.IntegerValue  == -1:
 		return doc.ActiveView

@@ -54,7 +54,7 @@ class SelectionFilter(ISelectionFilter):
 		return False
 		return False
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -65,7 +65,7 @@ def GetGeoElement(element): # Get geometry of element.
     return geo
 
 
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -77,7 +77,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                     sol.append(j)
     return sol
 
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -89,7 +89,7 @@ def GetPlanarFormSolid(solids): # Get Planarface from solids
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
 
-def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces 
+def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces 
     faV = []
     y = XYZ.BasisY
     for i in lstPlface:
@@ -99,7 +99,7 @@ def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces
             faV.append(i)
     return faV
 
-def GetReferenceArray(lstPlanar):
+def getReferenceArray(lstPlanar):
     reArray = ReferenceArray()
     for i in lstPlanar:
         reArray.Append(i.Reference)
@@ -112,7 +112,7 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
         for j in i:
             re.append(j.AsCurve())
     return re
-def GetLineMax(lstLine): # Get a min line of list line
+def getLineMax(lstLine): # Get a min line of list line
     _length = []
     lineMax = []
     for i in lstLine:
@@ -127,7 +127,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -137,7 +137,7 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
             re.append(i)
     return re
 
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -148,7 +148,7 @@ def GetMaxface(plananrs):
             
     return _face
 
-def GetLineMax(lstLine): # Get a min line of list line
+def getLineMax(lstLine): # Get a min line of list line
     _length = []
     lineMax = []
     for i in lstLine:

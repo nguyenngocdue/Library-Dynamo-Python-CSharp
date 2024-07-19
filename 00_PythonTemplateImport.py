@@ -32,7 +32,7 @@ view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 #Preparing input from dynamo to revit
-element = UnwrapElement(IN[0])
+elements = UnwrapElement(IN[0])
 
 #Do some action in a Transaction
 TransactionManager.Instance.EnsureInTransaction(doc)

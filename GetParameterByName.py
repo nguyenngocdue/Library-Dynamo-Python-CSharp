@@ -55,7 +55,7 @@ getValPara = [i.LookupParameter(IN[2]).AsDouble()*304.8 for i in getFamilyType] 
 OUT = getValPara
 
 """___________________________________Design - Def GetParameterByName__________________________________"""
-def GetParameterByName(lstEle,para):
+def getParameterByName(lstEle,para):
     doc = DocumentManager.Instance.CurrentDBDocument
     if isinstance(lstEle,list):
         element = UnwrapElement(lstEle)
@@ -70,7 +70,7 @@ OUT = GetParameterByName(IN[1],IN[2])
 
 
 
-def GetParameterValue(parameter):
+def getParameterValue(parameter):
   value= None
   if parameter.StorageType == StorageType.Double:
     value =  parameter.AsDouble()

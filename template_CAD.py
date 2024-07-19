@@ -63,7 +63,7 @@ def getSolidFromGeoIns(lstGeoIns):
     # get_InstanGeo = IN[1]
     # get_SolidFromGeoIns = [getSolidFromGeoIns(i) for i in get_InstanGeo]
     # OUT = get_SolidFromGeoIns
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         plaf.append(i.Faces)
@@ -76,7 +76,7 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
             re.append(i.AsCurve() for i in j)
     return re
 
-def GetLineMin(lstLine): # Get a min line of list line
+def getLineMin(lstLine): # Get a min line of list line
     _length = []
     for i in lstLine:
         _length.append(i.Length)
@@ -149,7 +149,7 @@ def getCurveShortLong(allCurve): # Get Short Curve in list Curve
         return len_curveShort.append("Not Items")
     return len_curveShort,len_curveLong
 
-def GetIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
+def getIndexOfList(lst,index): # Get a Value from Level 3 of a list by Index Number
     re = []
     for i in lst:
         c = i[index]

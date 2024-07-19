@@ -29,7 +29,7 @@ import Revit
 clr.ImportExtensions(Revit.Elements)
 
 #Inspired by Clockwork
-def GetLevel(item):
+def getLevel(item):
 	val = None
 	if hasattr(item, "LevelId"): 
 		val = item.Document.GetElement(item.LevelId)

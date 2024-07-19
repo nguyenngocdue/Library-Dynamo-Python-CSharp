@@ -60,9 +60,8 @@ class SelectionFilter(ISelectionFilter):
 			return False
 	def AllowReference(ref, xyZ):
 		return False
-		return False
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -73,7 +72,7 @@ def GetGeoElement(element): # Get geometry of element.
     return geo
 
 
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -85,42 +84,42 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                     sol.append(j)
     return sol
 
-def GetPlanarFormSolid(solids): # Get Planarface from solids
-    plaf = []
+def getPlanarFacesFormSolid(solids): # Get Planarface from solids
+    planarFaces = []
     for i in solids:
         var = i.Faces
         for j in var:
             if j.Reference != None:
-                plaf.append(j)
-    return plaf
+                planarFaces.append(j)
+    return planarFaces
 
-def Isparalel(p,q):
+def isParalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
 
-def FilterVerticalPlanar(lstPlface): # Get Vertical PlannarFaces 
+def filterVerticalDBPlanarFace(dbPlanarFaces): # Get Vertical PlanarFaces 
     faV = []
     y = XYZ.BasisY
-    for i in lstPlface:
+    for i in dbPlanarFaces:
         faNomal = i.FaceNormal
-        check  = Isparalel(y,faNomal)
+        check  = isParalel(y,faNomal)
         if check == True:
             faV.append(i)
     return faV
 
-def GetReferenceArray(lstPlanar):
+def getReferenceArray(lstDbPlanarFaces):
     reArray = ReferenceArray()
-    for i in lstPlanar:
+    for i in lstDbPlanarFaces:
         reArray.Append(i.Reference)
     return reArray
 
-def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
+def getEdgesPlanarFace(lstPlanar): # Get Lines of PlanarFaces
     re = []
     var = lstPlanar.EdgeLoops
     for i in var:
         for j in i:
             re.append(j.AsCurve())
     return re
-def GetLineMax(lstLine): # Get a min line of list line
+def getLineMax(lstLine): # Get a min line of list line
     _length = []
     lineMax = []
     for i in lstLine:
@@ -135,7 +134,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -144,8 +143,23 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
+def getDbLinesMax(dbLines): # Get a min line of list line
+    _length = []
+    dbLineMax = []
+    for i in dbLines:
+        r1 = []
+        for z in i:
+            r1.append(z.Length)
+        _length.append(r1)
+    for j in range(len(dbLines)):
+        r2 = []
+        for l in dbLines[j]:
+            if l.Length == max(_length[j]):
+                r2.append(l)
+        dbLineMax.append(r2)
+    return dbLineMax
 
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -156,12 +170,12 @@ def GetMaxface(plananrs):
             
     return _face
 
-def GetLineMax(lstLine): # Get a min line of list line
+def getDbLinesMax(dbLines): # Get a min line of list line
     _length = []
     lineMax = []
-    for i in lstLine:
+    for i in dbLines:
         _length.append(i.Length)
-    for j in lstLine:
+    for j in dbLines:
         if j.Length == max(_length):
             lineMax.append(j)
     return lineMax
@@ -190,7 +204,7 @@ OUT = getFaceMax
 
 
 
-bot_EdgesPlanarFraming = RetrieveEdgesFace(getFaceFraming[0])
+bot_EdgesPlanarFraming = getEdgesPlanarFace(getFaceFraming[0])
 OUT = [i.ToProtoType()for i in  bot_EdgesPlanarFraming]
 
 

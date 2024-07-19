@@ -88,7 +88,7 @@ def CurveFromGrids(listGrids,doc):
 		crv.append(cr)
 	return crv
 
-def GetDbLineFromLine(lstLine):
+def getDbLineFromLine(lstLine):
     re = []
     for i in lstLine:
         re.append(i.GeometryCurve)
@@ -96,7 +96,7 @@ def GetDbLineFromLine(lstLine):
     #line1 = RefArrayByDBLine(getVLineMin_Framing)
 
 
-def GetEdgesByPlanar(lstPlanar):
+def getEdgesByPlanar(lstPlanar):
     re = []
     var = lstPlanar.EdgeLoops
     for i in var:
@@ -104,7 +104,7 @@ def GetEdgesByPlanar(lstPlanar):
     return re
     #OUT = [GetEdgesByPlanar(j) for i in getMaxFaceFraming for j in i]
 
-def GetRefByPlanar(lstPlanar):
+def getRefByPlanar(lstPlanar):
     re = []
     var = lstPlanar.EdgeLoops
     for i in var:
@@ -125,7 +125,7 @@ def OffsetPoint (line,distance):
 	vt = (sp+ep).CrossProduct(base).Normalize()
 	pstnew = sp+distance*vt
 	return vt
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -134,7 +134,7 @@ def GetGeoElement(element): # Get geometry of element.
     geoByElement = element.get_Geometry(opt)
     geo = [i for i in geoByElement]
     return geo
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -145,7 +145,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -161,7 +161,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -170,7 +170,7 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def GetTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
+def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
             return i
@@ -184,7 +184,7 @@ def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
         for j in i:
             re.append(j.AsCurve())
     return re
-def GetLineMax(lstLine): # Get a min line of list line
+def getLineMax(lstLine): # Get a min line of list line
     _length = []
     lineMax = []
     for i in lstLine:

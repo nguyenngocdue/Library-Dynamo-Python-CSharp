@@ -39,7 +39,7 @@ uiapp = DocumentManager.Instance.CurrentUIApplication
 app = uiapp.Application
 acview = doc.ActiveView
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True

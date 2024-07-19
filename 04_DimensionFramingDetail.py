@@ -50,18 +50,18 @@ class SelectionFilter(ISelectionFilter):
 			return False
 	def AllowReference(ref, xyZ):
 		return False
-def GetReferenceOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
+def getReferenceOfGrid(elementGrids): # Get Revit.DB.Reference from Grids
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True
     opt.View = doc.ActiveView
     refGrids = []
-
-    for i in UnwrapElement(ElementGrids):
+    for i in UnwrapElement(elementGrids):
         f = (i.get_Geometry(opt))
-        [refGrids.append(j.Reference) for j in f if str(j).Contains("Line")]
+        for j in f:
+            [refGrids.append(j.Reference) for j in f if j.GetType() == Line]
     return refGrids
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -70,7 +70,7 @@ def GetGeoElement(element): # Get geometry of element.
     geoByElement = element.get_Geometry(opt)
     geo = [i for i in geoByElement]
     return geo
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -81,7 +81,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces
@@ -97,7 +97,7 @@ def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
     return pfaces
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def GetFaceVertical(plannar): # Get Vertical PlannarFaces 
+def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)
     for i in remove:
@@ -106,7 +106,7 @@ def GetFaceVertical(plannar): # Get Vertical PlannarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def GetMaxface(plananrs):
+def getMaxface(plananrs):
     _Area = []
     _face = []
     for i in plananrs:
@@ -117,7 +117,7 @@ def GetMaxface(plananrs):
             
     return _face
 
-def GetReference(lstPlanar):
+def getReference(lstPlanar):
     reArray = []
     for i in lstPlanar:
         re = []
@@ -125,7 +125,7 @@ def GetReference(lstPlanar):
             re.append(j.Reference)
         reArray.append(re)
     return reArray
-def GetRefArrayOfGetRefer(lstRefer):
+def getRefArrayOfGetRefer(lstRefer):
     reArray = ReferenceArray()
     for i in lstRefer:
         re = []
@@ -157,6 +157,13 @@ def DBLinebyGrids(lstGrids):
     re = []
     for i in lstGrids:
         crv = i.Curve
+        re.append(crv)
+    return re
+
+def getDBLineByLines(elements):
+    re = []
+    for i in elements:
+        crv = i.GeometryCurve
         re.append(crv)
     return re
 

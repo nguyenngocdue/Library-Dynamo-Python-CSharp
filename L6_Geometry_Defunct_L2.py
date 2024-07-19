@@ -41,7 +41,7 @@ def getGeoElemnt(element): # Get Geometry of Element
     geo = [i for i in geometry]
     return geo
 
-def GetSolidFromGeo(lstgeometry): # Get Solid from Geometry
+def getSolidFromGeo(lstgeometry): # Get Solid from Geometry
     sol = []
     for i in lstgeometry:
         if i.GetType()== Solid and i.Volume != 0:
@@ -53,7 +53,7 @@ def GetSolidFromGeo(lstgeometry): # Get Solid from Geometry
                     sol.append(j)
     return sol
         
-def GetPlanarFromSolid(lstsolids): # Get PlanarFace from Solid
+def getPlanarFromSolid(lstsolids): # Get PlanarFace from Solid
     pfaces = []
     for i in lstsolids:
         pfaces.append(i.Faces)

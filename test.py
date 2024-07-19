@@ -1,41 +1,48 @@
-import tkinter as tk
-from tkinter import messagebox
+import clr
+import System
+ 
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
 
-def submit_action():
-    user_info = f"Name: {entry_name.get()}\nEmail: {entry_email.get()}\nMessage: {text_message.get('1.0', tk.END)}"
-    messagebox.showinfo("Form Submitted", user_info)
 
-# Create the main window
-root = tk.Tk()
-root.title("Simple Form")
+clr.AddReference("RevitNodes")
+import Revit
+clr.ImportExtensions(Revit.Elements)
+clr.ImportExtensions(Revit.GeometryConversion)
 
-# Create a label for the name
-label_name = tk.Label(root, text="Name:")
-label_name.grid(row=0, column=0, sticky="w")
+clr.AddReference("RevitAPIUI")
+from Autodesk.Revit.UI import*
+clr.AddReference('RevitAPIUI')
+from  Autodesk.Revit.UI.Selection import*
+from  Autodesk.Revit.UI.Selection import ISelectionFilter
 
-# Create an entry for the name
-entry_name = tk.Entry(root)
-entry_name.grid(row=0, column=1)
+clr.AddReference('RevitAPI')
+from Autodesk.Revit.DB import*
+from Autodesk.Revit.DB import Line, ModelLine, LinePattern, ElementId
+import Autodesk.Revit.DB as RDB
+from Autodesk.Revit.DB import Line, GeometryInstance, Solid
 
-# Create a label for the email
-label_email = tk.Label(root, text="Email:")
-label_email.grid(row=1, column=0, sticky="w")
+doc = DocumentManager.Instance.CurrentDBDocument
+view = doc.ActiveView
+uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
+app  = uidoc.Application 
+# #############################################################
+# #                      FUNCTION                             #
 
-# Create an entry for the email
-entry_email = tk.Entry(root)
-entry_email.grid(row=1, column=1)
+def getRightFace(lstPlanar,view): # Get Right PlanarFaces of a Element
+    dire = view.RightDirection
+    for i in lstPlanar:
+        var = i.FaceNormal
+        if var.IsAlmostEqualTo(dire):
+            return i
 
-# Create a label for the message
-label_message = tk.Label(root, text="Message:")
-label_message.grid(row=2, column=0, sticky="nw")
 
-# Create a text field for the message
-text_message = tk.Text(root, height=5, width=25)
-text_message.grid(row=2, column=1)
 
-# Create a submit button
-submit_button = tk.Button(root, text="Submit", command=submit_action)
-submit_button.grid(row=3, column=1, sticky="e")
 
-# Run the application
-root.mainloop()
+# #############################################################
+# #                      GEOMETRY                             #
+# #############################################################
+elements = UnwrapElement(IN[1]) if isinstance(IN[1], list) else [UnwrapElement(IN[1])]
+OUT = [getRightFace(eles, view) for eles in elements]

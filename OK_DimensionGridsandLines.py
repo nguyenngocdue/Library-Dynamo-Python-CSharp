@@ -45,7 +45,7 @@ class SelectionFilter(ISelectionFilter):
 	def AllowReference(ref, xyZ):
 		return False
 
-def GetReferenceOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
+def getReferenceOfGrid(ElementGrids): # Get Revit.DB.Reference from Grids
     opt = Options()
     opt.ComputeReferences = True
     opt.IncludeNonVisibleObjects = True

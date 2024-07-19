@@ -55,7 +55,7 @@ def pickObjectsFilter(filter):
 			typelist.apped(list())
 	return typelist		
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
@@ -64,7 +64,7 @@ def GetGeoElement(element): # Get geometry of element.
     geoByElement = element.get_Geometry(opt)
     geo = [i for i in geoByElement]
     return geo
-def GetSolidFromGeo(lstGeo): # Get Solid from Geo
+def getSolidFromGeo(lstGeo): # Get Solid from Geo
     sol = []
     for i in lstGeo:
         if i.GetType()== Solid and i.Volume > 0:
@@ -75,7 +75,7 @@ def GetSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def GetPlanarFormSolid(solids): # Get Planarface from solids
+def getPlanarFormSolid(solids): # Get Planarface from solids
     plaf = []
     for i in solids:
         var = i.Faces

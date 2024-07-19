@@ -7,7 +7,7 @@ clr.AddReference("RevitNodes")
 import Revit
 clr.ImportExtensions(Revit.Elements)
 
-def GetCategory(item):
+def getCategory(item):
 	if not item:
 		return None
 	objtype = item.GetType().ToString()

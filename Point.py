@@ -393,3 +393,7 @@ def getX_Y_Z(vectors):
 		cZ.append(z)
 	result_dict = {"x" : cX, "y": cY, "z": cZ}
 	return result_dict
+
+def getLocationXYZ(element): # Get XYZ of element.    
+    point = element.Location
+    return XYZ(point.X, point.Y, point.Z)

@@ -1,0 +1,208 @@
+[
+    {
+        "type_of_config": "isolate",
+        "name": "Wall",
+        "is_last_selected": true,
+        "name_index": "wall"
+    },
+    {
+        "type_of_config": "isolate",
+        "name": "Structural Column",
+        "is_last_selected": false,
+        "name_index": "structural_column"
+    }
+][
+    {
+        "type_of_config": "isolate", 
+        "name": "Structural Column", 
+        "is_last_selected": false, 
+        "name_index": "structural_column"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Wall", 
+        "is_last_selected": false, 
+        "name_index": "wall"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Grid", 
+        "is_last_selected": false, 
+        "name_index": "grid"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Floor", 
+        "is_last_selected": false, 
+        "name_index": "floor"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Roof", 
+        "is_last_selected": false, 
+        "name_index": "roof"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Door", 
+        "is_last_selected": false, 
+        "name_index": "door"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Window", 
+        "is_last_selected": false, 
+        "name_index": "window"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Ceiling", 
+        "is_last_selected": false, 
+        "name_index": "ceiling"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Stairs", 
+        "is_last_selected": false, 
+        "name_index": "stairs"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Ramp", 
+        "is_last_selected": false, 
+        "name_index": "ramp"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Railings", 
+        "is_last_selected": false, 
+        "name_index": "railings"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Furniture", 
+        "is_last_selected": false, 
+        "name_index": "furniture"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Plumbing Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "plumbing_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Lighting Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "lighting_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Electrical Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "electrical_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Mechanical Equipment", 
+        "is_last_selected": false, 
+        "name_index": "mechanical_equipment"
+    }
+][
+    {
+        "type_of_config": "isolate", 
+        "name": "Structural Column", 
+        "is_last_selected": false, 
+        "name_index": "structural_column"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Wall", 
+        "is_last_selected": false, 
+        "name_index": "wall"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Grid", 
+        "is_last_selected": false, 
+        "name_index": "grid"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Floor", 
+        "is_last_selected": false, 
+        "name_index": "floor"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Roof", 
+        "is_last_selected": false, 
+        "name_index": "roof"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Door", 
+        "is_last_selected": false, 
+        "name_index": "door"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Window", 
+        "is_last_selected": false, 
+        "name_index": "window"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Ceiling", 
+        "is_last_selected": false, 
+        "name_index": "ceiling"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Stairs", 
+        "is_last_selected": false, 
+        "name_index": "stairs"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Ramp", 
+        "is_last_selected": false, 
+        "name_index": "ramp"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Railings", 
+        "is_last_selected": false, 
+        "name_index": "railings"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Furniture", 
+        "is_last_selected": false, 
+        "name_index": "furniture"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Plumbing Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "plumbing_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Lighting Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "lighting_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Electrical Fixtures", 
+        "is_last_selected": false, 
+        "name_index": "electrical_fixtures"
+    }, 
+    {
+        "type_of_config": "isolate", 
+        "name": "Mechanical Equipment", 
+        "is_last_selected": false, 
+        "name_index": "mechanical_equipment"
+    }
+]

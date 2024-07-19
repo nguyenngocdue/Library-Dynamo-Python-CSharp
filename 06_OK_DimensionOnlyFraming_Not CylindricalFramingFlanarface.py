@@ -44,7 +44,7 @@ class SelectionFilter(ISelectionFilter):
 		return False
 		return False
 
-def GetGeoElement(element): # Get geometry of element.
+def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()
     opt.ComputeReferences = True
