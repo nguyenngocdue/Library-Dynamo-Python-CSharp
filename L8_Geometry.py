@@ -58,9 +58,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
             if j.Reference != None:
                 plaf.append(j)
     return plaf
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -113,21 +113,21 @@ def getFaceVertical(plannar): # Get Vertical PlanarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def RightFace(lstplanar,viewin): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getRightDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getLeftDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = -1*i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def getRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
-    if reason == True: return RightFace(lstFace,viewin)
-    elif reason == False: return LeftFace(lstFace, viewin)
+def getRightOrLeftPlanarFaces(dbPlanarFaces,reason,activeView): # Choose in one of Right and Left of Faces
+    if reason == True: return getRightDbPlanarFaces(dbPlanarFaces,activeView)
+    elif reason == False: return getLeftDbPlanarFaces(dbPlanarFaces, activeView)
 def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
@@ -149,15 +149,15 @@ def getLineMin(lstLine): # Get a min line of list line
     for j in lstLine:
         if j.Length == min(_length):
             return j   
-def LineOffset(line,distance,direc): # Offset a line from one line earlier
+def LineOffset(line,distance,direct): # Offset a line from one line earlier
     convert = distance/304.8
-    if direc == "x" or "X": newVector = XYZ(convert,0,0)
-    if direc == "y" or "Y": newVector = XYZ(0,convert,0)
-    if direc == "z" or "Z": newVector = XYZ(0,0,convert)
+    if direct == "x" or "X": newVector = XYZ(convert,0,0)
+    if direct == "y" or "Y": newVector = XYZ(0,convert,0)
+    if direct == "z" or "Z": newVector = XYZ(0,0,convert)
     # newVector = XYZ(convert,0,0)
     # newVector = XYZ(0,0,convert)
 
-    trans = Transform.CreateTranslation(direc) # Setting direction for GetLinMin
+    trans = Transform.CreateTranslation(direct) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove 
 def getReferenceArray(lstPlanar):
@@ -254,12 +254,12 @@ OUT = [t.ToProtoType() for i in getFaVerAllEle for t in i ]
 ####--------------------------------------STEP 3-----------------------------####
 
 # Choose Right Or Left From User
-rightFaceFraimg  =  [RightFace(i,view) for i in getFaVerFraming]
-leftFaceFraimg = [LeftFace(i,view) for i in getFaVerFraming]
+rightFaceFraimg  =  [getRightDbPlanarFaces(i,view) for i in getFaVerFraming]
+leftFaceFraimg = [getLeftDbPlanarFaces(i,view) for i in getFaVerFraming]
 #OUT = [i.ToProtoType() for i in leftFaceFraimg]
 
-rightFaceFloor = [RightFace(i,view) for i in getFaVerFloors]
-leftFaceFloor = [LeftFace(i,view) for i in getFaVerFloors]
+rightFaceFloor = [getRightDbPlanarFaces(i,view) for i in getFaVerFloors]
+leftFaceFloor = [getLeftDbPlanarFaces(i,view) for i in getFaVerFloors]
 #OUT = [i.ToProtoType() for i in rightFaceFloor]
 
 chooseFaceFraming  = GetRightOrLeftFace(lstFlattenL2(getFaVerFraming),IN[1],view) # GetRightOrLeftFace not get list input

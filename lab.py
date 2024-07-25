@@ -394,9 +394,9 @@ areas = calculateFacesArea(IN[0])
 OUT = areas
 
 #public
-def removeFaceNone(lstplanars): # Get planarFaces Not Null Value
+def removeFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -466,26 +466,26 @@ def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces
     return faH
 #public
 # Function to get the right planar faces of an element based on a view's right direction
-def getRightPlanarFaces(lstplanar, viewin):
-    direc = viewin.RightDirection
-    for i in lstplanar:
+def getRightDbPlanarFaces(dbPlanarFaces, activeView):
+    direct = activeView.RightDirection
+    for i in dbPlanarFaces:
         var = i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
     return None  # No matching face found
 
 #public
-def getLeftFace(lstplanar, viewIn):
-    direc = viewIn.RightDirection
-    for i in lstplanar:
+def getLeftDbPlanarFaces(dbPlanarFaces, activeView):
+    direct = activeView.RightDirection
+    for i in dbPlanarFaces:
         var = -1 * i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
     return None  # Handle the case when no matching face is found
 
-def getRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
-    if reason == True: return RightFace(lstFace,viewin)
-    elif reason == False: return LeftFace(lstFace, viewin)
+def getRightOrLeftPlanarFaces(dbPlanarFaces,reason,activeView): # Choose in one of Right and Left of Faces
+    if reason == True: return getRightDbPlanarFaces(dbPlanarFaces,activeView)
+    elif reason == False: return getLeftDbPlanarFaces(dbPlanarFaces, activeView)
 
 #public
 def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
@@ -536,23 +536,23 @@ def getLineMax(lstLine): # Get a max line of list line
         if j.Length == max(_length):
             return j   
     OUT = [GetLineMax(i) for i in IN[1]]  
-def LineOffset(line,distance,direc): # Offset a line from one line earlier
+def LineOffset(line,distance,direct): # Offset a line from one line earlier
     convert = distance/304.8
     newVector = None
-    # if direc == "x" or "X": newVector = XYZ(convert,0,0)
-    # if direc == "y" or "Y": newVector = XYZ(0,convert,0)
-    # elif direc == "z" or "Z": newVector = XYZ(0,0,convert)
+    # if direct == "x" or "X": newVector = XYZ(convert,0,0)
+    # if direct == "y" or "Y": newVector = XYZ(0,convert,0)
+    # elif direct == "z" or "Z": newVector = XYZ(0,0,convert)
     newVector = XYZ(0,0,convert)
     newVector = XYZ(0,convert,0)
     trans = Transform.CreateTranslation(newVector) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove
-def LineOffset(line, distance, direc): #Offset Revit.DB.Line
+def LineOffset(line, distance, direct): #Offset Revit.DB.Line
     convert = distance/304.8
     newVector = None
-    if direc == "X": newVector = XYZ(convert,0,0)
-    if direc == "Y": newVector = XYZ(0,convert,0)
-    if direc == "Z": newVector = XYZ(0,0,convert)
+    if direct == "X": newVector = XYZ(convert,0,0)
+    if direct == "Y": newVector = XYZ(0,convert,0)
+    if direct == "Z": newVector = XYZ(0,0,convert)
 
     trans = Transform.CreateTranslation(newVector)
     lineMove = line.CreateTransformed(trans)
@@ -625,20 +625,20 @@ def CurveFromGrids(listGrids,doc):
 		cr = i.Curve
 		crv.append(cr)
 	return crv    
-def LineOffset(line,distance,direc1, direc2, Flip): # Offset a line from one line earlier
+def LineOffset(line,distance,direct1, direct2, Flip): # Offset a line from one line earlier
     convert = distance
     #newVector = None
     vt =XYZ.BasisY
     checkY = Isparalel(vt,direct)
     if checkY == True:
-        if direc1 == "x" or "X": dir = Flip*direc2*(1/304.8)*convert
+        if direct1 == "x" or "X": dir = Flip*direct2*(1/304.8)*convert
     else:
-        if direc1 == "y" or "Y": dir = Flip*direc2*(1/304.8)*convert
-    #if direc == "z" or "Z": newVector = XYZ(0,0,convert)
+        if direct1 == "y" or "Y": dir = Flip*direct2*(1/304.8)*convert
+    #if direct == "z" or "Z": newVector = XYZ(0,0,convert)
     trans = Transform.CreateTranslation(dir) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove
-        #offsetline =LineOffset(line,IN[1],"X",direcFraming, IN[2] )
+        #offsetline =LineOffset(line,IN[1],"X",directFraming, IN[2] )
 def getToProtoType(items):
     opt = Options()
     opt.ComputeReferences = True

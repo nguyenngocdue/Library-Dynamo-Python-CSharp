@@ -58,9 +58,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
             if j.Reference != None:
                 plaf.append(j)
     return plaf
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -103,21 +103,21 @@ def getFaceVertical(plannar): # Get Vertical PlanarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def RightFace(lstplanar,viewin): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getRightDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getLeftDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = -1*i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def getRightOrLeft(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
-    if reason == True: return RightFace(lstFace,viewin)
-    elif reason == False: return LeftFace(lstFace, viewin)
+def getRightOrLeft(dbPlanarFaces,reason,activeView): # Choose in one of Right and Left of Faces
+    if reason == True: return getRightDbPlanarFaces(dbPlanarFaces,activeView)
+    elif reason == False: return getLeftDbPlanarFaces(dbPlanarFaces, activeView)
 
 fls = FilteredElementCollector(doc, view.Id).ToElements()
 AllEle = []

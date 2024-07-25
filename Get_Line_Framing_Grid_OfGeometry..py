@@ -155,9 +155,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
     return plaf
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces

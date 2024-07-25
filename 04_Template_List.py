@@ -155,9 +155,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
             if j.Reference != None:
                 plaf.append(j)
     return plaf
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -203,21 +203,21 @@ def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces
         if check == True:
             faH.append(i)
     return faH
-def RightFace(lstplanar,viewin): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getRightDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def LeftFace(lstplanar,viewIn): # Get Right PlanarFaces of a Element
-    direc = view.RightDirection
-    for i in lstplanar:
+def getLeftDbPlanarFaces(dbPlanarFaces,activeView): # Get Right PlanarFaces of a Element
+    direct = view.RightDirection
+    for i in dbPlanarFaces:
         var = -1*i.FaceNormal
-        if var.IsAlmostEqualTo(direc):
+        if var.IsAlmostEqualTo(direct):
             return i
-def getRightOrLeftFace(lstFace,reason,viewin): # Choose in one of Right and Left of Faces
-    if reason == True: return RightFace(lstFace,viewin)
-    elif reason == False: return LeftFace(lstFace, viewin)
+def getRightOrLeftPlanarFaces(dbPlanarFaces,reason,activeView): # Choose in one of Right and Left of Faces
+    if reason == True: return getRightDbPlanarFaces(dbPlanarFaces,activeView)
+    elif reason == False: return getLeftDbPlanarFaces(dbPlanarFaces, activeView)
 def getTopOrBotFace(lstPlanars, reason): # Get Top or Bottom of Faces
     for i in lstPlanars:
         if i.FaceNormal.Z == 1 and reason == True:
@@ -249,12 +249,12 @@ def getLineMax(lstLine): # Get a max line of list line
         if j.Length == max(_length):
             return j   
  
-def LineOffset(line,distance,direc): # Offset a line from one line earlier
+def LineOffset(line,distance,direct): # Offset a line from one line earlier
     convert = distance/304.8
     newVector = None
-    # if direc == "x" or "X": newVector = XYZ(convert,0,0)
-    # if direc == "y" or "Y": newVector = XYZ(0,convert,0)
-    # elif direc == "z" or "Z": newVector = XYZ(0,0,convert)
+    # if direct == "x" or "X": newVector = XYZ(convert,0,0)
+    # if direct == "y" or "Y": newVector = XYZ(0,convert,0)
+    # elif direct == "z" or "Z": newVector = XYZ(0,0,convert)
     newVector = XYZ(0,0,convert)
     newVector = XYZ(0,convert,0)
     trans = Transform.CreateTranslation(newVector) # Setting direction for GetLinMin
@@ -297,20 +297,20 @@ def LinebyGrids(lstGrids):
         crv = i.Curve
         re.append(crv)
     return re
-def LineOffset(line,distance,direc1, direc2, Flip): # Offset a line from one line earlier
+def LineOffset(line,distance,direct1, direct2, Flip): # Offset a line from one line earlier
     convert = distance
     #newVector = None
     vt =XYZ.BasisY
     checkY = Isparalel(vt,direct)
     if checkY == True:
-        if direc1 == "x" or "X": dir = Flip*direc2*(1/304.8)*convert
+        if direct1 == "x" or "X": dir = Flip*direct2*(1/304.8)*convert
     else:
-        if direc1 == "y" or "Y": dir = Flip*direc2*(1/304.8)*convert
-    #if direc == "z" or "Z": newVector = XYZ(0,0,convert)
+        if direct1 == "y" or "Y": dir = Flip*direct2*(1/304.8)*convert
+    #if direct == "z" or "Z": newVector = XYZ(0,0,convert)
     trans = Transform.CreateTranslation(dir) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove
-        #offsetline =LineOffset(line,IN[1],"X",direcFraming, IN[2] )
+        #offsetline =LineOffset(line,IN[1],"X",directFraming, IN[2] )
 
 
 def RefArrayByEleLine(linelist): # Get ReferenceArray by Element Line

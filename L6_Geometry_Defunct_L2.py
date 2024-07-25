@@ -62,18 +62,18 @@ def getPlanarFromSolid(lstsolids): # Get PlanarFace from Solid
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength() # Tich co huong 2 Vector
 
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
  
 
-def FilterVerticalPlanar(lstplanars): # Get plannar follow Vertical
+def FilterVerticalPlanar(dbPlanarFaces): # Get plannar follow Vertical
     faV = []
     Y = XYZ.BasisY
-    for i in RemoveFaceNone(lstplanars):
+    for i in RemoveFaceNone(dbPlanarFaces):
         var = i.FaceNormal
         check = Isparalel(Y,var)
         if check == True:

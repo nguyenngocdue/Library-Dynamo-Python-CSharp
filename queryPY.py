@@ -881,11 +881,11 @@ def get_all_grids(group_by_direction=False,
                 ))
 
     if group_by_direction:
-        direcs = {db.XYZPoint(x.Curve.Direction) for x in all_grids}
+        directs = {db.XYZPoint(x.Curve.Direction) for x in all_grids}
         grouped_grids = {}
-        for direc in direcs:
-            grouped_grids[direc] = [x for x in all_grids
-                                    if direc == db.XYZPoint(x.Curve.Direction)]
+        for direct in directs:
+            grouped_grids[direct] = [x for x in all_grids
+                                    if direct == db.XYZPoint(x.Curve.Direction)]
         return grouped_grids
     return all_grids
 

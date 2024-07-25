@@ -119,9 +119,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
     return plaf
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -213,7 +213,7 @@ OUT = [i.ToProtoType() for i in getLineVetiFraming]
 getLongLine = GetLineMax(getLineVetiFraming)
 OUT = [i.ToProtoType() for i in getLongLine]
 
-direcFraming = (getLongLine[0].Direction) # Get direction to define for Dimention Offset
+directFraming = (getLongLine[0].Direction) # Get direction to define for Dimention Offset
 
 def getReference(lstPlanar):
     re = []
@@ -236,21 +236,21 @@ for i in refVFraming:
 #############################################################################################################
 
 
-def LineOffset(line,distance,direc1, direc2, Flip): # Offset a line from one line earlier
+def LineOffset(line,distance,direct1, direct2, Flip): # Offset a line from one line earlier
     convert = distance
     #newVector = None
     vt =XYZ.BasisY
     checkY = Isparalel(vt,direct)
     if checkY == True:
-        if direc1 == "x" or "X": dir = Flip*direc2*(1/304.8)*convert
+        if direct1 == "x" or "X": dir = Flip*direct2*(1/304.8)*convert
     else:
-        if direc1 == "y" or "Y": dir = Flip*direc2*(1/304.8)*convert
-    #if direc == "z" or "Z": newVector = XYZ(0,0,convert)
+        if direct1 == "y" or "Y": dir = Flip*direct2*(1/304.8)*convert
+    #if direct == "z" or "Z": newVector = XYZ(0,0,convert)
     trans = Transform.CreateTranslation(dir) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove
 
-offsetline =LineOffset(line,IN[1],"X",direcFraming, IN[2] )
+offsetline =LineOffset(line,IN[1],"X",directFraming, IN[2] )
 OUT = line.ToProtoType() ,offsetline.ToProtoType(), direct
 
 ##############################################################################################################
@@ -290,7 +290,7 @@ dim2 =doc.Create.NewDimension(view,offsetline,re03)
 TransactionManager.Instance.TransactionTaskDone()
 
 
-#OUT = direcFraming , line.ToProtoType() , offsetline.ToProtoType() 
+#OUT = directFraming , line.ToProtoType() , offsetline.ToProtoType() 
 ###############################################################################################################
 
 OUT = direct , line.ToProtoType(), vtxFromGrids , ptsGris1, ptsGris2

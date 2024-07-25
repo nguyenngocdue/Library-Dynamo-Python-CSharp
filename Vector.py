@@ -6,3 +6,9 @@ def getCurveNormalsByLines(lines):
 
 def getXYZCurveNormalsByLines(lines):
 	return [XYZ(i.Normal.X,i.Normal.Y,i.Normal.Z)  for i in lines]
+	
+def getOriginOfDbPFaces(dbPlanarFaces):
+    result = []
+    for pl in dbPlanarFaces:
+        result.append(pl.Origin)
+    return result

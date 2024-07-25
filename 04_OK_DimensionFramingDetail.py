@@ -89,9 +89,9 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
             if j.Reference != None:
                 plaf.append(j)
     return plaf
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
@@ -233,16 +233,16 @@ pickPoint = uidoc.Selection.PickPoint("Select Point")
 direct = vtzPlane.CrossProduct(vtyFromLine) 
 line = Line.CreateBound(pickPoint,pickPoint+direct)
 
-def LineOffset(line,distance,direc1, direc2, Flip): # Offset a line from one line earlier
+def LineOffset(line,distance,direct1, direct2, Flip): # Offset a line from one line earlier
     convert = distance/304.8
     #newVector = None
     vt =XYZ.BasisY
     checkY = Isparalel(vt,direct)
     if checkY == True:
-        if direc1 == "x" or "X": dir = Flip*direc2*convert
+        if direct1 == "x" or "X": dir = Flip*direct2*convert
     else:
-        if direc1 == "y" or "Y": dir = Flip*direc2*convert
-    #if direc == "z" or "Z": newVector = XYZ(0,0,convert)
+        if direct1 == "y" or "Y": dir = Flip*direct2*convert
+    #if direct == "z" or "Z": newVector = XYZ(0,0,convert)
     trans = Transform.CreateTranslation(dir) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove

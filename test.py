@@ -30,19 +30,15 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application 
 # #############################################################
 # #                      FUNCTION                             #
-
-def getRightFace(lstPlanar,view): # Get Right PlanarFaces of a Element
-    dire = view.RightDirection
-    for i in lstPlanar:
-        var = i.FaceNormal
-        if var.IsAlmostEqualTo(dire):
-            return i
-
-
-
+def getOriginOfDbPFaces(dbPlanarFaces):
+    result = []
+    for pl in dbPlanarFaces:
+        result.append(pl.Origin)
+    return result
 
 # #############################################################
 # #                      GEOMETRY                             #
 # #############################################################
+
 elements = UnwrapElement(IN[1]) if isinstance(IN[1], list) else [UnwrapElement(IN[1])]
-OUT = [getRightFace(eles, view) for eles in elements]
+OUT = getOriginOfDbPFaces(elements)

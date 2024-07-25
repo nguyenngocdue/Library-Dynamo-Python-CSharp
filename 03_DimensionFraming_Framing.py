@@ -89,9 +89,9 @@ def getMaxface(plananrs):
         if j.Area > (max(_Area)-min(_Area)):
             _face.append(j)
     return _face
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces

@@ -128,9 +128,9 @@ def getLineMax(lstLine): # Get a min line of list line
         if j.Length == max(_length):
             lineMax.append(j)
     return lineMax
-def RemoveFaceNone(lstplanars): # Get planarFaces Not Null Value
+def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
-    for i in lstplanars:
+    for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces

@@ -93,3 +93,9 @@ TransactionManager.Instance.TransactionTaskDone()
 OUT = elements, element2, 
 ############################### OUTPUT ##################################
 
+def getRightDbPlanarFaces(lstPlanar,view): # Get Right PlanarFaces of a Element
+    dire = view.RightDirection
+    for i in lstPlanar:
+        var = i.FaceNormal
+        if var.IsAlmostEqualTo(dire):
+            return i
