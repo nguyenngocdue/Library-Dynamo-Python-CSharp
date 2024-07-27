@@ -397,3 +397,43 @@ def getX_Y_Z(vectors):
 def getLocationXYZ(element): # Get XYZ of element.    
     point = element.Location
     return XYZ(point.X, point.Y, point.Z)
+
+def sortXYZ(lstXyz):
+    # Sort lstXyz by coordinates X, then Y, then Z
+    sortedIndices = sorted(enumerate(lstXyz), key=lambda point: (point[1][0], point[1][1], point[1][2]))
+    indices = [index for index, _ in sortedIndices]
+    sortedPoints = [point for _, point in sortedIndices]
+    return indices, sortedPoints
+
+def findExtremePoint(points, coordinate='Z', findMin=True):
+    if not points:
+        return None
+    compare = min if findMin else max
+    if coordinate not in ['X', 'Y', 'Z']:
+        raise ValueError("Coordinate must be 'X', 'Y', or 'Z'")
+    extremePoint = points[0]
+    for point in points:
+        # Get the current coordinate value of the point being checked
+        currentAttribute = getattr(point, coordinate)
+        # Get the coordinate value of the current extreme point
+        extremeAttribute = getattr(extremePoint, coordinate)
+        # Update 'extremePoint' if the current point's value is more extreme
+        if compare(currentAttribute, extremeAttribute) == currentAttribute:
+            extremePoint = point
+    return extremePoint
+
+def findExtremePointOnLine(line, coordinate='Z', findMin=True):
+    if not line:
+        return None
+    # Retrieve start and end points of the line
+    startPoint = line.StartPoint
+    endPoint = line.EndPoint
+    compare = min if findMin else max
+    if coordinate not in ['X', 'Y', 'Z']:
+        raise ValueError("Coordinate must be 'X', 'Y', or 'Z'")
+    # Extract the relevant coordinate from each point
+    startCoord = getattr(startPoint, coordinate)
+    endCoord = getattr(endPoint, coordinate)
+    # Determine which point is the extreme point
+    extremePoint = startPoint if compare(startCoord, endCoord) == startCoord else endPoint
+    return extremePoint

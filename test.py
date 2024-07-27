@@ -30,15 +30,16 @@ uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 app  = uidoc.Application 
 # #############################################################
 # #                      FUNCTION                             #
-def getOriginOfDbPFaces(dbPlanarFaces):
-    result = []
-    for pl in dbPlanarFaces:
-        result.append(pl.Origin)
-    return result
+def sortXYZ(lstXyz):
+    # Sort lstXyz by coordinates X, then Y, then Z
+    sortedIndices = sorted(enumerate(lstXyz), key=lambda point: (point[1][0], point[1][1], point[1][2]))
+    indices = [index for index, _ in sortedIndices]
+    sortedPoints = [point for _, point in sortedIndices]
+    return indices, sortedPoints
 
 # #############################################################
 # #                      GEOMETRY                             #
 # #############################################################
 
 elements = UnwrapElement(IN[1]) if isinstance(IN[1], list) else [UnwrapElement(IN[1])]
-OUT = getOriginOfDbPFaces(elements)
+OUT = sortXYZ(elements)

@@ -51,3 +51,20 @@ def getDBLineFormEleLine(elementLines): # Get Revit.DB.Line from Curve Elements
     for j in elementLines:
     	ln.append(UnwrapElement(j).ToRevitType())
     return ln
+
+def getCenterPointOfLine(line):
+    if not line:
+        return None
+    
+    # Retrieve start and end points of the line
+    startPoint = line.StartPoint
+    endPoint = line.EndPoint
+    
+    # Calculate the coordinates of the center point
+    centerX = (startPoint.X + endPoint.X) / 2
+    centerY = (startPoint.Y + endPoint.Y) / 2
+    centerZ = (startPoint.Z + endPoint.Z) / 2
+    
+    # Create and return the center point
+    centerPoint = Point.ByCoordinates(centerX, centerY, centerZ)
+    return centerPoint
