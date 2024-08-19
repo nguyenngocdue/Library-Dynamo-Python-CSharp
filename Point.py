@@ -437,3 +437,42 @@ def findExtremePointOnLine(line, coordinate='Z', findMin=True):
     # Determine which point is the extreme point
     extremePoint = startPoint if compare(startCoord, endCoord) == startCoord else endPoint
     return extremePoint
+
+
+def offsetZPoints(points, zOffset):
+    updatedPoints = []
+    for point in points:
+        startPoint = point['start_point']
+        endPoint = point['end_point']
+        
+        # Update the Z-coordinate of the start and end points
+        startPointUpdated = [startPoint[0], startPoint[1], startPoint[2] + zOffset]
+        endPointUpdated = [endPoint[0], endPoint[1], endPoint[2] + zOffset]
+        
+        updatedPoint = {
+            'start_point': startPointUpdated,
+            'end_point': endPointUpdated
+        }
+        updatedPoints.append(updatedPoint)
+    return updatedPoints
+    # pointDicts = IN[0]
+    # zOffset = 50/304.84
+    # OUT = offsetZPoints(pointDicts, zOffset)
+
+def convertToXYZ(pointsList):
+    """
+    Converts a nested list of point coordinates into XYZ objects.
+    Parameters:
+    pointsList (list of lists): A nested list where each sub-list contains X, Y, Z coordinates of a point.
+    Returns:
+    list of XYZ: A list of XYZ objects representing the points.
+    """
+    xyzPoints = []
+    for point in pointsList:
+        # Create an XYZ object for each sublist
+        xyzPoint = XYZ(point[0], point[1], point[2])
+        xyzPoints.append(xyzPoint)
+    
+    return xyzPoints
+    nums = IN[0]
+    OUT = [convertToXYZ(num) for num in nums]

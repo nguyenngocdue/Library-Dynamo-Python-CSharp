@@ -12,3 +12,16 @@ def getOriginOfDbPFaces(dbPlanarFaces):
     for pl in dbPlanarFaces:
         result.append(pl.Origin)
     return result
+
+def createXYZVectorsFromPoints(points):
+    vectors = []
+    for point in points:
+        start_point = point['start_point']
+        end_point = point['end_point']
+        # Create a vector by subtracting the start point from the end point
+        vector = XYZ(end_point[0] - start_point[0], end_point[1] - start_point[1], end_point[2] - start_point[2])
+        vectors.append(vector)
+    return vectors
+
+pointDicts = IN[0]
+OUT = createXYZVectorsFromPoints(pointDicts)

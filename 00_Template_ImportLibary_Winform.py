@@ -22,7 +22,7 @@ from Autodesk.Revit.DB import*
 #########################################################################
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
-clr.AddReference('System.Windows.Forms.DataVisualization')
+# clr.AddReference('System.Windows.Forms.DataVisualization')
 import System.Windows.Forms
 import System.Drawing
 from System.Drawing import *
@@ -32,10 +32,9 @@ from System.Collections.Generic import *
 doc = DocumentManager.Instance.CurrentDBDocument
 View = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-
 #########################################################################
-self._cbbFil.Items.AddRange(System.Array[System.Object](filStatus))
-self._cbbx.Items.AddRange(System.Array[System.Object](["a", "b", "c", "d"]))
+# self._cbbFil.Items.AddRange(System.Array[System.Object](filStatus))
+# self._cbbx.Items.AddRange(System.Array[System.Object](["a", "b", "c", "d"]))
 
 
 
@@ -95,3 +94,77 @@ Application.Run(MainForm())
 			self.Selected.append(IN[1])
 			self.Close()
 		pass
+
+
+###############################HELLO WORLD#################################
+import clr
+import System
+ 
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+
+clr.AddReference("RevitNodes")
+import Revit
+clr.ImportExtensions(Revit.Elements)
+clr.ImportExtensions(Revit.GeometryConversion)
+
+clr.AddReference("RevitAPIUI")
+from Autodesk.Revit.UI import*
+clr.AddReference('RevitAPIUI')
+from  Autodesk.Revit.UI.Selection import*
+from  Autodesk.Revit.UI.Selection import ISelectionFilter
+
+clr.AddReference('RevitAPI')
+from Autodesk.Revit.DB import*
+from Autodesk.Revit.DB import Line, ModelLine, LinePattern, ElementId
+import Autodesk.Revit.DB as RDB
+from Autodesk.Revit.DB import Line, GeometryInstance, Solid
+#########################################################################
+clr.AddReference('System.Windows.Forms')
+clr.AddReference('System.Drawing')
+# clr.AddReference('System.Windows.Forms.DataVisualization')
+import System.Windows.Forms
+import System.Drawing
+from System.Drawing import *
+from System.Windows.Forms import *
+from System.Collections.Generic import *
+#########################################################################
+doc = DocumentManager.Instance.CurrentDBDocument
+View = doc.ActiveView
+uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
+
+#########################################################################
+
+class MainForm(Form):
+	def __init__(self):
+		self.InitializeComponent()
+	
+	def InitializeComponent(self):
+		self._label1 = System.Windows.Forms.Label()
+		self.SuspendLayout()
+		# 
+		# label1
+		# 
+		self._label1.Location = System.Drawing.Point(191, 172)
+		self._label1.Name = "label1"
+		self._label1.Size = System.Drawing.Size(100, 23)
+		self._label1.TabIndex = 0
+		self._label1.Text = "HELLO WORLD"
+		self._label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		# 
+		# MainForm
+		# 
+		self.ClientSize = System.Drawing.Size(533, 397)
+		self.Controls.Add(self._label1)
+		self.Name = "MainForm"
+		self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+		self.Text = "Form1"
+		self.TopMost = True
+		self.ResumeLayout(False)
+
+
+		
+Application.Run(MainForm())

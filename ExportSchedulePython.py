@@ -22,7 +22,7 @@ from Autodesk.Revit.DB import*
 #########################################################################
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
-clr.AddReference('System.Windows.Forms.DataVisualization')
+# clr.AddReference('System.Windows.Forms.DataVisualization')
 import System.Windows.Forms
 import System.Drawing
 from System.Drawing import *
@@ -149,12 +149,6 @@ class MainForm(Form):
 		self._groupBox1.ResumeLayout(False)
 		self._groupBox1.PerformLayout()
 		self.ResumeLayout(False)
-
-
-
-
-
-
 
 
 form  = MainForm()

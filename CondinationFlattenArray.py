@@ -27,7 +27,7 @@ from Autodesk.Revit.DB import*
 #########################################################################
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
-clr.AddReference('System.Windows.Forms.DataVisualization')
+# clr.AddReference('System.Windows.Forms.DataVisualization')
 import System.Windows.Forms
 import System.Drawing
 from System.Drawing import *

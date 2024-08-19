@@ -1,6 +1,6 @@
 lines = UnwrapElement(IN[0])
 # Get the start and end points of each line
-def getPointByLines(lines):
+def getPointsByLines(lines):
 	points = []
 	for line in lines:
 		start_point = line.StartPoint
@@ -10,7 +10,45 @@ def getPointByLines(lines):
 	return points
 
 # Output the points
-OUT = getPointByLines(lines)
+OUT = getPointsByLines(lines)
+
+def getPointsByLine(line):
+    start_point = line.StartPoint
+    end_point = line.EndPoint
+    return start_point, end_point
+
+def getPointsByLine(line):
+    start_point = line.StartPoint
+    end_point = line.EndPoint
+    return {"start_point": start_point, "end_point": end_point}
+
+def getXYZByLine(line):
+    start_point = line.StartPoint
+    end_point = line.EndPoint
+    start_point_xyz = {'X': start_point.X, 'Y': start_point.Y, 'Z': start_point.Z}
+    end_point_xyz = {'X': end_point.X, 'Y': end_point.Y, 'Z': end_point.Z}
+    return {'start_point': start_point_xyz, 'end_point': end_point_xyz}
+
+def getXYZByLine(line):
+    start_point = line.StartPoint
+    end_point = line.EndPoint
+    start_point_xyz = [start_point.X, start_point.Y, start_point.Z]  # Start point coordinates as a list
+    end_point_xyz = [end_point.X, end_point.Y, end_point.Z]          # End point coordinates as a list
+    return [start_point_xyz, end_point_xyz]
+lines = IN[0]  # The input list of lines from Dynamo
+OUT = [getXYZByLine(l) for l in lines]  # Apply the function to each line and collect the results
+
+
+def getXYZByLine(line):
+    start_point = line.StartPoint
+    end_point = line.EndPoint
+    start_point_xyz = [start_point.X, start_point.Y, start_point.Z]  # Start point coordinates as a list
+    end_point_xyz = [end_point.X, end_point.Y, end_point.Z]          # End point coordinates as a list
+    return {'start_point': start_point_xyz, 'end_point': end_point_xyz}
+
+lines = IN[0]  # The input list of lines from Dynamo
+OUT = [getXYZByLine(l) for l in lines]  # Apply the function to each line and collect the results in a dictionary format
+
 ------------------------------------------------------------------------------------------------
 def get_higher_point(point1, point2):
     # Compare the Z-coordinates of the points

@@ -3,5 +3,8 @@
         "Rebar",
         "Revit",
         "uidoc"
+    ],
+    "cSpell.enableFiletypes": [
+        "!python"
     ]
 }
