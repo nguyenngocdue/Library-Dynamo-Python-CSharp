@@ -476,3 +476,47 @@ def convertToXYZ(pointsList):
     return xyzPoints
     nums = IN[0]
     OUT = [convertToXYZ(num) for num in nums]
+
+def findMatchingPoints(lines, points):
+    matchingPoints = []
+    for line in lines:
+        startPoint = line.StartPoint
+        endPoint = line.EndPoint
+        for point in points:
+            if startPoint.IsAlmostEqualTo(point):
+                matchingPoints.append(point)
+            if endPoint.IsAlmostEqualTo(point):
+                matchingPoints.append(point)
+    return matchingPoints
+
+def checkAxisMovement(points):
+    # Giả định rằng danh sách points chứa ít nhất hai điểm để so sánh
+    if len(points) < 2:
+        return "Không đủ điểm để kiểm tra."
+
+    # Lấy tọa độ của điểm đầu tiên và điểm thứ hai, và làm tròn đến 4 chữ số thập phân
+    x1, y1, z1 = round(points[0].X, 4), round(points[0].Y, 4), round(points[0].Z, 4)
+    x2, y2, z2 = round(points[1].X, 4), round(points[1].Y, 4), round(points[1].Z, 4)
+
+    # Kiểm tra sự khác biệt trong các tọa độ đã được làm tròn và xác định hướng di chuyển
+    if x1 != x2 and y1 == y2 and z1 == z2:
+        if x2 > x1:
+            return "X"
+        else:
+            return "-X"
+    elif x1 == x2 and y1 != y2 and z1 == z2:
+        if y2 > y1:
+            return "Y"
+        else:
+            return "-Y"
+    elif x1 == x2 and y1 == y2 and z1 != z2:
+        if z2 > z1:
+            return "Z"
+        else:
+            return "-Z"
+    else:
+        return "Di chuyển theo nhiều trục hoặc không có trục nào được di chuyển rõ ràng."
+
+# Áp dụng hàm vào danh sách các phần tử
+elements = unwrapInput(IN[1])
+OUT = checkAxisMovement(elements)

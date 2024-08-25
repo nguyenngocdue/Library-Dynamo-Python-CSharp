@@ -28,8 +28,6 @@ import clr
 clr.AddReference('DSCoreNodes')
 from DSCore import *
 
-
-
 doc = DocumentManager.Instance.CurrentDBDocument
 view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument

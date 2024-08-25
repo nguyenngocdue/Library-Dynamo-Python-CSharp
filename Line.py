@@ -43,4 +43,19 @@ deltaX = IN[1]/304.8
 deltaY = IN[2]/304.8
 deltaZ = IN[3]/304.8
 OUT = getXyzItemsByOffsetPointsFromDbLines(IN[0], deltaX, deltaY, deltaZ)
+#########################################################################
+def moveLinesByVector(lines, vector):
+    newLines = []
+    for line in lines:
+        newStartPoint = line.StartPoint.Add(vector)
+        newEndPoint = line.EndPoint.Add(vector)
+        newLine = Line.ByStartPointEndPoint(newStartPoint, newEndPoint)
+        newLines.append(newLine)
+    return newLines
 
+elements = [UnwrapElement(IN[0])] if not isinstance(IN[0], list) else UnwrapElement(IN[0])
+xTranslation = IN[1]
+yTranslation = IN[2]
+zTranslation = IN[3]
+vector = Vector.ByCoordinates(xTranslation, yTranslation, zTranslation)
+OUT = moveLinesByVector(elements, vector)
