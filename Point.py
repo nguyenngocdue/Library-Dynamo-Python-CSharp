@@ -44,9 +44,25 @@ def get_xyz_from_detail_line(detail_line):
 
     # Return the XYZ coordinates
     return start_xyz, end_xyz
-def sortPoints(points):
-	points = sorted(objects, key = lambda objects: objects.X and objects.Y and objects.Z)
-	return points[0], points[-1]
+def sortedPoints(points):
+    # Sort points first by X, then Y, then Z coordinates
+    points = sorted(points, key=lambda point: (round(point.X, 3), round(point.Y, 3), round(point.Z, 3)))
+    return points
+
+def sortedPointsWithIndex(points):
+    # Enumerate points to pair each point with its original index
+    indexedPoints = list(enumerate(points))
+    # Sort indexed points based on rounded X, Y, and Z coordinates
+    sortedIndexedPoints = sorted(indexedPoints, key=lambda idxPt: (
+        round(idxPt[1].X, 3), 
+        round(idxPt[1].Y, 3), 
+        round(idxPt[1].Z, 3)
+    ))
+    # Unpack sorted points and their indices
+    sortedPoints = [pt for idx, pt in sortedIndexedPoints]
+    indices = [idx for idx, pt in sortedIndexedPoints]
+    return sortedPoints, indices
+
 #public
 def sortPointsByAxis(points, axis='X', descending=False):
     # Define a lambda function to extract the specified axis value from a point
@@ -517,6 +533,123 @@ def checkAxisMovement(points):
     else:
         return "Di chuyển theo nhiều trục hoặc không có trục nào được di chuyển rõ ràng."
 
-# Áp dụng hàm vào danh sách các phần tử
-elements = unwrapInput(IN[1])
-OUT = checkAxisMovement(elements)
+    # # Áp dụng hàm vào danh sách các phần tử
+    # elements = unwrapInput(IN[1])
+    # OUT = checkAxisMovement(elements)
+
+def uniquePointsByLines(lines):
+    points = {}
+    for line in lines:
+        start = line.StartPoint
+        end = line.EndPoint
+        startKey = (round(start.X, 2), round(start.Y, 2), round(start.Z, 2))
+        if startKey not in points:
+            points[startKey] = start
+        # Kiểm tra và thêm điểm end vào dictionary nếu chưa có
+        endKey = (round(end.X, 2), round(end.Y, 2), round(end.Z, 2))
+        if endKey not in points:
+            points[endKey] = end
+    return points.values()
+
+def getLengthOfLines(lines):
+    length = 0
+    for line in lines:
+        length += line.Length
+    return length
+
+def movePoints(points, targetZ=0, targetX=0, targetY=0):
+    movedPoints = []
+    for point in points:
+        movedPoint = Point.Add(point, Vector.ByCoordinates(targetX, targetY, targetZ))
+        movedPoints.append(movedPoint)
+    return movedPoints
+    # targetX = IN[1]
+    # targetY = IN[2]
+    # targetZ = IN[3]
+
+    # elements = getList(IN[0])
+    # movedPointsList = movePoints(elements,targetZ, targetX, targetY)
+    # OUT = movedPointsList
+
+def findIntersecPoints(lines):
+    intersecPoints = []
+    for i in range(len(lines)):
+        for j in range(i+1, len(lines)):
+            intersection = lines[i].Intersect(lines[j])
+            if intersection:
+                intersecPoints.extend(intersection)
+    uniquePoints = list(set(intersecPoints))
+    return  uniquePoints
+
+def removeDuplicatePoints(points):
+    # Create a dictionary to hold unique points
+    uniquePoints = {}
+    for point in points:
+        # Use a tuple of coordinates as the key for the dictionary
+        key = (round(point.X, 3), round(point.Y, 3), round(point.Z, 3))  # Round to avoid floating-point arithmetic issues
+        if key not in uniquePoints:
+            uniquePoints[key] = point
+    # Return a list of non-duplicate points
+    return list(uniquePoints.values())
+
+def getMinAndMaxPoints(points):
+    result = [{"X": p.X, "Y": p.Y, "Z": p.Z} for p in points]
+    min_x = min(p['X'] for p in result)
+    max_x = max(p['X'] for p in result)
+    min_y = min(p['Y'] for p in result)
+    max_y = max(p['Y'] for p in result)
+    return min_x, max_x, min_y, max_y
+
+def offsetPoints(pointsDict, dis):
+    minX = min(p['x'] for p in pointsDict)
+    maxX = max(p['x'] for p in pointsDict)
+    minY = min(p['y'] for p in pointsDict)
+    maxY = max(p['y'] for p in pointsDict)
+
+    leftOffset = []
+    rightOffset = []
+    bottomOffset = []
+    topOffset = []
+    noOffset = []
+
+    for p in pointsDict:
+        if p['x'] == minX:  # left points
+            leftOffset.append({'x': p['x'] - dis, 'y': p['y'], 'z': p['z']})
+        elif p['x'] == maxX:  # right points
+            rightOffset.append({'x': p['x'] + dis, 'y': p['y'], 'z': p['z']})
+        elif p['y'] == minY:  # bottom points
+            bottomOffset.append({'x': p['x'], 'y': p['y'] - dis, 'z': p['z']})
+        elif p['y'] == maxY:  # top points
+            topOffset.append({'x': p['x'], 'y': p['y'] + dis, 'z': p['z']})
+        else:
+            noOffset.append(p)
+
+    leftTargetPoints = [Point.ByCoordinates(p['x'], p['y'], p['z']) for p in leftOffset]
+    rightTargetPoints = [Point.ByCoordinates(p['x'], p['y'], p['z']) for p in rightOffset]
+    bottomTargetPoints = [Point.ByCoordinates(p['x'], p['y'], p['z']) for p in bottomOffset]
+    topTargetPoints = [Point.ByCoordinates(p['x'], p['y'], p['z']) for p in topOffset]
+
+    return leftTargetPoints, rightTargetPoints, bottomTargetPoints, topTargetPoints
+    # # Sử dụng hàm
+    # pointsDict = getList(IN[0])
+    # dis = IN[1]
+
+    # OUT = offset_points(pointsDict, dis)
+
+def offsetPointsByPoints(points, dis, typeAxis):
+    newPoints = []
+    for p in points:
+        if typeAxis == 'x':
+            px = p.X + dis
+            py, pz = p.Y, p.Z
+            point = Point.ByCoordinates(px, py, pz)
+        elif typeAxis == 'y':
+            py = p.Y + dis
+            px, pz = p.X, p.Z
+            point = Point.ByCoordinates(px, py, pz)
+        else:
+            pz = p.Z + dis
+            px, py = p.X, p.Y
+            point = Point.ByCoordinates(px, py, pz)
+        newPoints.append(point)
+    return newPoints

@@ -349,15 +349,15 @@ def distance(p1,p2):
     # p2 = Point.ByCoordinates(10,10)
     # OUT = distance(p1,p2)
 
-def LineByTwoPoint(p1,p2):
+def createLinesByTwoPoints(p1,p2):
     line = Line.ByStartPointEndPoint(p1,p2)
     return line
 p1 = Point.ByCoordinates(1,0,10)
 p2 = Point.ByCoordinates(10,10,0)
 p3 = Point.ByCoordinates(10,5,7)
 
-# l1 = LineByTwoPoint(p1,p2)
-# l2 = LineByTwoPoint(p1,p3)
+# l1 = createLinesByTwoPoints(p1,p2)
+# l2 = createLinesByTwoPoints(p1,p3)
 # OUT = l1,l2
 
 # def AngleTwoLine(line1,line2):

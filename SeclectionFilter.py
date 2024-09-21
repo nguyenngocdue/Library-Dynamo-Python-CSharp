@@ -50,10 +50,3 @@ class SelectionFilter(ISelectionFilter):
 ele = SelectionFilter("Grids", "Structural Columns")
 elSelectAll = uidoc.Selection.PickElementsByRectangle(ele,"Selects")
 OUT = elSelectAll
-
-grids = []
-column = []
-for i in elSelectAll:
-    if i.Category.Name == "Structural Columns": column.append(i)
-    if i.Category.Name == "Grids": grids.append(i)
-OUT =  column, grids

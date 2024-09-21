@@ -675,10 +675,10 @@ def getAngle(p1,p2):
     # p1 = XYZ(0,0,1)
     # p2 = XYZ(0,1,0)
     # OUT = getAngle(p1,p2)
-def lineByTwoPoint(p1,p2):
+def createLinesByTwoPoints(p1,p2):
     line = Line.ByStartPointEndPoint(p1,p2)
     return line
-    #OUT = lineByTwoPoint(IN[1][0],IN[1][1])
+    #OUT = createLinesByTwoPoints(IN[1][0],IN[1][1])
 def distance(s,e):#Hypot is a mathematical function defined to calculate the length of the hypotenuse of a right-angle triangle
     dist = math.hypot(e.X - s.X,e.Y-s.Y)
     return dist
@@ -699,7 +699,7 @@ def CretePointXYZ(numberX,numberY,numberZ):
     for i in zip(numberX,numberY,numberZ):
         pts.append(Point.ByCoordinates(i,i,i))
     TransactionManager.Instance.TransactionTaskDone()
-def LineByTwoPoint(p1,p2):
+def createLinesByTwoPoints(p1,p2):
     line = Line.ByStartPointEndPoint(p1,p2)
     return line
 def AngleTwoLine(line1,line2):

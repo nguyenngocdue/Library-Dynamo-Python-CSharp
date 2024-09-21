@@ -26,17 +26,18 @@ clr.AddReference("RevitServices")
 import RevitServices
 from RevitServices.Persistence import DocumentManager
 from RevitServices.Transactions import TransactionManager
-
 doc = DocumentManager.Instance.CurrentDBDocument
 view = doc.ActiveView
 uidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
-def unwrapInput(inputValue):
+################################################################
+def getList(inputValue):
     if isinstance(inputValue, list):
         return UnwrapElement(inputValue)
     else:
         return [UnwrapElement(inputValue)]
-#Preparing input from dynamo to revit
-elements = unwrapInput(IN[0])
+
+
+elements = getList(IN[0])
 
 #Do some action in a Transaction
 #TransactionManager.Instance.EnsureInTransaction(doc)
