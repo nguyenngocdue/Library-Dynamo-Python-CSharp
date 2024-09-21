@@ -1,0 +1,138 @@
+<Window 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Category Filter" 
+    Height="545" Width="620" 
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+    Background="#f5f5f5"
+    WindowStyle="None"
+    AllowsTransparency="True">
+
+    <Border BorderBrush="#2196F3" BorderThickness="1" CornerRadius="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Custom Title Bar -->
+            <DockPanel Background="#2196F3" Grid.Row="0" Height="30" LastChildFill="False" Margin="0,0,0,10">
+                <!-- TextBlock aligned to the left -->
+                <TextBlock Text="Category Filter" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="Bold" DockPanel.Dock="Left"/>
+
+                <!-- StackPanel with buttons aligned to the right -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                    <Button Content="—" Width="30" Background="#2196F3" Foreground="White" BorderBrush="Transparent" Click="MinimizeWindow_Click" FontWeight="Bold"/>
+                    <Button Content="□" Width="30" Background="#2196F3" Foreground="White" BorderBrush="Transparent" Click="MaximizeWindow_Click" FontWeight="Bold"/>
+                    <Button Content="✕" Width="30" Background="#2196F3" Foreground="White" BorderBrush="Transparent" Click="CloseWindow_Click" FontWeight="Bold"/>
+                </StackPanel>
+            </DockPanel>
+
+
+            <!-- Radio Button Section -->
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10">
+                <RadioButton Content="All" GroupName="FilterOption" IsChecked="True" FontWeight="Bold"/>
+                <RadioButton Content="Active View" GroupName="FilterOption" Margin="10,0,0,0" FontWeight="Bold"/>
+                <RadioButton Content="Selected Elements" GroupName="FilterOption" Margin="10,0,0,0" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- Search box and group header -->
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="10">
+                <TextBlock Text="Drag a column header here to group by that column" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="Regular"/>
+                <TextBox Width="200" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Search..." Padding="5" FontWeight="Regular"/>
+            </StackPanel>
+
+            <!-- DataGrid -->
+            <DataGrid Grid.Row="3" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10" GridLinesVisibility="None">
+                <!-- Define a ColumnHeaderStyle to make the header bold -->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns>
+                    <!-- Checkbox Column -->
+                    <DataGridTemplateColumn Width="40">
+                        <DataGridTemplateColumn.Header>
+                            <CheckBox/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!-- Category Column -->
+                    <DataGridTextColumn  Header="Category" Binding="{Binding Category}" Width="*" FontWeight="Bold"/>
+
+                    <!-- Family Column -->
+                    <DataGridTextColumn Header="Family" Binding="{Binding Family}" Width="*" FontWeight="Bold"/>
+
+                    <!-- Type Column -->
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*" FontWeight="Bold"/>
+
+                    <!-- ID Column -->
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="*" FontWeight="Bold"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Grid Grid.Row="4" Margin="10">
+                <!-- Define two columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Expands to take up available space -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Takes only the space needed for the Button -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock in the first column aligned to the left -->
+                <TextBlock Text="0 of 50 selected" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="0"/>
+
+                <!-- Button in the second column aligned to the right -->
+                <Button Content="Select" Width="75" Padding="10,5" FontWeight="Bold" Background="#a21caf" Foreground="White" Cursor="Hand" Grid.Column="1">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Normal state -->
+                            <Setter Property="Background" Value="#a21caf"/>
+                            <Setter Property="Foreground" Value="White"/>
+
+                            <!-- Hover state -->
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#9d1eaa"/>
+                                    <!-- Darker purple on hover -->
+                                </Trigger>
+                                <!-- Pressed state -->
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#70197b"/>
+                                    <!-- Even darker purple when pressed -->
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <!-- Optional Shadow Effect -->
+                    <Button.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>
