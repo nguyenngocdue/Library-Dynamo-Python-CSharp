@@ -1,0 +1,2276 @@
+[
+    {
+        "parameter_filter": "{}", 
+        "is_active": true, 
+        "category_name": "Abutment Foundation Tags", 
+        "count": 1
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Abutment Pile Tags", 
+        "count": 2
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Abutment Tags", 
+        "count": 3
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Abutment Wall Tags", 
+        "count": 4
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Abutments", 
+        "count": 5
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Adaptive Points", 
+        "count": 6
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Air Systems", 
+        "count": 7
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Air Terminal Tags", 
+        "count": 8
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Air Terminals", 
+        "count": 9
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Alignment Station Label Sets", 
+        "count": 10
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Alignment Station Labels", 
+        "count": 11
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Alignment Tags", 
+        "count": 12
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Alignments", 
+        "count": 13
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analysis Display Style", 
+        "count": 14
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analysis Results", 
+        "count": 15
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Link Tags", 
+        "count": 16
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Links", 
+        "count": 17
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Member Tags", 
+        "count": 18
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Members", 
+        "count": 19
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Node Tags", 
+        "count": 20
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Nodes", 
+        "count": 21
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Opening Tags", 
+        "count": 22
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Openings", 
+        "count": 23
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Panel Tags", 
+        "count": 24
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Panels", 
+        "count": 25
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Pipe Connections", 
+        "count": 26
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Spaces", 
+        "count": 27
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Analytical Surfaces", 
+        "count": 28
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Anchor Tags", 
+        "count": 29
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Annotation Crop Boundary", 
+        "count": 30
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Approach Slab Tags", 
+        "count": 31
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Area Based Load Tags", 
+        "count": 32
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Area Load Tags", 
+        "count": 33
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Area Tags", 
+        "count": 34
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Areas", 
+        "count": 35
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Assemblies", 
+        "count": 36
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Assembly Tags", 
+        "count": 37
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Audio Visual Device Tags", 
+        "count": 38
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Audio Visual Devices", 
+        "count": 39
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bearing Tags", 
+        "count": 40
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bearings", 
+        "count": 41
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bolt Tags", 
+        "count": 42
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Boundary Conditions", 
+        "count": 43
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Brace in Plan View Symbols", 
+        "count": 44
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Cable Tags", 
+        "count": 45
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Cables", 
+        "count": 46
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Cross Bracing Tags", 
+        "count": 47
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Deck Tags", 
+        "count": 48
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Decks", 
+        "count": 49
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Diaphragm Tags", 
+        "count": 50
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Framing", 
+        "count": 51
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Framing Tags", 
+        "count": 52
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Bridge Truss Tags", 
+        "count": 53
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cable Tray Fitting Tags", 
+        "count": 54
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cable Tray Fittings", 
+        "count": 55
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cable Tray Runs", 
+        "count": 56
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cable Tray Tags", 
+        "count": 57
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cable Trays", 
+        "count": 58
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Callout Boundary", 
+        "count": 59
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Callout Heads", 
+        "count": 60
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Callouts", 
+        "count": 61
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Cameras", 
+        "count": 62
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Casework", 
+        "count": 63
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Casework Tags", 
+        "count": 64
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Ceiling Tags", 
+        "count": 65
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Ceilings", 
+        "count": 66
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Color Fill Legends", 
+        "count": 67
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Column Tags", 
+        "count": 68
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Columns", 
+        "count": 69
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Communication Device Tags", 
+        "count": 70
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Communication Devices", 
+        "count": 71
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Conduit Fitting Tags", 
+        "count": 72
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Conduit Fittings", 
+        "count": 73
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Conduit Runs", 
+        "count": 74
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Conduit Tags", 
+        "count": 75
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Conduits", 
+        "count": 76
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Connection Symbols", 
+        "count": 77
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Contour Labels", 
+        "count": 78
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Coordination Model", 
+        "count": 79
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Crop Boundaries", 
+        "count": 80
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Grids", 
+        "count": 81
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Panel Tags", 
+        "count": 82
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Panels", 
+        "count": 83
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain System Tags", 
+        "count": 84
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Systems", 
+        "count": 85
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Wall Mullion Tags", 
+        "count": 86
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Curtain Wall Mullions", 
+        "count": 87
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Data Device Tags", 
+        "count": 88
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Data Devices", 
+        "count": 89
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Data Exchanges", 
+        "count": 90
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Detail Item Tags", 
+        "count": 91
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Detail Items", 
+        "count": 92
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Dimensions", 
+        "count": 93
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Displacement Path", 
+        "count": 94
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Door Tags", 
+        "count": 95
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Doors", 
+        "count": 96
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Accessories", 
+        "count": 97
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Accessory Tags", 
+        "count": 98
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Color Fill", 
+        "count": 99
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Color Fill Legends", 
+        "count": 100
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Fitting Tags", 
+        "count": 101
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Fittings", 
+        "count": 102
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Insulation Tags", 
+        "count": 103
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Insulations", 
+        "count": 104
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Lining Tags", 
+        "count": 105
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Linings", 
+        "count": 106
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Placeholders", 
+        "count": 107
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Systems", 
+        "count": 108
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Duct Tags", 
+        "count": 109
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Ducts", 
+        "count": 110
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Bus", 
+        "count": 111
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Load Set", 
+        "count": 112
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Loads", 
+        "count": 113
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Power Source", 
+        "count": 114
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Transfer Switch", 
+        "count": 115
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Analytical Transformer", 
+        "count": 116
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Circuits", 
+        "count": 117
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Equipment", 
+        "count": 118
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Equipment Tags", 
+        "count": 119
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Fixture Tags", 
+        "count": 120
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Fixtures", 
+        "count": 121
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Load Areas", 
+        "count": 122
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Electrical Spare/Space Circuits", 
+        "count": 123
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Elevation Marks", 
+        "count": 124
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Elevations", 
+        "count": 125
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Entourage", 
+        "count": 126
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Entourage Tags", 
+        "count": 127
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Expansion Joint Tags", 
+        "count": 128
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Expansion Joints", 
+        "count": 129
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Fascia Tags", 
+        "count": 130
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Filled region", 
+        "count": 131
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Fire Alarm Device Tags", 
+        "count": 132
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Fire Alarm Devices", 
+        "count": 133
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Fire Protection", 
+        "count": 134
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Fire Protection Tags", 
+        "count": 135
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Flex Duct Tags", 
+        "count": 136
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Flex Ducts", 
+        "count": 137
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Flex Pipe Tags", 
+        "count": 138
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Flex Pipes", 
+        "count": 139
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Floor Tags", 
+        "count": 140
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Floors", 
+        "count": 141
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Food Service Equipment", 
+        "count": 142
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Food Service Equipment Tags", 
+        "count": 143
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Foundation Span Direction Symbol", 
+        "count": 144
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Furniture", 
+        "count": 145
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Furniture System Tags", 
+        "count": 146
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Furniture Systems", 
+        "count": 147
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Furniture Tags", 
+        "count": 148
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Generic Annotations", 
+        "count": 149
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Generic Model Tags", 
+        "count": 150
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Generic Models", 
+        "count": 151
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Grid Heads", 
+        "count": 152
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Grids", 
+        "count": 153
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Guide Grid", 
+        "count": 154
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Gutter Tags", 
+        "count": 155
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "HVAC Zones", 
+        "count": 156
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Handrail Tags", 
+        "count": 157
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Hardscape", 
+        "count": 158
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Hardscape Tags", 
+        "count": 159
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Hole Tags", 
+        "count": 160
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Imports in Families", 
+        "count": 161
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Internal Area Load Tags", 
+        "count": 162
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Internal Line Load Tags", 
+        "count": 163
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Internal Point Load Tags", 
+        "count": 164
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Keynote Tags", 
+        "count": 165
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Level Heads", 
+        "count": 166
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Levels", 
+        "count": 167
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Lighting Device Tags", 
+        "count": 168
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Lighting Devices", 
+        "count": 169
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Lighting Fixture Tags", 
+        "count": 170
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Lighting Fixtures", 
+        "count": 171
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Line Load Tags", 
+        "count": 172
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Lines", 
+        "count": 173
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Ancillary Framing", 
+        "count": 174
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Ancillary Framing Tags", 
+        "count": 175
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Containment", 
+        "count": 176
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Containment Tags", 
+        "count": 177
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Ductwork", 
+        "count": 178
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Ductwork Stiffener Tags", 
+        "count": 179
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Ductwork Stiffeners", 
+        "count": 180
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Ductwork Tags", 
+        "count": 181
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Hanger Tags", 
+        "count": 182
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Hangers", 
+        "count": 183
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Pipework", 
+        "count": 184
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "MEP Fabrication Pipework Tags", 
+        "count": 185
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Masking Region", 
+        "count": 186
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mass", 
+        "count": 187
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mass Floor Tags", 
+        "count": 188
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mass Tags", 
+        "count": 189
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Matchline", 
+        "count": 190
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Material Tags", 
+        "count": 191
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Materials", 
+        "count": 192
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Control Device Tags", 
+        "count": 193
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Control Devices", 
+        "count": 194
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Equipment", 
+        "count": 195
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Equipment Set Boundary Lines", 
+        "count": 196
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Equipment Set Tags", 
+        "count": 197
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Equipment Sets", 
+        "count": 198
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Mechanical Equipment Tags", 
+        "count": 199
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Medical Equipment", 
+        "count": 200
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Medical Equipment Tags", 
+        "count": 201
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Model Group Tags", 
+        "count": 202
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Model Groups", 
+        "count": 203
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Multi Leader Tag", 
+        "count": 204
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Multi-Category Tags", 
+        "count": 205
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Multi-Rebar Annotations", 
+        "count": 206
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Nurse Call Device Tags", 
+        "count": 207
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Nurse Call Devices", 
+        "count": 208
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pad Tags", 
+        "count": 209
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Panel Schedule Graphics", 
+        "count": 210
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Parking", 
+        "count": 211
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Parking Tags", 
+        "count": 212
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Part Tags", 
+        "count": 213
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Parts", 
+        "count": 214
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Path of Travel Tags", 
+        "count": 215
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Cap Tags", 
+        "count": 216
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Column Tags", 
+        "count": 217
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Foundation Tags", 
+        "count": 218
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Pile Tags", 
+        "count": 219
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Tags", 
+        "count": 220
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Tower Tags", 
+        "count": 221
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pier Wall Tags", 
+        "count": 222
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Piers", 
+        "count": 223
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Accessories", 
+        "count": 224
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Accessory Tags", 
+        "count": 225
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Color Fill", 
+        "count": 226
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Color Fill Legends", 
+        "count": 227
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Fitting Tags", 
+        "count": 228
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Fittings", 
+        "count": 229
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Insulation Tags", 
+        "count": 230
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Insulations", 
+        "count": 231
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Placeholders", 
+        "count": 232
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Segments", 
+        "count": 233
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipe Tags", 
+        "count": 234
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Pipes", 
+        "count": 235
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Piping Systems", 
+        "count": 236
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plan Region", 
+        "count": 237
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Planting", 
+        "count": 238
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Planting Tags", 
+        "count": 239
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plate Tags", 
+        "count": 240
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plumbing Equipment", 
+        "count": 241
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plumbing Equipment Tags", 
+        "count": 242
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plumbing Fixture Tags", 
+        "count": 243
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Plumbing Fixtures", 
+        "count": 244
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Point Clouds", 
+        "count": 245
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Point Load Tags", 
+        "count": 246
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Profile Tags", 
+        "count": 247
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Project Information", 
+        "count": 248
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Property Line Segment Tags", 
+        "count": 249
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Property Tags", 
+        "count": 250
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "RVT Link Tags", 
+        "count": 251
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "RVT Links", 
+        "count": 252
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Railing Tags", 
+        "count": 253
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Railings", 
+        "count": 254
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Ramp Tags", 
+        "count": 255
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Ramps", 
+        "count": 256
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Raster Images", 
+        "count": 257
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Rebar Cover References", 
+        "count": 258
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Rebar Set Toggle", 
+        "count": 259
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Rebar Shape", 
+        "count": 260
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Reference Lines", 
+        "count": 261
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Reference Planes", 
+        "count": 262
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Reference Points", 
+        "count": 263
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Render Regions", 
+        "count": 264
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Revision Cloud Tags", 
+        "count": 265
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Revision Clouds", 
+        "count": 266
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Road Tags", 
+        "count": 267
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Roads", 
+        "count": 268
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Roof Soffit Tags", 
+        "count": 269
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Roof Tags", 
+        "count": 270
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Roofs", 
+        "count": 271
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Room Tags", 
+        "count": 272
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Rooms", 
+        "count": 273
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Routing Preferences", 
+        "count": 274
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Schedule Graphics", 
+        "count": 275
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Schedules", 
+        "count": 276
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Scope Boxes", 
+        "count": 277
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Section Boxes", 
+        "count": 278
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Section Line", 
+        "count": 279
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Section Marks", 
+        "count": 280
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Sections", 
+        "count": 281
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Security Device Tags", 
+        "count": 282
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Security Devices", 
+        "count": 283
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Shaft Openings", 
+        "count": 284
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Shear Stud Tags", 
+        "count": 285
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Sheets", 
+        "count": 286
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Signage", 
+        "count": 287
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Signage Tags", 
+        "count": 288
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Site", 
+        "count": 289
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Site Tags", 
+        "count": 290
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Slab Edge Tags", 
+        "count": 291
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Space Tags", 
+        "count": 292
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Spaces", 
+        "count": 293
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Span Direction Symbol", 
+        "count": 294
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Specialty Equipment", 
+        "count": 295
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Specialty Equipment Tags", 
+        "count": 296
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Spot Coordinates", 
+        "count": 297
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Spot Elevation Symbols", 
+        "count": 298
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Spot Elevations", 
+        "count": 299
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Spot Slopes", 
+        "count": 300
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Sprinkler Tags", 
+        "count": 301
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Sprinklers", 
+        "count": 302
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Landing Tags", 
+        "count": 303
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Paths", 
+        "count": 304
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Run Tags", 
+        "count": 305
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Support Tags", 
+        "count": 306
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Tags", 
+        "count": 307
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stair Tread/Riser Numbers", 
+        "count": 308
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Stairs", 
+        "count": 309
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Annotations", 
+        "count": 310
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Area Reinforcement", 
+        "count": 311
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Area Reinforcement Symbols", 
+        "count": 312
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Area Reinforcement Tags", 
+        "count": 313
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Beam System Tags", 
+        "count": 314
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Beam Systems", 
+        "count": 315
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Column Tags", 
+        "count": 316
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Columns", 
+        "count": 317
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Connection Tags", 
+        "count": 318
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Connections", 
+        "count": 319
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Fabric Areas", 
+        "count": 320
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Fabric Reinforcement", 
+        "count": 321
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Fabric Reinforcement Symbols", 
+        "count": 322
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Fabric Reinforcement Tags", 
+        "count": 323
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Foundation Tags", 
+        "count": 324
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Foundations", 
+        "count": 325
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Framing", 
+        "count": 326
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Framing Tags", 
+        "count": 327
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Internal Loads", 
+        "count": 328
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Load Cases", 
+        "count": 329
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Loads", 
+        "count": 330
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Path Reinforcement", 
+        "count": 331
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Path Reinforcement Symbols", 
+        "count": 332
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Path Reinforcement Tags", 
+        "count": 333
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Rebar", 
+        "count": 334
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Rebar Bending Details", 
+        "count": 335
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Rebar Coupler Tags", 
+        "count": 336
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Rebar Couplers", 
+        "count": 337
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Rebar Tags", 
+        "count": 338
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Stiffener Tags", 
+        "count": 339
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Stiffeners", 
+        "count": 340
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Tendon Tags", 
+        "count": 341
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Tendons", 
+        "count": 342
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Truss Tags", 
+        "count": 343
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Structural Trusses", 
+        "count": 344
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Switch System", 
+        "count": 345
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "System-Zone Tags", 
+        "count": 346
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "System-Zones", 
+        "count": 347
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Telephone Device Tags", 
+        "count": 348
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Telephone Devices", 
+        "count": 349
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Temporary Structure Tags", 
+        "count": 350
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Temporary Structures", 
+        "count": 351
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Text Notes", 
+        "count": 352
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Title Blocks", 
+        "count": 353
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Top Rail Tags", 
+        "count": 354
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Topography", 
+        "count": 355
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Toposolid", 
+        "count": 356
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Toposolid Link Tags", 
+        "count": 357
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Toposolid Tags", 
+        "count": 358
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vertical Circulation", 
+        "count": 359
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vertical Circulation Tags", 
+        "count": 360
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vibration Damper Tags", 
+        "count": 361
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vibration Isolator Tags", 
+        "count": 362
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vibration Management", 
+        "count": 363
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Vibration Management Tags", 
+        "count": 364
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "View Reference", 
+        "count": 365
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "View Titles", 
+        "count": 366
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Viewports", 
+        "count": 367
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Views", 
+        "count": 368
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Wall Sweep Tags", 
+        "count": 369
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Wall Tags", 
+        "count": 370
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Walls", 
+        "count": 371
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Water Loops", 
+        "count": 372
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Weld Tags", 
+        "count": 373
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Window Tags", 
+        "count": 374
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Windows", 
+        "count": 375
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Wire Tags", 
+        "count": 376
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Wires", 
+        "count": 377
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Zone Equipment", 
+        "count": 378
+    }, 
+    {
+        "parameter_filter": "{}", 
+        "is_active": false, 
+        "category_name": "Zone Tags", 
+        "count": 379
+    }
+]
