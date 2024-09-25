@@ -181,6 +181,8 @@ def getDbLinesMax(dbLines): # Get a min line of list line
     return lineMax
 
 ele = SelectionFilter("NOT", "Structural Framing")
+
+
 elSelectAll = uidoc.Selection.PickElementsByRectangle(ele,"Selects")
 elSelect= [elSelectAll[0]]
 eleFraming = elSelectAll
