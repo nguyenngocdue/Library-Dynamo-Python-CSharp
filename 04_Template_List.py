@@ -170,6 +170,8 @@ def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces
         if check == True:
             faV.append(i)
     return faV
+
+    
 def getFaceVertical(plannar): # Get Vertical PlanarFaces 
     re = []
     remove = RemoveFaceNone(plannar)

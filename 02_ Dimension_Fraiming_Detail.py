@@ -77,6 +77,7 @@ def OffsetPoint (line,distance):
 	vt = (sp+ep).CrossProduct(base).Normalize()
 	pstnew = sp+distance*vt
 	return vt
+
 class SelectionFilter(ISelectionFilter):
 	def __init__(self, ctgName1 , ctgName2):
 		self.ctgName1 = ctgName1
@@ -89,6 +90,8 @@ class SelectionFilter(ISelectionFilter):
 			return False
 	def AllowReference(ref, xyZ):
 		return False
+
+
 def getGeoElement(element): # Get geometry of element.
     geo = []
     opt = Options()

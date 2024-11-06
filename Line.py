@@ -83,3 +83,33 @@ def createLinesByTwoPoints(p1,p2):
 
 def getStartPointsAndEndPoints(lines):
     return [line.StartPoint for line in lines], [line.EndPoint for line in lines]
+
+def convertGridsToDbLines(grids):
+    revitLines = []
+    for grid in grids:
+        curve = grid.Curve  # Sử dụng phương thức asCurve() để chuyển đối tượng Edge thành Curve
+        revitLines.append(curve)
+    return revitLines
+
+def divideLines(lines, number=2):
+    all_points = []  
+    for line in lines:
+        points = [] 
+        for j in range(number):
+            param = j / float(number - 1)
+            point = line.Evaluate(param, True)  
+            points.append(point)
+        all_points.append(points)  
+    return all_points
+
+def pointOnLineAtParam(line, params):
+    startPoint = line.StartPoint
+    endPoint = line.EndPoint
+    points = []
+    for param in params:
+        x = startPoint.X + (endPoint.X - startPoint.X) * param
+        y = startPoint.Y + (endPoint.Y - startPoint.Y) * param
+        z = startPoint.Z + (endPoint.Z - startPoint.Z) * param
+        points.append(XYZ(x / 304.84, y / 304.84, z / 304.84))
+    
+    return points
