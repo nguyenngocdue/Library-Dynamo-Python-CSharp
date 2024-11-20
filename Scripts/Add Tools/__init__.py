@@ -23,7 +23,7 @@ if compat.PY3:
     raise PyRevitCPythonNotSupported('pyrevit.forms')
 
 from pyrevit import coreutils
-from pyrevit.coreutils.logger import get_logger
+from pyrevit.coreutils.logPython import get_logPython
 from pyrevit.coreutils import colors
 from pyrevit import framework
 from pyrevit.framework import System
@@ -46,7 +46,7 @@ import pyevent #pylint: disable=import-error
 
 
 #pylint: disable=W0703,C0302,C0103
-mlogger = get_logger(__name__)
+mlogPython = get_logPython(__name__)
 
 
 DEFAULT_CMDSWITCHWND_WIDTH = 600
@@ -1702,8 +1702,8 @@ class SearchPrompt(WPFWindow):
         results = self.search_matches
         res_cout = len(results)
 
-        mlogger.debug('unique results count: %s', res_cout)
-        mlogger.debug('unique results: %s', results)
+        mlogPython.debug('unique results count: %s', res_cout)
+        mlogPython.debug('unique results: %s', results)
 
         if res_cout > 1:
             self.show_element(self.tab_icon)
@@ -1728,18 +1728,18 @@ class SearchPrompt(WPFWindow):
         if results:
             input_term = self.search_term
             cur_res = results[self._result_index]
-            mlogger.debug('current result: %s', cur_res)
+            mlogPython.debug('current result: %s', cur_res)
             if fill_match:
                 self.search_input = cur_res
             else:
                 if cur_res.lower().startswith(input_term):
                     self.directmatch_tb.Text = \
                         self.search_input + cur_res[len(input_term):]
-                    mlogger.debug('directmatch_tb.Text: %s',
+                    mlogPython.debug('directmatch_tb.Text: %s',
                                   self.directmatch_tb.Text)
                 else:
                     self.wordsmatch_tb.Text = '- {}'.format(cur_res)
-                    mlogger.debug('wordsmatch_tb.Text: %s',
+                    mlogPython.debug('wordsmatch_tb.Text: %s',
                                   self.wordsmatch_tb.Text)
             tooltip = self._search_db.get(cur_res, None)
             if tooltip:
@@ -1756,18 +1756,18 @@ class SearchPrompt(WPFWindow):
         self._result_index = 0
         self._search_results = []
 
-        mlogger.debug('search input: %s', self.search_input)
-        mlogger.debug('search term: %s', self.search_term)
-        mlogger.debug('search term (main): %s', self.search_term_main)
-        mlogger.debug('search term (parts): %s', self.search_input_parts)
-        mlogger.debug('search term (args): %s', self.search_term_args)
-        mlogger.debug('search term (switches): %s', self.search_term_switches)
+        mlogPython.debug('search input: %s', self.search_input)
+        mlogPython.debug('search term: %s', self.search_term)
+        mlogPython.debug('search term (main): %s', self.search_term_main)
+        mlogPython.debug('search term (parts): %s', self.search_input_parts)
+        mlogPython.debug('search term (args): %s', self.search_term_args)
+        mlogPython.debug('search term (switches): %s', self.search_term_switches)
 
         for resultset in args:
-            mlogger.debug('result set: %s}', resultset)
+            mlogPython.debug('result set: %s}', resultset)
             self._search_results.extend(sorted(resultset))
 
-        mlogger.debug('results: %s', self._search_results)
+        mlogPython.debug('results: %s', self._search_results)
 
     def find_direct_match(self, input_text):
         """Find direct text matches in search term."""
@@ -2724,7 +2724,7 @@ def alert(msg, title=None, sub_msg=None, expanded=None, footer='',
 
     # PROCESS REPONSES
     # positive response
-    mlogger.debug('alert result: %s', res)
+    mlogPython.debug('alert result: %s', res)
     if res == UI.TaskDialogResult.Ok \
             or res == UI.TaskDialogResult.Yes \
             or res == UI.TaskDialogResult.Retry:

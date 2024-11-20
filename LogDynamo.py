@@ -1,4 +1,4 @@
-def logger(title, content):
+def logPython(title, content):
     import datetime
     date = datetime.datetime.now()
     f = open(r"A:\Library-Dynamo-Python-CSharp\python.log", 'a')

@@ -4,7 +4,7 @@
 from collections import namedtuple
 
 from pyrevit import coreutils
-from pyrevit.coreutils import logger
+from pyrevit.coreutils import logPython
 from pyrevit import HOST_APP, DOCS, PyRevitException
 from pyrevit import api
 from pyrevit import framework
@@ -17,7 +17,7 @@ from pyrevit.revit import features
 from Autodesk.Revit.DB import Element   #pylint: disable=E0401
 
 
-mlogger = logger.get_logger(__name__)
+mlogPython = logPython.get_logPython(__name__)
 
 
 GRAPHICAL_VIEWTYPES = [
@@ -436,7 +436,7 @@ def get_defined_sharedparams():
         for def_group in get_sharedparam_definition_file().Groups:
             pp_list.extend([x for x in def_group.Definitions])
     except PyRevitException as ex:
-        mlogger.debug('Error getting shared parameters. | %s', ex)
+        mlogPython.debug('Error getting shared parameters. | %s', ex)
     return pp_list
 
 
@@ -1445,8 +1445,8 @@ def find_paper_sizes_by_dims(printer_name, paper_width, paper_height, doc=None):
     doc = doc or DOCS.doc
     paper_sizes = []
     system_paper_sizes = coreutils.get_paper_sizes(printer_name)
-    mlogger.debug('looking for paper size W:%s H:%s', paper_width, paper_height)
-    mlogger.debug('system paper sizes: %s -> %s',
+    mlogPython.debug('looking for paper size W:%s H:%s', paper_width, paper_height)
+    mlogPython.debug('system paper sizes: %s -> %s',
                   printer_name, [x.PaperName for x in system_paper_sizes])
     for sys_psize in system_paper_sizes:
         sys_pname = sys_psize.PaperName
@@ -1455,14 +1455,14 @@ def find_paper_sizes_by_dims(printer_name, paper_width, paper_height, doc=None):
         # system paper dims are in inches
         wxd = paper_width == sys_pwidth and paper_height == sys_pheight
         dxw = paper_width == sys_pheight and paper_height == sys_pwidth
-        mlogger.debug('%s \"%s\" W:%s H:%s',
+        mlogPython.debug('%s \"%s\" W:%s H:%s',
                       '✓' if wxd or dxw else ' ',
                       sys_pname, sys_pwidth, sys_pheight)
         if wxd or dxw:
             psize = find_paper_size_by_name(sys_pname)
             if psize:
                 paper_sizes.append(psize)
-                mlogger.debug('found matching paper \"\"', psize.Name)
+                mlogPython.debug('found matching paper \"\"', psize.Name)
 
     return paper_sizes
 
@@ -1500,7 +1500,7 @@ def get_titleblock_print_settings(tblock, printer_name, doc_psettings):
                     and pparams.PageOrientation == page_orient:
                 all_tblock_psettings.add(doc_psetting)
         except Exception as ex:
-            mlogger.debug("incompatible psettings: %s", doc_psetting.Name)
+            mlogPython.debug("incompatible psettings: %s", doc_psetting.Name)
     return sorted(all_tblock_psettings, key=lambda x: x.Name)
 
 

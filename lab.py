@@ -1258,7 +1258,7 @@ def flatten_to_minimum_level(lst, level):
 
     return flatten_helper(lst, 1)
 
-def logger(title, content):
+def logPython(title, content):
     import datetime
     date = datetime.datetime.now()
     f = open(r"A:\Library-Dynamo-Python-CSharp\python.log", 'a')
