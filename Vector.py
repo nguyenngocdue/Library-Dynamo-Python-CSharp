@@ -23,5 +23,12 @@ def createXYZVectorsFromPoints(points):
         vectors.append(vector)
     return vectors
 
+def calculateVectorByLstXYZ(xyz1, xyz2):
+    x1, y1, z1 = xyz1.X, xyz1.Y, xyz1.Z
+    x2, y2, z2 = xyz2.X, xyz2.Y, xyz2.Z
+    vector = (x2 - x1, y2 - y1, z2 - z1)
+    return vector
+
+
 pointDicts = IN[0]
 OUT = createXYZVectorsFromPoints(pointDicts)

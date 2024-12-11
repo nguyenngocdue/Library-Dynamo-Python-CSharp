@@ -1,0 +1,58 @@
+<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ListViewGridViewSample" Height="511" Width="1533">
+    <Grid>
+        <ListView 
+			Margin="10,10,10,68"
+			Name="lvUsers" 
+			BorderThickness="1">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="BlueViolet" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="No." Width="100" DisplayMemberBinding="{Binding gvcCount}" />
+                    <GridViewColumn Header="Sheet Number" Width="200" DisplayMemberBinding="{Binding gvcSheetNumber}" />
+                    <GridViewColumn Header="Sheet Name" Width="200" DisplayMemberBinding="{Binding gvcSheetName}" />
+                    <GridViewColumn Header="Amount View" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding gvcAmountView}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Approved By" Width="200" DisplayMemberBinding="{Binding gvcChecked}" />
+                    <GridViewColumn Header="Designed By" Width="200" DisplayMemberBinding="{Binding gvcDesigner}" />
+                    <GridViewColumn Header="Drawn By" Width="200" DisplayMemberBinding="{Binding gvcDrawnBy}" />
+                    <GridViewColumn Header="Date" Width="200" DisplayMemberBinding="{Binding gvcDate}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button 
+            Content="Export"
+            HorizontalAlignment="Left" 
+            Margin="698,430,0,0" 
+            VerticalAlignment="Top"
+            Width="76"
+            Click="btnExport"
+            Background="Orange" 
+            Height="26" RenderTransformOrigin="1.133,0.308"/>
+        <Button 
+            Content="Cancel" 
+            HorizontalAlignment="Left" 
+            Background="Magenta"
+            Margin="804,430,0,0" 
+            VerticalAlignment="Top" 
+            Width="76"
+            Click="btnCancel" 
+            Height="26" RenderTransformOrigin="1.14,0.712"/>
+    </Grid>
+</Window>
