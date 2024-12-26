@@ -65,9 +65,9 @@ el_Wall = FilteredElementCollector(doc).OfClass(Wall).WhereElementIsNotElementTy
 el_Grid = FilteredElementCollector(doc).OfClass(Grid).WhereElementIsNotElementType().ToElements();
 
 
-get_ElementType = FilteredElementCollector(doc).OfClass(ElementType).ToElements()
-get_FamilyInstance_Actiview = FilteredElementCollector(doc).OfClass(FamilyInstance).ToElements();
-get_AllFamily = FilteredElementCollector(doc).OfClass(Family).ToElements();
+ElementType = FilteredElementCollector(doc).OfClass(ElementType).ToElements()
+FamilyInstance_Actiview = FilteredElementCollector(doc).OfClass(FamilyInstance).ToElements();
+AllFamily = FilteredElementCollector(doc).OfClass(Family).ToElements();
 
 cads = FilteredElementCollector(doc).OfClass(ImportInstance).ToElements()
 OUT = [i.LookupParameter("Name").AsString() for i in cads], [i.Id for i in cads] 

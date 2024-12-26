@@ -653,3 +653,32 @@ def offsetPointsByPoints(points, dis, typeAxis):
             point = Point.ByCoordinates(px, py, pz)
         newPoints.append(point)
     return newPoints
+
+def offsetPointsByLine(points, line, revert=-1):
+    startPoint = line.StartPoint
+    endPoint = line.EndPoint
+    factorX = 1 if (endPoint.X - startPoint.X) > 0 else (-1 if (endPoint.X - startPoint.X) < 0 else 0)
+    factorY = 1 if (endPoint.Y - startPoint.Y) > 0 else (-1 if (endPoint.Y - startPoint.Y) < 0 else 0)
+    factorZ = 1 if (endPoint.Z - startPoint.Z) > 0 else (-1 if (endPoint.Z - startPoint.Z) < 0 else 0)
+    
+    vector= line.Direction
+    vectorLength = vector.Length
+    
+    normalizedVector = Vector.ByCoordinates(
+        vector.X / vectorLength,
+        vector.Y / vectorLength,
+        vector.Z / vectorLength
+    )
+    offsetVector = Vector.ByCoordinates(
+        normalizedVector.X * line.Length,
+        normalizedVector.Y * line.Length,
+        normalizedVector.Z * line.Length 
+    )
+    offsetPoints = [
+        Point.ByCoordinates(
+            point.X + revert * factorX * offsetVector.X,
+            point.Y + revert * factorY * offsetVector.Y,
+            point.Z + revert * factorZ * offsetVector.Z
+        ) for point in points
+    ]
+    return offsetPoints
