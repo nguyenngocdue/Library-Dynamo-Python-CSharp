@@ -7,7 +7,6 @@ import os
 def read_excel_and_return_data(xlsx_path):
     if not os.path.exists(xlsx_path):
         raise FileNotFoundError(f"File not found: {xlsx_path}")
-    
     # Convert Excel to a temporary CSV file
     temp_csv = os.path.splitext(xlsx_path)[0] + "_temp.csv"
     df = pd.read_excel(xlsx_path, sheet_name=0)
@@ -19,12 +18,10 @@ def read_excel_and_return_data(xlsx_path):
         reader = csv.reader(f)
         for row in reader:
             data.append(row)
-    
     # Delete the temporary CSV file (optional)
     os.remove(temp_csv)
 
     return data
-
 # Call the function
 path = r"A:\TRAINING DYNAMO API\PART 47 READ EXCEL\ReadExcel.xlsx"
 data = read_excel_and_return_data(path)
@@ -32,11 +29,8 @@ data = read_excel_and_return_data(path)
 # Print the result
 for row in data:
     print(row)
-
 # If using this in Dynamo, assign to OUT
 OUT = data
-
-
 
 
 # Read an Excel file using pandas
