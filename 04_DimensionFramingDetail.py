@@ -147,13 +147,13 @@ def chunks(l, n): #List.Chop
     n = max(1, n)
     return (l[i:i+n] for i in range(0, len(l), n))
 
-def LinebyGrids(lstGrids):
+def getLinesbyGrids(lstGrids):
     re = []
     for i in lstGrids:
         crv = i.Curve
         re.append(crv.ToProtoType())
     return re
-def DBLinebyGrids(lstGrids):
+def getDBLinesbyGrids(lstGrids):
     re = []
     for i in lstGrids:
         crv = i.Curve

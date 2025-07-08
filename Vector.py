@@ -29,6 +29,14 @@ def calculateVectorByLstXYZ(xyz1, xyz2):
     vector = (x2 - x1, y2 - y1, z2 - z1)
     return vector
 
+def getNormalizeByLine(line):
+    startPoint, endPoint = line.StartPoint, line.EndPoint  
+    directionVector = XYZ(
+        endPoint.X - startPoint.X, 
+        endPoint.Y - startPoint.Y, 
+        endPoint.Z - startPoint.Z
+    ).Normalize().ToVector()
+    return directionVector
 
 pointDicts = IN[0]
 OUT = createXYZVectorsFromPoints(pointDicts)

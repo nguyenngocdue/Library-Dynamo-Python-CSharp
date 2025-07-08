@@ -3,6 +3,7 @@
 """________________Welcome to BIM3DM-DYNAMO API___________________"""
 import clr 
 import sys
+import System
 sys.path.append(r'A:\Library-Dynamo-Python-CSharp')
 import math 
 from System.Collections.Generic import *
@@ -39,21 +40,26 @@ def getList(inputValue):
     else:
         return [UnwrapElement(inputValue)]
 #############################################################################
-#Build a new empty Category List...
-cate_List = List[BuiltInCategory]()
-#Only Add some Element Types to cate_List...
-cate_List.Add(BuiltInCategory.OST_StructuralFraming)
-cate_List.Add(BuiltInCategory.OST_StructuralColumns)
-cate_List.Add(BuiltInCategory.OST_StructuralFoundation)
-cate_List.Add(BuiltInCategory.OST_Floors)
-cate_List.Add(BuiltInCategory.OST_Walls)
-cate_List.Add(BuiltInCategory.OST_Windows)
-cate_List.Add(BuiltInCategory.OST_Doors)
 
-result = []
-for b in cate_List:
-    ele = FilteredElementCollector(doc).OfCategory(b).WhereElementIsNotElementType().ToElements()
-    result.append(ele)
-OUT = cate_List
+naCate = [i.Name for i in doc.Settings.Categories]
+fil = "Schedules"
+getIndex_Item = naCate.index(fil)
+catebyName = UnwrapElement(Revit.Elements.Category.ByName(naCate[getIndex_Item]))
 
+bic = System.Enum.ToObject(BuiltInCategory, catebyName.Id.IntegerValue)
+scheName = FilteredElementCollector(doc).OfCategory(bic).ToElements()
+OUT = scheName
 
+path = r"U:\24_OneDrive\OneDrive\Desktop\Untitled Project"
+result_list = []
+for index, sched in enumerate(scheName):
+    schedule = UnwrapElement(sched)
+    fileName = schedule.Name + ".xls"
+    try:
+        export_options = ViewScheduleExportOptions()
+        
+        schedule.Export(path,fileName,export_options)
+
+        result_list.append("Schedule Exported "+ fileName)
+    except:
+        result_list.append("Eport Failure" + fileName)

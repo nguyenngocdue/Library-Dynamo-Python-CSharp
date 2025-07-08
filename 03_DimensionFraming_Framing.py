@@ -104,12 +104,19 @@ def getFaceVertical(plannar): # Get Vertical PlanarFaces
         if 30<(rad*180/3.14)<170:
             re.append(i)
     return re
-def RetrieveEdgesFace(lstPlanar): # Get Lines of PlanarFaces
+def getEdgesFaces(lstPlanar): # Get Lines of PlanarFaces
     re = []
     var = lstPlanar.EdgeLoops
     for i in var:
         for j in i:
             re.append(j.AsCurve())
+    return re
+
+def getEdgesFaces(planars): # Get Lines of PlanarFaces
+    re = []
+    for planar in planars:
+        dbLines = planar.GetEdgesAsCurveLoops()
+        re.append(dbLines)
     return re
 def getLineMax(lstLine): # Get a min line of list line
     _length = []

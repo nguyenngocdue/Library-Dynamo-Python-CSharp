@@ -50,14 +50,11 @@ def getSolidFromGeo(lstGeo): # Get Solid from Geo
                 if j.Volume > 0:
                     sol.append(j)
     return sol
-def getPlanarFormSolid(solids): # Get Planarface from solids
-    plaf = []
-    for i in solids:
-        var = i.Faces
-        for j in var:
-            if j.Reference != None:
-                plaf.append(j)
-    return plaf
+def getPlanarsFromSolids(solids): # Get Planarface from solids
+    pls = []
+    for solid in solids: 
+        faces = solid.Faces
+        return [pl for pl in faces if pl.Reference]
 def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
     for i in dbPlanarFaces:
@@ -66,15 +63,17 @@ def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     return pfaces
 def Isparalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
-def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces 
-    faV = []
+def getVerticalPlanars(planars): # Get Vertical PlanarFaces 
+    pls = []
+    x = XYZ.BasisX
     y = XYZ.BasisY
-    for i in lstPlface:
-        faNomal = i.FaceNormal
-        check  = Isparalel(y,faNomal)
-        if check == True:
-            faV.append(i)
-    return faV
+    for planar in planars:
+        faNomal = planar.FaceNormal
+        isparalelX  = Isparalel(x,faNomal)
+        isparalelY  = Isparalel(y,faNomal)
+        if isparalelX == True or isparalelY == True:
+            pls.append(planar)
+    return pls
 def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces 
     faH = []
     z = XYZ.BasisZ

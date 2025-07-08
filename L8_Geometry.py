@@ -58,13 +58,13 @@ def getPlanarFormSolid(solids): # Get Planarface from solids
             if j.Reference != None:
                 plaf.append(j)
     return plaf
-def RemoveFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
+def removeFaceNone(dbPlanarFaces): # Get planarFaces Not Null Value
     pfaces = []
     for i in dbPlanarFaces:
         if i.Reference != None:
             pfaces.append(i)
     return pfaces
-def Isparalel(p,q):
+def isParalel(p,q):
     return p.CrossProduct(q).IsZeroLength()
 def FilterVerticalPlanar(lstPlface): # Get Vertical PlanarFaces 
     faV = []
@@ -82,14 +82,20 @@ def FilterHorizontalPlanar(lstPlface): # Get Horizaontal PlanarFaces
         check = Isparalel(z, i.FaceNormal)
         if check == True:
             faH.append(i)
-    return faH
-def getFaceVertical(plannar): # Get Vertical PlanarFaces 
+    return faHdef isParalel(p,q):
+    return p.CrossProduct(q).IsZeroLength()
+     
+def getLeftRightPlannarFaces(plannars): # Get Vertical PlanarFaces 
     re = []
-    remove = RemoveFaceNone(plannar)
-    for i in remove:
-        var = i.FaceNormal
-        rad = var.AngleTo(XYZ.BasisZ)
-        if 30<(rad*180/3.14)<170:
+    plannars = removeFaceNone(plannars)
+    for i in plannars:
+        normalVector = i.FaceNormal
+        x =  XYZ.BasisX
+        y =  XYZ.BasisY
+        rad = normalVector.AngleTo(XYZ.BasisZ)
+        isPararelX = isParalel(normalVector, x)
+        isPararelY = isParalel(normalVector, y)
+        if not isPararelX and isPararelY and 30<(rad*180/3.14)<170:
             re.append(i)
     return re
     #getFaVerFraming = [GetFaceVertical(i) for i in getFaceFraming]
@@ -160,9 +166,9 @@ def LineOffset(line,distance,direct): # Offset a line from one line earlier
     trans = Transform.CreateTranslation(direct) # Setting direction for GetLinMin
     lineMove = line.CreateTransformed(trans)
     return lineMove 
-def getReferenceArray(lstPlanar):
+def getReferenceArray(planars):
     reArray = ReferenceArray()
-    for i in lstPlanar:
+    for i in planars:
         reArray.Append(i.Reference)
     return reArray
 def getLineVertical(lstLine): # Get vertical Line by Isparalel
