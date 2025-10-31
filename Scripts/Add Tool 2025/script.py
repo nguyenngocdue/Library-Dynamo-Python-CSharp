@@ -7,10 +7,11 @@ import os
 from System.Windows import Application, Window
 from System.Windows.Forms import Application, Button, Form, Label, TextBox, CheckBox, FolderBrowserDialog, OpenFileDialog, DialogResult, ComboBox, FormBorderStyle
 
-
 import clr
 clr.AddReference("System.Windows.Forms")
 clr.AddReference("System.Drawing")
+
+import bim3dm as BIM3DM
 
 #-------------------------------------------------------------------
 
@@ -61,7 +62,7 @@ def refreshBundle(bundle_path, values):
 
 
 
-parent_dir  = r"C:\Users\NGUYEN NGOC DUE\AppData\Roaming\pyRevit\Extensions\BIM3DM.extension\BIM3DM.tab"
+parent_dir  = r"C:\Users\NGUYEN NGOC DUE\AppData\Roaming\pyRevit-Master\extensions\pyBIM3DM.extension\pyBIM3DM.tab"
 
 #Create a tool name
 folders = getFoldersInFolder(parent_dir)
@@ -74,7 +75,7 @@ refreshBundle(bundlePath,toolNamesCurrent)
 
 # ask for file
 with forms.WarningBar(title='Data Entry Form'):
-    dataForm = forms.ask_DynamoScript()
+    dataForm = BIM3DM.ask_DynamoScript()
 
 source_fileDyn = dataForm['txtb_dyn_path']
 source_fileIcon = dataForm['txtb_icon_path']
